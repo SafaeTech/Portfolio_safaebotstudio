@@ -94,15 +94,44 @@
 
 
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Want to collaborate or hire me? Reach out!</p>
-    <ul>
-      <li>Email: <a href="mailto:bots@safaebotstudio.com">bots@safaebotstudio.com</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/safaebotstudio" target="_blank">Safae on LinkedIn</a></li>
-      <li>GitHub: <a href="https://github.com/safaetech" target="_blank">safaetech</a></li>
-    </ul>
-  </section>
+<section class="bg-white text-gray-800 py-16 px-6" id="contact">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-12 border-b-4 border-indigo-500 inline-block">Contact Me</h2>
+    
+    <p class="text-center mb-8 max-w-xl mx-auto">Have a project idea or just want to say hi? Send me a message — I’d love to connect!</p>
+    
+    <form action="https://formspree.io/f/mnnvqypd" method="POST" class="max-w-xl mx-auto space-y-6">
+      <div>
+        <label for="name" class="block text-sm font-semibold mb-2">Name</label>
+        <input type="text" id="name" name="name" required
+               class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-semibold mb-2">Email</label>
+        <input type="email" id="email" name="_replyto" required
+               class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      </div>
+
+      <div>
+        <label for="message" class="block text-sm font-semibold mb-2">Message</label>
+        <textarea id="message" name="message" rows="5" required
+                  class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+      </div>
+
+      <button type="submit" 
+              class="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-indigo-700 transition">
+        Send Message
+      </button>
+    </form>
+
+    <div class="mt-12 text-center text-gray-600">
+      <p>Email: <a href="mailto:safae@safaebotstudio.com" class="text-indigo-600 hover:underline">safae@safaebotstudio.com</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/safae" target="_blank" class="text-indigo-600 hover:underline">linkedin.com/in/safae</a></p>
+    </div>
+  </div>
+</section>
+
 
   <footer>
     <p>© 2025 Safae Bot Studio. Built with 💖 and GitHub Pages.</p>
