@@ -9,63 +9,81 @@
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 2rem;
-      background-color: #f9f9f9;
-      color: #333;
+      background-color: #000; /* black background */
+      color: #f1f1f1; /* light text */
     }
     h1, h2 {
-      color: #3f51b5;
+      color: #eab308; /* warm gold accent */
     }
     section {
       margin-bottom: 2rem;
       padding: 1rem;
-      background: #fff;
+      background: #111;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
     }
     ul {
       list-style-type: "✨ ";
       padding-left: 1.5rem;
     }
     a {
-      color: #3f51b5;
+      color: #8b5cf6;
       text-decoration: none;
+    }
+    input, textarea, button {
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+    }
+    input, textarea {
+      background-color: #222;
+      color: #f1f1f1;
+    }
+    button {
+      background-color: #3f51b5;
+      color: white;
+      cursor: pointer;
     }
     footer {
       text-align: center;
       margin-top: 4rem;
       font-size: 0.9rem;
-      color: #777;
+      color: #888;
     }
   </style>
 </head>
 <body>
 
   <h1>Welcome to Safae Bot Studio 🤖✨</h1>
-  <p>Hi, I'm Safae — a multilingual freelance bot developer helping small businesses automate their customer engagement through smart, modern chatbots.</p>
+  <p>Hi, I'm Safae — a multilingual freelance bot developer helping small businesses automate their customer engagement through modern AI-powered chatbots.</p>
 
   <section>
     <h2>💼 What I Can Do for You</h2>
     <ul>
-      <li><strong>Lead Capture Bot</strong> – Collect emails, preferences, and contact info from your clients.</li>
-      <li><strong>Customer Operations Bot</strong> – Answer questions, share information, and assist users automatically.</li>
-      <li><strong>Website Development</strong> – Simple, elegant landing pages tailored for small businesses.</li>
+      <li><strong>Lead Capture Bot</strong> – Collect emails, preferences, and contact info from your clients automatically</li>
+      <li><strong>Customer Operations Bot</strong> – Respond to customer questions, share info, and automate support</li>
+      <li><strong>Website Development</strong> – Clean and functional websites for businesses with or without existing platforms</li>
     </ul>
   </section>
 
-  <section>
-    <h2>🎁 Special Offers & Custom Quotes</h2>
-    <p>Interested in working with me? Just leave your email inside my chatbot and you’ll receive a custom offer — fully automated.</p>
-  </section>
+  <!-- Removed the old video section here -->
 
   <section>
-    <h2>📊 Feedback</h2>
-    <p>Clients can leave feedback using my bot’s satisfaction survey — with just one click.</p>
-  </section>
+    <h2>📨 Contact Me</h2>
+    <form action="https://formspree.io/f/{your-code}" method="POST">
+      <label for="name">Name</label><br />
+      <input type="text" name="name" required /><br />
 
-  <section>
-    <h2>📞 Contact Me</h2>
-    <p>Email: <a href="mailto:bots@safaebotstudio.com">bots@safaebotstudio.com</a></p>
-    <p>Languages: Arabic • English • French • Turkish</p>
+      <label for="email">Email</label><br />
+      <input type="email" name="email" required /><br />
+
+      <label for="message">Your message</label><br />
+      <textarea name="message" rows="4" required></textarea><br />
+
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
   <footer>
@@ -74,4 +92,3 @@
 
 </body>
 </html>
-
