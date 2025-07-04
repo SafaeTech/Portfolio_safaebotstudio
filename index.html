@@ -1,234 +1,145 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Safae Bot Studio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #000;
-      color: #fff;
-    }
-    .hero {
-      background: url('https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/main/assets/botette-hero.png') center/cover no-repeat;
-      background-size: cover;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 60px;
-    }
-    .hero h1 {
-      font-size: 3.5rem;
-      margin: 0;
-    }
-    .hero p {
-      font-size: 1.5rem;
-      margin: 20px 0 30px 0;
-      max-width: 600px;
-    }
-    .cta {
-      padding: 12px 24px;
-      font-size: 1rem;
-      color: white;
-      background: #a64aff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      align-self: start;
-      transition: background-color 0.3s ease;
-    }
-    .cta:hover {
-      background-color: #8a3ed1;
-    }
-    /* Centered container for the Botette image below hero */
-    .botette-image-container {
-      display: flex;
-      justify-content: center;
-      margin: 40px 0;
-    }
-    .botette-image-container img {
-      max-width: 300px;
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 0 15px #a64affaa;
-    }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+.hero {
+  background: url('https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/main/assets/botette-hero.png') center/cover no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px;
+}
+.hero h1 {
+  font-size: 3.5rem;
+  margin: 0 0 10px 0; /* tightened margin-bottom */
+}
+.hero p {
+  font-size: 1.5rem;
+  margin: 10px 0 20px 0; /* reduced margin */
+  max-width: 600px;
+}
+.cta {
+  padding: 12px 24px;
+  font-size: 1rem;
+  color: white;
+  background: #39b54a; /* green */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  align-self: start;
+  transition: background-color 0.3s ease;
+}
+.cta:hover {
+  background-color: #2d8c39; /* darker green */
+}
 
-    /* Artistic and centered "What I Can Do for You" */
-    section#do {
-      padding: 60px 20px;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 60px auto;
-      font-size: 1.3rem;
-    }
-    section#do h2 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      letter-spacing: 2px;
-      font-weight: 700;
-      background: linear-gradient(90deg, #a64aff, #6e2eff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    section#do ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      font-weight: 600;
-    }
-    section#do ul li {
-      background: #1a0a4d;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #a64aff88;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      justify-content: center;
-      font-size: 1.2rem;
-    }
+/* Botette image container remains same */
 
-    /* Contact section centered and bigger */
-    section#contact {
-      padding: 60px 20px;
-      max-width: 600px;
-      margin: 0 auto 60px auto;
-      background: #111;
-      border-radius: 15px;
-      box-shadow: 0 0 30px #a64aff88;
-    }
-    section#contact h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      background: linear-gradient(90deg, #a64aff, #6e2eff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      font-size: 1.2rem;
-    }
-    label {
-      display: flex;
-      flex-direction: column;
-      font-weight: 600;
-      color: #ddd;
-    }
-    input[type="email"],
-    textarea {
-      margin-top: 8px;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      font-size: 1rem;
-      resize: vertical;
-    }
-    input[type="email"]:focus,
-    textarea:focus {
-      outline: 2px solid #a64aff;
-      background-color: #2a105c;
-      color: #fff;
-    }
-    button[type="submit"] {
-      padding: 14px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: white;
-      background: #a64aff;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button[type="submit"]:hover {
-      background-color: #6e2eff;
-    }
+section#do {
+  padding: 40px 20px; /* reduced top padding from 60px to 40px */
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px auto; /* reduced bottom margin */
+  font-size: 1.3rem;
+}
+section#do h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px; /* reduced bottom margin */
+  letter-spacing: 2px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #39b54a, #2d8c39);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+section#do ul li {
+  background: #144d1a; /* dark green background */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #39b54aaa;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+  font-size: 1.2rem;
+}
 
-    footer {
-      background-color: #111;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-    }
+/* Contact section */
 
-    /* Responsive tweaks */
-    @media (max-width: 600px) {
-      .hero {
-        padding: 40px 20px;
-        align-items: center;
-        text-align: center;
-      }
-      .hero h1 {
-        font-size: 2.8rem;
-      }
-      .hero p {
-        max-width: 100%;
-      }
-      .cta {
-        align-self: center;
-      }
-      section#do ul {
-        grid-template-columns: 1fr;
-      }
-      section#contact {
-        margin: 0 20px 40px 20px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header class="hero">
-    <h1>Meet Botette</h1>
-    <p>Your AI Assistant for Lead Capture and Customer Operations</p>
-    <a class="cta" href="#contact">Chat with Botette</a>
-  </header>
+section#contact {
+  padding: 60px 20px;
+  max-width: 600px;
+  margin: 0 auto 60px auto;
+  background: #111;
+  border-radius: 15px;
+  box-shadow: 0 0 30px #39b54a88;
+}
+section#contact h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #39b54a, #2d8c39);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-  <!-- Botette image below hero -->
-  <div class="botette-image-container">
-    <img src="/mnt/data/3d4f1473-5fb4-4ba4-a3db-eed479209614.png" alt="Botette" />
-  </div>
+input[type="email"]:focus,
+textarea:focus {
+  outline: 2px solid #39b54a;
+  background-color: #1a3a15;
+  color: #fff;
+}
 
-  <section id="do">
-    <h2>What I Can Do for You</h2>
-    <ul>
-      <li>🤖 Build customized AI chatbots for customer operations</li>
-      <li>📩 Lead capture bots that engage and convert visitors</li>
-      <li>🌐 Simple website development for businesses without a site</li>
-      <li>📊 Email automation and integrations with CRM</li>
-    </ul>
-  </section>
+button[type="submit"] {
+  padding: 14px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  background: #39b54a;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button[type="submit"]:hover {
+  background-color: #2d8c39;
+}
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <label>
-        Your email:
-        <input type="email" name="email" required />
-      </label>
-      <label>
-        Your message:
-        <textarea name="message" rows="5" required></textarea>
-      </label>
-      <button type="submit">Send</button>
-    </form>
-  </section>
+footer {
+  background-color: #111;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
 
-  <footer>
-    &copy; 2025 Safae Bot Studio. All rights reserved.
-  </footer>
-</body>
-</html>
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .hero {
+    padding: 40px 20px;
+    align-items: center;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+  .hero p {
+    max-width: 100%;
+  }
+  .cta {
+    align-self: center;
+  }
+  section#do ul {
+    grid-template-columns: 1fr;
+  }
+  section#contact {
+    margin: 0 20px 40px 20px;
+  }
+}
 
