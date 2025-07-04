@@ -6,89 +6,87 @@
   <title>Safae Bot Studio</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 2rem;
-      background-color: #000; /* black background */
-      color: #f1f1f1; /* light text */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #fff;
     }
-    h1, h2 {
-      color: #eab308; /* warm gold accent */
+    .hero {
+      background: url('https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/main/assets/botette-hero.png') center/cover no-repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 60px;
     }
-    section {
-      margin-bottom: 2rem;
-      padding: 1rem;
-      background: #111;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+    .hero h1 {
+      font-size: 3.5rem;
+      margin: 0;
     }
-    ul {
-      list-style-type: "✨ ";
-      padding-left: 1.5rem;
+    .hero p {
+      font-size: 1.5rem;
+      margin: 20px 0;
+      max-width: 600px;
     }
-    a {
-      color: #8b5cf6;
+    .cta {
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: white;
+      background: #a64aff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
       text-decoration: none;
     }
-    input, textarea, button {
-      padding: 0.5rem;
-      margin-top: 0.5rem;
-      width: 100%;
-      border: none;
-      border-radius: 5px;
-    }
-    input, textarea {
-      background-color: #222;
-      color: #f1f1f1;
-    }
-    button {
-      background-color: #3f51b5;
-      color: white;
-      cursor: pointer;
+    section {
+      padding: 40px 60px;
     }
     footer {
+      background-color: #111;
       text-align: center;
-      margin-top: 4rem;
+      padding: 20px;
       font-size: 0.9rem;
-      color: #888;
     }
   </style>
 </head>
 <body>
-
-  <h1>Welcome to Safae Bot Studio 🤖✨</h1>
-  <p>Hi, I'm Safae — a multilingual freelance bot developer helping small businesses automate their customer engagement through modern AI-powered chatbots.</p>
+  <header class="hero">
+    <h1>Meet Botette</h1>
+    <p>Your AI Assistant for Lead Capture and Customer Operations</p>
+    <a class="cta" href="#contact">Get in Touch</a>
+  </header>
 
   <section>
-    <h2>💼 What I Can Do for You</h2>
+    <h2>What I Can Do for You</h2>
     <ul>
-      <li><strong>Lead Capture Bot</strong> – Collect emails, preferences, and contact info from your clients automatically</li>
-      <li><strong>Customer Operations Bot</strong> – Respond to customer questions, share info, and automate support</li>
-      <li><strong>Website Development</strong> – Clean and functional websites for businesses with or without existing platforms</li>
+      <li>🤖 Build customized AI chatbots for customer operations</li>
+      <li>📩 Lead capture bots that engage and convert visitors</li>
+      <li>🌐 Simple website development for businesses without a site</li>
+      <li>📊 Email automation and integrations with CRM</li>
     </ul>
   </section>
 
-  <!-- Removed the old video section here -->
-
-  <section>
-    <h2>📨 Contact Me</h2>
-    <form action="https://formspree.io/f/{your-code}" method="POST">
-      <label for="name">Name</label><br />
-      <input type="text" name="name" required /><br />
-
-      <label for="email">Email</label><br />
-      <input type="email" name="email" required /><br />
-
-      <label for="message">Your message</label><br />
-      <textarea name="message" rows="4" required></textarea><br />
-
-      <button type="submit">Send Message</button>
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <label>
+        Your email:
+        <input type="email" name="email" required />
+      </label>
+      <br /><br />
+      <label>
+        Your message:
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <br /><br />
+      <button type="submit">Send</button>
     </form>
   </section>
 
   <footer>
-    <p>© 2025 Safae Kharbouchi – All rights reserved</p>
+    &copy; 2025 Safae Bot Studio. All rights reserved.
   </footer>
-
 </body>
 </html>
