@@ -27,7 +27,7 @@
     }
     .hero p {
       font-size: 1.5rem;
-      margin: 20px 0;
+      margin: 20px 0 30px 0;
       max-width: 600px;
     }
     .cta {
@@ -39,15 +39,153 @@
       border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
+      align-self: start;
+      transition: background-color 0.3s ease;
     }
-    section {
-      padding: 40px 60px;
+    .cta:hover {
+      background-color: #8a3ed1;
     }
+    /* Centered container for the Botette image below hero */
+    .botette-image-container {
+      display: flex;
+      justify-content: center;
+      margin: 40px 0;
+    }
+    .botette-image-container img {
+      max-width: 300px;
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #a64affaa;
+    }
+
+    /* Artistic and centered "What I Can Do for You" */
+    section#do {
+      padding: 60px 20px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 60px auto;
+      font-size: 1.3rem;
+    }
+    section#do h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #a64aff, #6e2eff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    section#do ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      font-weight: 600;
+    }
+    section#do ul li {
+      background: #1a0a4d;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #a64aff88;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    /* Contact section centered and bigger */
+    section#contact {
+      padding: 60px 20px;
+      max-width: 600px;
+      margin: 0 auto 60px auto;
+      background: #111;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #a64aff88;
+    }
+    section#contact h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #a64aff, #6e2eff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-size: 1.2rem;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 600;
+      color: #ddd;
+    }
+    input[type="email"],
+    textarea {
+      margin-top: 8px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      resize: vertical;
+    }
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: 2px solid #a64aff;
+      background-color: #2a105c;
+      color: #fff;
+    }
+    button[type="submit"] {
+      padding: 14px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      background: #a64aff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button[type="submit"]:hover {
+      background-color: #6e2eff;
+    }
+
     footer {
       background-color: #111;
       text-align: center;
       padding: 20px;
       font-size: 0.9rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      .hero {
+        padding: 40px 20px;
+        align-items: center;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .hero p {
+        max-width: 100%;
+      }
+      .cta {
+        align-self: center;
+      }
+      section#do ul {
+        grid-template-columns: 1fr;
+      }
+      section#contact {
+        margin: 0 20px 40px 20px;
+      }
     }
   </style>
 </head>
@@ -55,10 +193,15 @@
   <header class="hero">
     <h1>Meet Botette</h1>
     <p>Your AI Assistant for Lead Capture and Customer Operations</p>
-    <a class="cta" href="#contact">Get in Touch</a>
+    <a class="cta" href="#contact">Chat with Botette</a>
   </header>
 
-  <section>
+  <!-- Botette image below hero -->
+  <div class="botette-image-container">
+    <img src="/mnt/data/3d4f1473-5fb4-4ba4-a3db-eed479209614.png" alt="Botette" />
+  </div>
+
+  <section id="do">
     <h2>What I Can Do for You</h2>
     <ul>
       <li>🤖 Build customized AI chatbots for customer operations</li>
@@ -75,12 +218,10 @@
         Your email:
         <input type="email" name="email" required />
       </label>
-      <br /><br />
       <label>
         Your message:
         <textarea name="message" rows="5" required></textarea>
       </label>
-      <br /><br />
       <button type="submit">Send</button>
     </form>
   </section>
@@ -90,3 +231,4 @@
   </footer>
 </body>
 </html>
+
