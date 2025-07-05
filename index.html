@@ -10,26 +10,36 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #000;
       color: #fff;
+      position: relative;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
     }
 
     .hero {
-      padding: 60px;
+      background: url('https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/main/assets/botette-hero.png') center/cover no-repeat;
+      background-size: cover;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      background-size: cover;
-      min-height: 100vh;
+      padding: 60px;
+      position: relative;
     }
 
     .hero h1 {
       font-size: 4rem;
-      margin: 0;
+      margin: 0 0 10px 0;
     }
 
     .hero p {
       font-size: 1.5rem;
-      margin: 10px 0 20px;
+      margin: 10px 0 20px 0;
+      max-width: 600px;
     }
 
     .cta {
@@ -40,12 +50,20 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      text-decoration: none;
+      align-self: start;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta:hover {
+      background-color: #2d8c39;
     }
 
     .floating-botette {
       position: absolute;
       top: 80px;
       right: 100px;
+      z-index: 2;
       max-width: 350px;
     }
 
@@ -53,12 +71,154 @@
       width: 100%;
       border-radius: 20px;
       box-shadow: 0 20px 60px rgba(57,181,74,0.6);
+      transform: translateY(0);
       animation: float 4s ease-in-out infinite;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+    section#do {
+      padding: 20px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 60px auto;
+      font-size: 1.3rem;
+    }
+
+    section#do h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #39b54a, #2d8c39);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    section#do ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      font-weight: 600;
+    }
+
+    section#do ul li {
+      background: #144d1a;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #39b54aaa;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      justify-content: center;
+      font-size: 1.2rem;
+      text-transform: capitalize;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    section#contact {
+      padding: 60px 20px;
+      max-width: 600px;
+      margin: 0 auto 60px auto;
+      background: #111;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #39b54a88;
+    }
+
+    section#contact h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #39b54a, #2d8c39);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-size: 1.2rem;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 600;
+      color: #ddd;
+    }
+
+    input[type="email"],
+    textarea {
+      margin-top: 8px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      resize: vertical;
+    }
+
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: 2px solid #39b54a;
+      background-color: #1a3a15;
+      color: #fff;
+    }
+
+    button[type="submit"] {
+      padding: 14px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      background: #39b54a;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #2d8c39;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 40px 20px;
+        align-items: center;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .hero p {
+        max-width: 100%;
+      }
+      .cta {
+        align-self: center;
+      }
+      .floating-botette {
+        position: relative;
+        top: auto;
+        right: auto;
+        max-width: 80%;
+        margin: 40px auto 0 auto;
+      }
+      section#do ul {
+        grid-template-columns: 1fr;
+      }
+      section#contact {
+        margin: 0 20px 40px 20px;
+      }
     }
   </style>
 </head>
@@ -66,58 +226,46 @@
   <header class="hero">
     <h1>Meet Botette</h1>
     <p>Your AI Assistant for Lead Capture and Customer Operations</p>
-    <button class="cta" id="chatWithBotette">Chat with Botette</button>
+    <a class="cta" href="#contact">Chat with Botette</a>
     <div class="floating-botette">
       <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
     </div>
   </header>
 
-  <!-- Botpress Webchat Integration -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
-  <script>
-    window.botpressWebChat.init({
-      botId: "LLI931ZB",
-      hostUrl: "https://cdn.botpress.cloud/webchat/v3",
-      messagingUrl: "https://messaging.botpress.cloud",
-      clientId: "LLI931ZB",
-      botName: "Botette",
-      showPoweredBy: false,
-      avatarUrl: "https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png",
-      themeName: "prism",
-      stylesheet: "https://cdn.botpress.cloud/webchat/v3/themes/default.css",
-      theme: "custom",
-      customStyles: {
-        botMessage: {
-          backgroundColor: "#144d1a",
-          textColor: "#fff"
-        },
-        userMessage: {
-          backgroundColor: "#39b54a",
-          textColor: "#000"
-        },
-        button: {
-          backgroundColor: "#39b54a",
-          textColor: "#000"
-        },
-        backgroundColor: "#000",
-        textColor: "#fff",
-        accentColor: "#39b54a"
-      }
-    });
+  <section id="do">
+    <h2>What I Can Do For You</h2>
+    <ul>
+      <li>🤖 Build Customized AI Chatbots For Customer Operations</li>
+      <li>📩 Lead Capture Bots That Engage And Convert Visitors</li>
+      <li>🌐 Simple Website Development For Businesses Without A Site</li>
+      <li>📊 Email Automation And Integrations With CRM</li>
+    </ul>
+  </section>
 
-    // Wait until chat is ready, then link button
-    window.addEventListener('load', function () {
-      const button = document.getElementById("chatWithBotette");
-      if (button) {
-        button.addEventListener("click", function () {
-          window.botpressWebChat.sendEvent({ type: "show" });
-        });
-      }
-    });
-  </script>
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <label>
+        Your email:
+        <input type="email" name="email" required />
+      </label>
+      <label>
+        Your message:
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Safae Bot Studio. All rights reserved.
+  </footer>
+
+  <!-- ✅ Botpress Chatbot Script -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/06/20/09/20250620093912-LLI931ZB.js"></script>
 </body>
 </html>
-
 
 
 
