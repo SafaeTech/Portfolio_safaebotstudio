@@ -14,8 +14,8 @@
     }
 
     @keyframes float {
-      0%   { transform: translateY(0); }
-      50%  { transform: translateY(-20px); }
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
       100% { transform: translateY(0); }
     }
 
@@ -261,11 +261,51 @@
     &copy; 2025 Safae Bot Studio. All rights reserved.
   </footer>
 
-  <!-- ✅ Botpress Chatbot Script -->
+  <!-- Botette WebChat Integration -->
   <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
-  <script src="https://files.bpcontent.cloud/2025/06/20/09/20250620093912-LLI931ZB.js"></script>
+  <script>
+    window.botpressWebChat.init({
+      botId: "LLI931ZB",
+      hostUrl: "https://cdn.botpress.cloud/webchat/v3",
+      messagingUrl: "https://messaging.botpress.cloud",
+      clientId: "LLI931ZB",
+      botName: "Botette",
+      avatarUrl: "https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png",
+      stylesheet: "https://cdn.botpress.cloud/webchat/v3/themes/default.css",
+      showPoweredBy: false,
+      themeName: "prism",
+      theme: "custom",
+      customStyles: {
+        botMessage: {
+          backgroundColor: "#144d1a",
+          textColor: "#fff"
+        },
+        userMessage: {
+          backgroundColor: "#39b54a",
+          textColor: "#000"
+        },
+        button: {
+          backgroundColor: "#39b54a",
+          textColor: "#000"
+        },
+        backgroundColor: "#000",
+        textColor: "#fff",
+        accentColor: "#39b54a"
+      }
+    });
+
+    // Make the button open the bot chat
+    document.addEventListener("DOMContentLoaded", function () {
+      const chatButton = document.querySelector(".cta");
+      chatButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.botpressWebChat.sendEvent({ type: "show" });
+      });
+    });
+  </script>
 </body>
 </html>
+
 
 
 
