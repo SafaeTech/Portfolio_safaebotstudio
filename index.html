@@ -226,7 +226,7 @@
   <header class="hero">
     <h1>Meet Botette</h1>
     <p>Your AI Assistant for Lead Capture and Customer Operations</p>
-    <a class="cta" href="#contact">Chat with Botette</a>
+    <button class="cta" id="chatWithBotette">Chat with Botette</button>
     <div class="floating-botette">
       <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
     </div>
@@ -294,11 +294,9 @@
       }
     });
 
-    // Make the button open the bot chat
+    // Button now triggers the bot properly
     document.addEventListener("DOMContentLoaded", function () {
-      const chatButton = document.querySelector(".cta");
-      chatButton.addEventListener("click", function (e) {
-        e.preventDefault();
+      document.getElementById("chatWithBotette").addEventListener("click", function () {
         window.botpressWebChat.sendEvent({ type: "show" });
       });
     });
