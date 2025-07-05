@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Safae Bot Studio</title>
   <style>
     body {
@@ -10,30 +10,36 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #000;
       color: #fff;
+      position: relative;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
     }
 
     .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 60px;
-      min-height: 100vh;
       background: url('https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/main/assets/botette-hero.png') center/cover no-repeat;
       background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 60px;
+      position: relative;
     }
 
-    .hero-text {
-      max-width: 600px;
-    }
-
-    .hero-text h1 {
+    .hero h1 {
       font-size: 4rem;
-      margin-bottom: 20px;
+      margin: 0 0 10px 0;
     }
 
-    .hero-text p {
+    .hero p {
       font-size: 1.5rem;
-      margin-bottom: 30px;
+      margin: 10px 0 20px 0;
+      max-width: 600px;
     }
 
     .cta {
@@ -45,6 +51,7 @@
       border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
+      align-self: start;
       transition: background-color 0.3s ease;
     }
 
@@ -52,32 +59,33 @@
       background-color: #2d8c39;
     }
 
-    .botette-img {
+    /* Floating Botette Image */
+    .floating-botette {
+      position: absolute;
+      top: 80px;
+      right: 100px;
+      z-index: 2;
       max-width: 350px;
-      width: 100%;
-      margin-right: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 40px #39b54a88;
-      transition: transform 0.4s ease;
     }
 
-    .botette-img:hover {
-      transform: scale(1.03);
+    .floating-botette img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(57,181,74,0.6);
+      transform: translateY(0);
+      animation: float 4s ease-in-out infinite;
     }
 
     section#do {
-      padding: 60px 20px 40px 20px;
+      padding: 20px;
       text-align: center;
-      max-width: 1000px;
-      margin: 0 auto;
+      max-width: 900px;
+      margin: 0 auto 60px auto;
       font-size: 1.3rem;
-      box-shadow: 0 0 30px #39b54a55;
-      border-radius: 20px;
-      background: rgba(20, 20, 20, 0.8);
     }
 
     section#do h2 {
-      font-size: 2.7rem;
+      font-size: 2.5rem;
       margin-bottom: 30px;
       letter-spacing: 2px;
       font-weight: 700;
@@ -100,15 +108,20 @@
       background: #144d1a;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 0 20px #39b54a88;
+      box-shadow: 0 0 15px #39b54aaa;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      justify-content: center;
       font-size: 1.2rem;
       text-transform: capitalize;
+      animation: float 6s ease-in-out infinite;
     }
 
     section#contact {
       padding: 60px 20px;
       max-width: 600px;
-      margin: 60px auto;
+      margin: 0 auto 60px auto;
       background: #111;
       border-radius: 15px;
       box-shadow: 0 0 30px #39b54a88;
@@ -179,26 +192,45 @@
       font-size: 0.9rem;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       .hero {
-        flex-direction: column;
-        text-align: center;
         padding: 40px 20px;
+        align-items: center;
+        text-align: center;
       }
-      .botette-img {
-        margin: 30px 0 0 0;
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .hero p {
+        max-width: 100%;
+      }
+      .cta {
+        align-self: center;
+      }
+      .floating-botette {
+        position: relative;
+        top: auto;
+        right: auto;
+        max-width: 80%;
+        margin: 40px auto 0 auto;
+      }
+      section#do ul {
+        grid-template-columns: 1fr;
+      }
+      section#contact {
+        margin: 0 20px 40px 20px;
       }
     }
   </style>
 </head>
 <body>
   <header class="hero">
-    <div class="hero-text">
-      <h1>Meet Botette</h1>
-      <p>Your AI Assistant for Lead Capture and Customer Operations</p>
-      <a class="cta" href="javascript:void(0)" onclick="openBotpressChat()">Chat with Botette</a>
+    <h1>Meet Botette</h1>
+    <p>Your AI Assistant for Lead Capture and Customer Operations</p>
+    <a class="cta" href="#contact">Chat with Botette</a>
+    <div class="floating-botette">
+      <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
     </div>
-    <img class="botette-img" src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
   </header>
 
   <section id="do">
@@ -214,10 +246,12 @@
   <section id="contact">
     <h2>Contact Me</h2>
     <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <label>Your email:
+      <label>
+        Your email:
         <input type="email" name="email" required />
       </label>
-      <label>Your message:
+      <label>
+        Your message:
         <textarea name="message" rows="5" required></textarea>
       </label>
       <button type="submit">Send</button>
@@ -227,20 +261,9 @@
   <footer>
     &copy; 2025 Safae Bot Studio. All rights reserved.
   </footer>
-
-  <script>
-    function openBotpressChat() {
-      // Adjust this if you're embedding Botpress differently
-      const iframe = document.querySelector("iframe[src*='botpress']");
-      if (iframe) {
-        iframe.contentWindow.postMessage({ type: 'SHOW_CHAT' }, '*');
-      } else {
-        alert("Bot not loaded yet.");
-      }
-    }
-  </script>
 </body>
 </html>
+
 
 
 
