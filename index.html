@@ -42,23 +42,6 @@
       max-width: 600px;
     }
 
-    .cta {
-      padding: 12px 24px;
-      font-size: 1rem;
-      color: white;
-      background: #39b54a;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      align-self: start;
-      transition: background-color 0.3s ease;
-    }
-
-    .cta:hover {
-      background-color: #2d8c39;
-    }
-
     .floating-botette {
       position: absolute;
       top: 80px;
@@ -203,9 +186,6 @@
       .hero p {
         max-width: 100%;
       }
-      .cta {
-        align-self: center;
-      }
       .floating-botette {
         position: relative;
         top: auto;
@@ -226,7 +206,7 @@
   <header class="hero">
     <h1>Meet Botette</h1>
     <p>Your AI Assistant for Lead Capture and Customer Operations</p>
-    <a class="cta" href="#contact">Chat with Botette</a>
+    <!-- Removed button -->
     <div class="floating-botette">
       <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
     </div>
@@ -263,9 +243,38 @@
 
   <!-- ✅ Botpress Chatbot Script -->
   <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
-  <script src="https://files.bpcontent.cloud/2025/06/20/09/20250620093912-LLI931ZB.js"></script>
+  <script>
+    window.botpressWebChat.init({
+      botId: "LLI931ZB",
+      hostUrl: "https://cdn.botpress.cloud/webchat/v3",
+      messagingUrl: "https://messaging.botpress.cloud",
+      clientId: "LLI931ZB",
+      botName: "Botette",
+      botConversationDescription: "Chat with me",
+      showPoweredBy: false,
+      avatarUrl: "https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png",
+      theme: "custom",
+      themeName: "prism",
+      stylesheet: "https://cdn.botpress.cloud/webchat/v3/themes/default.css",
+      customStyles: {
+        brandColor: "#39b54a",
+        backgroundColor: "#000",
+        textColorOnBrand: "#fff",
+        buttonColor: "#39b54a",
+        botMessage: {
+          backgroundColor: "#144d1a",
+          textColor: "#ffffff"
+        },
+        userMessage: {
+          backgroundColor: "#39b54a",
+          textColor: "#000000"
+        }
+      }
+    });
+  </script>
 </body>
 </html>
+
 
 
 
