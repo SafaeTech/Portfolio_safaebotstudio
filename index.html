@@ -11,81 +11,65 @@
       background-color: #000;
       color: #fff;
     }
-
     .hero {
+      position: relative;
       min-height: 100vh;
-      padding: 60px 40px;
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      align-items: center;
-      background-color: #000;
+      align-items: flex-start;
+      padding: 60px;
     }
-
-    .hero-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 1200px;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .hero-text {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .hero-text h1 {
+    .hero h1 {
       font-size: 4rem;
-      margin-bottom: 20px;
-      color: #fff;
+      margin: 0 0 10px 0;
     }
-
-    .hero-text p {
-      font-size: 1.4rem;
-      margin-bottom: 30px;
-      max-width: 500px;
+    .hero p {
+      font-size: 1.5rem;
+      margin: 10px 0 20px 0;
+      max-width: 600px;
     }
-
-    .hero-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      min-width: 300px;
-    }
-
-    .hero-image img {
-      max-width: 400px;
-      width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 0 25px #39b54aaa;
-    }
-
     .cta {
-      padding: 14px 28px;
-      font-size: 1.1rem;
+      padding: 12px 24px;
+      font-size: 1rem;
       color: white;
       background: #39b54a;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
+      align-self: start;
       transition: background-color 0.3s ease;
     }
-
     .cta:hover {
       background-color: #2d8c39;
     }
+    .hero-image {
+      position: absolute;
+      top: 40px;
+      right: 60px;
+    }
+    .hero-image img {
+      max-width: 420px;
+      width: 100%;
+      filter: drop-shadow(0 0 25px #39b54aaa);
+      animation: float 4s ease-in-out infinite;
+      background: transparent;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
 
+    /* What I Can Do Section */
     section#do {
       padding: 40px 20px;
       text-align: center;
       max-width: 800px;
-      margin: -20px auto 40px auto;
+      margin: 0 auto 40px auto;
       font-size: 1.3rem;
     }
-
     section#do h2 {
       font-size: 2.5rem;
       margin-bottom: 20px;
@@ -95,7 +79,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     section#do ul {
       list-style: none;
       padding: 0;
@@ -105,7 +88,6 @@
       gap: 25px;
       font-weight: 600;
     }
-
     section#do ul li {
       background: #144d1a;
       padding: 20px;
@@ -118,6 +100,7 @@
       font-size: 1.2rem;
     }
 
+    /* Contact section */
     section#contact {
       padding: 60px 20px;
       max-width: 600px;
@@ -126,7 +109,6 @@
       border-radius: 15px;
       box-shadow: 0 0 30px #39b54a88;
     }
-
     section#contact h2 {
       text-align: center;
       font-size: 2.5rem;
@@ -137,21 +119,18 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     form {
       display: flex;
       flex-direction: column;
       gap: 20px;
       font-size: 1.2rem;
     }
-
     label {
       display: flex;
       flex-direction: column;
       font-weight: 600;
       color: #ddd;
     }
-
     input[type="email"],
     textarea {
       margin-top: 8px;
@@ -161,14 +140,12 @@
       font-size: 1rem;
       resize: vertical;
     }
-
     input[type="email"]:focus,
     textarea:focus {
       outline: 2px solid #39b54a;
       background-color: #1a3a15;
       color: #fff;
     }
-
     button[type="submit"] {
       padding: 14px;
       font-size: 1.2rem;
@@ -180,7 +157,6 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-
     button[type="submit"]:hover {
       background-color: #2d8c39;
     }
@@ -192,44 +168,36 @@
       font-size: 0.9rem;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .hero {
         padding: 40px 20px;
         align-items: center;
         text-align: center;
       }
-
-      .hero-content {
-        flex-direction: column;
-        text-align: center;
+      .hero h1 {
+        font-size: 2.8rem;
       }
-
+      .hero-image {
+        position: static;
+        margin-top: 20px;
+      }
       .hero-image img {
         max-width: 300px;
+        margin: 0 auto;
       }
-
-      section#do ul {
-        grid-template-columns: 1fr;
-      }
-
-      section#contact {
-        margin: 0 20px 40px 20px;
+      .cta {
+        align-self: center;
       }
     }
   </style>
 </head>
 <body>
-
   <header class="hero">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1>Meet Botette</h1>
-        <p>Your AI Assistant for Lead Capture and Customer Operations</p>
-        <button class="cta" onclick="openChat()">Chat with Botette</button>
-      </div>
-      <div class="hero-image">
-        <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
-      </div>
+    <h1>Meet Botette</h1>
+    <p>Your AI Assistant for Lead Capture and Customer Operations</p>
+    <a class="cta" href="https://safaebotstudio.botpress.cloud/">Chat with Botette</a>
+    <div class="hero-image">
+      <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
     </div>
   </header>
 
@@ -261,28 +229,7 @@
   <footer>
     &copy; 2025 Safae Bot Studio. All rights reserved.
   </footer>
-
-  <!-- Botpress Chat Script -->
-  <script>
-    function openChat() {
-      if (window.botpressWebChat) {
-        window.botpressWebChat.sendEvent({ type: 'show' })
-      }
-    }
-  </script>
-  <!-- Replace with your actual embed script from Botpress Cloud -->
-  <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
-  <script>
-    window.botpressWebChat.init({
-      "botId": "your-bot-id",
-      "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
-      "messagingUrl": "https://messaging.botpress.cloud",
-      "clientId": "your-bot-id",
-      "lazyLoad": true,
-      "hideWidget": true,
-      "showPoweredBy": false
-    });
-  </script>
 </body>
 </html>
+
 
