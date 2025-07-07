@@ -3,72 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lead Capture Bot – Safae Bot Studio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <title>Lead Capture Bot</title>
   <style>
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #ffffff;
-      color: #111;
       margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    header {
-      background-color: #145c42;
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #111;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 0 10px #39b54a80;
+    }
+
+    nav a {
       color: white;
-      padding: 2.5rem 1rem;
-      text-align: center;
-    }
-    section {
-      max-width: 800px;
-      margin: auto;
-      padding: 2rem 1rem;
-    }
-    .btn {
-      background-color: #198754;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
       text-decoration: none;
-      display: inline-block;
-      margin-top: 2rem;
+      font-weight: 600;
+      margin-left: 25px;
     }
-    .btn:hover {
-      background-color: #145c42;
+
+    nav a:first-child {
+      margin-left: 0;
+      color: #39b54a;
+      font-size: 1.4rem;
+      font-weight: 700;
     }
-    footer {
-      background-color: #f1f1f1;
+
+    .container {
+      max-width: 800px;
+      margin: 100px auto;
+      padding: 0 20px;
       text-align: center;
-      padding: 1.5rem;
-      margin-top: 4rem;
-      font-size: 0.9rem;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+
+    a.button {
+      display: inline-block;
+      background-color: #39b54a;
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    a.button:hover {
+      background-color: #2d8c39;
     }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html">Safae Bot Studio</a>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="lead-capture-bot.html">Lead Bot</a>
+      <a href="customer-operations-bot.html">Customer Bot</a>
+      <a href="website-benefits.html">Benefits</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
 
-<header>
-  <h1>Lead Generation Bot</h1>
-  <p>Your Smart Assistant to Capture & Convert Leads 24/7</p>
-</header>
-
-<section>
-  <h2>📌 Overview</h2>
-  <p>This intelligent chatbot engages your website visitors, qualifies them, and sends lead data directly to your inbox or CRM. It’s optimized for conversion and can be tailored to your brand voice.</p>
-
-  <h2>💡 Use Cases</h2>
-  <ul>
-    <li>Startup websites & landing pages</li>
-    <li>Service-based businesses</li>
-    <li>Event or product pre-registration</li>
-  </ul>
-
-  <a href="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/df05c016c28b59f951c0e87020956bfea0f52f03/Lead%20Generation%20Bot_Overview.pdf" download class="btn">📄 Download Product Overview (PDF)</a>
-</section>
-
-<footer>
-  Created by Safae at <strong>Safae Bot Studio</strong> – Contact: <a href="mailto:bots@safaebotstudio.com">bots@safaebotstudio.com</a>
-</footer>
-
+  <div class="container">
+    <h1>Lead Capture Bot</h1>
+    <p>This smart bot engages and collects leads automatically, giving you a 24/7 digital assistant working on your behalf.</p>
+    <a class="button" href="https://github.com/SafaeTech/Portfolio_safaebotstudio/blob/df05c016c28b59f951c0e87020956bfea0f52f03/Lead%20Generation%20Bot_Overview.pdf" target="_blank">View PDF</a>
+  </div>
 </body>
 </html>
-
