@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Website Benefits</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #000;
       color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     nav {
       display: flex;
@@ -39,18 +39,31 @@
     }
     h1 {
       font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       background: linear-gradient(90deg, #39b54a, #2d8c39);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    iframe {
-      width: 100%;
-      height: 700px;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #39b54a88;
+    ul {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    a.button {
+      display: inline-block;
+      background-color: #39b54a;
+      color: white;
+      padding: 14px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    a.button:hover {
+      background-color: #2d8c39;
     }
   </style>
 </head>
@@ -67,8 +80,30 @@
   </nav>
 
   <div class="container">
-    <h1>Website Benefits</h1>
-    <iframe src="https://github.com/SafaeTech/Portfolio_safaebotstudio/raw/main/website-benefits.pdf"></iframe>
+    <h1>Benefits of Having a Website</h1>
+    <ul>
+      <li>Build trust with potential customers</li>
+      <li>Appear in Google searches & maps</li>
+      <li>Get discovered 24/7 — even when you're closed</li>
+      <li>Connect website visitors directly to a lead capture bot</li>
+      <li>Promote your services/products & collect bookings or inquiries</li>
+    </ul>
+
+    <h2>Starter Packages</h2>
+    <ul>
+      <li><strong>Starter</strong>: 1–3 Pages, Contact Form — Ideal for Freelancers, Local Shops</li>
+      <li><strong>Growth</strong>: Up to 5 Pages, Bot + Blog — Ideal for Growing Businesses</li>
+      <li><strong>Pro</strong>: 6+ Pages, Booking or Shop Integration — Ideal for Agencies & Online Stores</li>
+    </ul>
+
+    <p>
+      Ready to get online and grow your business?  
+      Let’s build your website + smart chatbot in one go.
+    </p>
+
+    <a class="button" href="https://github.com/SafaeTech/Portfolio_safaebotstudio/blob/54af28fa38f0c9be84a347f67ce1b4ecf977bd8c/website-benefits.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
   </div>
 </body>
 </html>
+
+
