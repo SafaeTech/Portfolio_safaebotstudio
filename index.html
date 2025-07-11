@@ -60,20 +60,23 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
       z-index: 1000;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
+      gap: 1rem;
     }
 
     .menu-icon {
       font-size: 1.8rem;
       color: #fff;
       cursor: pointer;
-      display: inline-block;
+      user-select: none;
     }
 
     nav .logo {
       font-weight: bold;
       font-size: 1.3rem;
+      color: #39b54a;
+      user-select: none;
     }
 
     /* Hide full nav links on desktop since we're using a sidebar */
@@ -94,9 +97,10 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center; /* changed from flex-start to center */
       padding: 60px;
       position: relative;
+      text-align: center; /* center text as well */
     }
 
     .hero h1 {
@@ -117,24 +121,24 @@
       background: #39b54a;
       border-radius: 8px;
       text-decoration: none;
-      align-self: start;
+      align-self: center;
       user-select: none;
       pointer-events: none;
+      margin-bottom: 30px;
     }
 
     .floating-botette {
-      position: absolute;
-      top: 80px;
-      right: 100px;
+      position: relative; /* changed from absolute */
       max-width: 350px;
+      margin: 0 auto;
       z-index: 2;
+      animation: float 4s ease-in-out infinite;
     }
 
     .floating-botette img {
       width: 100%;
       border-radius: 20px;
       box-shadow: 0 20px 60px rgba(57,181,74,0.6);
-      animation: float 4s ease-in-out infinite;
     }
 
     section#do {
@@ -251,16 +255,11 @@
     @media (max-width: 600px) {
       .hero {
         padding: 40px 20px;
-        text-align: center;
-        align-items: center;
       }
       .hero h1 {
         font-size: 2.8rem;
       }
       .floating-botette {
-        position: relative;
-        top: auto;
-        right: auto;
         max-width: 80%;
         margin: 40px auto 0 auto;
       }
