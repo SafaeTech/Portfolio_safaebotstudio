@@ -13,6 +13,28 @@
       position: relative;
     }
 
+    nav {
+      position: sticky;
+      top: 0;
+      background: #000;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+    }
+
+    nav a {
+      margin-right: 1.5rem;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #39b54a;
+    }
+
     @keyframes float {
       0%   { transform: translateY(0); }
       50%  { transform: translateY(-20px); }
@@ -219,6 +241,12 @@
 </head>
 <body>
 
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">Who We Are</a>
+    <a href="chatbot.html">What Is a Chatbot?</a>
+  </nav>
+
   <header class="hero">
     <h1>Meet Botette</h1>
     <p>Your AI Assistant for Lead Capture and Customer Operations</p>
@@ -238,31 +266,29 @@
     </ul>
   </section>
 
-<section id="contact">
-  <h2>Contact Me</h2>
-  <form action="https://formspree.io/f/mnnvqypd" method="POST">
-    <label>
-      Your email:
-      <input type="email" name="_replyto" required />
-    </label>
-    <label>
-      Your message:
-      <textarea name="message" rows="5" required></textarea>
-    </label>
-    <button type="submit">Send</button>
-  </form>
-</section>
-
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form action="https://formspree.io/f/mnnvqypd" method="POST">
+      <label>
+        Your email:
+        <input type="email" name="_replyto" required />
+      </label>
+      <label>
+        Your message:
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button type="submit">Send</button>
+    </form>
+  </section>
 
   <footer>
     &copy; 2025 Safae Bot Studio. All rights reserved.
   </footer>
 
   <!-- ✅ Botpress Chatbot Script -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/06/20/09/20250620093912-LLI931ZB.js"></script>
 
-<script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2025/06/20/09/20250620093912-LLI931ZB.js"></script>
-    
 </body>
 </html>
 
