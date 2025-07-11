@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>What Is a Chatbot? - Safae Bot Studio</title>
+  <title>What Is a Chatbot? - Safaebot Studio</title>
   <style>
     body {
       margin: 0; padding: 0;
@@ -52,7 +52,7 @@
       cursor: pointer;
     }
 
-    /* Navbar (Top) */
+    /* Navbar */
     nav {
       position: sticky;
       top: 0;
@@ -61,7 +61,6 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
       z-index: 1000;
       display: flex;
-      justify-content: space-between;
       align-items: center;
     }
 
@@ -73,19 +72,19 @@
     }
 
     nav .logo {
-      font-weight: bold;
+      font-weight: 700;
       font-size: 1.3rem;
-    }
-
-    /* Hide full nav links on desktop since we're using a sidebar */
-    nav a.nav-link {
-      display: none;
+      background: linear-gradient(90deg, #39b54a, #2d8c39);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-left: 1rem;
     }
 
     main {
       max-width: 900px;
       margin: 2rem auto;
       padding: 2rem 3rem;
+      position: relative;
     }
 
     h1, h2, h3 {
@@ -104,10 +103,27 @@
       color: #ddd;
     }
 
-    @media (max-width: 600px) {
-      main {
-        padding: 1rem 1.5rem;
-      }
+    /* Hero adjustments for Botette image centered */
+    .floating-botette {
+      position: relative; /* changed from absolute to relative */
+      max-width: 350px;
+      margin: 2rem auto 0 auto; /* centers horizontally with margin auto */
+      z-index: 2;
+      display: block;
+    }
+
+    .floating-botette img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(57,181,74,0.6);
+      animation: float 4s ease-in-out infinite;
+      display: block;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
     }
   </style>
 </head>
@@ -152,11 +168,15 @@
     </ul>
 
     <p>
-      At <strong>Safae Bot Studio</strong>, we create smart, friendly bots that feel human — and work like magic.
+      At <strong>Safaebot Studio</strong>, we create smart, friendly bots that feel human — and work like magic.
     </p>
     <p>
       <strong>Ready to future-proof your business?</strong>
     </p>
+
+    <div class="floating-botette">
+      <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
+    </div>
   </main>
 
   <script>
@@ -170,5 +190,6 @@
 
 </body>
 </html>
+
 
 
