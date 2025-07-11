@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Safae Bot Studio</title>
   <style>
     body {
@@ -13,6 +13,45 @@
       position: relative;
     }
 
+    /* Sidebar */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1001;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 10px 25px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: #fff;
+      display: block;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .sidebar a:hover {
+      color: #39b54a;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      margin-left: 50px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Navbar (Top) */
     nav {
       position: sticky;
       top: 0;
@@ -25,68 +64,225 @@
       align-items: center;
     }
 
-    .menu-btn {
-      background: none;
-      border: none;
-      color: #39b54a;
-      font-size: 2rem;
+    .menu-icon {
+      font-size: 1.8rem;
+      color: #fff;
       cursor: pointer;
+      display: inline-block;
+    }
+
+    nav .logo {
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    /* Hide full nav links on desktop since we're using a sidebar */
+    nav a.nav-link {
       display: none;
     }
 
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 250px;
-      height: 100%;
-      background-color: #111;
-      padding-top: 60px;
-      transition: left 0.3s ease;
-      z-index: 1500;
-    }
-
-    .sidebar a {
-      display: block;
-      padding: 16px;
-      color: #39b54a;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-
-    .sidebar a:hover {
-      background-color: #222;
-      color: #fff;
-    }
-
-    .sidebar.open {
-      left: 0;
-    }
-
-    @media (max-width: 768px) {
-      .menu-btn {
-        display: block;
-      }
-    }
-
+    /* Floating animation */
     @keyframes float {
-      0%   { transform: translateY(0); }
-      50%  { transform: translateY(-20px); }
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
       100% { transform: translateY(0); }
     }
 
-    /* Keep your other CSS rules unchanged */
+    .hero {
+      background: url('https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/main/assets/botette-hero.png') center/cover no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 60px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin: 0 0 10px 0;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin: 10px 0 20px 0;
+      max-width: 600px;
+    }
+
+    .cta-box {
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: white;
+      background: #39b54a;
+      border-radius: 8px;
+      text-decoration: none;
+      align-self: start;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .floating-botette {
+      position: absolute;
+      top: 80px;
+      right: 100px;
+      max-width: 350px;
+      z-index: 2;
+    }
+
+    .floating-botette img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(57,181,74,0.6);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    section#do {
+      padding: 20px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 60px auto;
+      font-size: 1.3rem;
+    }
+
+    section#do h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #39b54a, #2d8c39);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    section#do ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      font-weight: 600;
+    }
+
+    section#do ul li {
+      background: #144d1a;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #39b54aaa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    section#contact {
+      padding: 60px 20px;
+      max-width: 600px;
+      margin: 0 auto 60px auto;
+      background: #111;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #39b54a88;
+    }
+
+    section#contact h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #39b54a, #2d8c39);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-size: 1.2rem;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 600;
+      color: #ddd;
+    }
+
+    input[type="email"],
+    textarea {
+      margin-top: 8px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: 2px solid #39b54a;
+      background-color: #1a3a15;
+      color: #fff;
+    }
+
+    button[type="submit"] {
+      padding: 14px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      background: #39b54a;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #2d8c39;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 40px 20px;
+        text-align: center;
+        align-items: center;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .floating-botette {
+        position: relative;
+        top: auto;
+        right: auto;
+        max-width: 80%;
+        margin: 40px auto 0 auto;
+      }
+      section#do ul {
+        grid-template-columns: 1fr;
+      }
+      section#contact {
+        margin: 0 20px 40px 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <nav>
-    <div style="font-weight: bold; color: #39b54a;">Safae Bot Studio</div>
-    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <span class="menu-icon" onclick="openNav()">☰</span>
+    <span class="logo">Safae Bot Studio</span>
   </nav>
 
-  <div class="sidebar" id="sidebar">
+  <!-- Sidebar content -->
+  <div id="mySidebar" class="sidebar">
+    <span class="closebtn" onclick="closeNav()">×</span>
     <a href="index.html">Home</a>
     <a href="about.html">Who We Are</a>
     <a href="chatbot.html">What Is a Chatbot?</a>
@@ -130,15 +326,19 @@
     &copy; 2025 Safae Bot Studio. All rights reserved.
   </footer>
 
+  <!-- Sidebar script -->
+  <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+  </script>
+
   <!-- ✅ Botpress Chatbot Script -->
   <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
   <script src="https://files.bpcontent.cloud/2025/06/20/09/20250620093912-LLI931ZB.js"></script>
-
-  <script>
-    function toggleSidebar() {
-      document.getElementById("sidebar").classList.toggle("open");
-    }
-  </script>
 
 </body>
 </html>
