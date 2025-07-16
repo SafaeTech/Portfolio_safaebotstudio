@@ -71,14 +71,12 @@
       display: inline-block;
     }
 
-    nav .logo {
-      font-weight: 700;
-      font-size: 1.3rem;
-      background: linear-gradient(90deg, #39b54a, #2d8c39);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-left: 1rem;
-    }
+.nav-logo {
+  height: 80px;
+  margin-left: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #39b54a88;
+}
 
     main {
       max-width: 900px;
@@ -129,10 +127,10 @@
 </head>
 <body>
 
-  <nav>
-    <span class="menu-icon" onclick="openNav()">☰</span>
-    <span class="logo">Safae Bot Studio</span>
-  </nav>
+<nav>
+  <span class="menu-icon" onclick="openNav()">☰</span>
+  <img src="logo.png" alt="Safae Bot Studio Logo" class="nav-logo" />
+</nav>
 
   <!-- Sidebar content -->
   <div id="mySidebar" class="sidebar">
