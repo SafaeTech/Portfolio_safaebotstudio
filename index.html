@@ -269,6 +269,18 @@
       section#contact {
         margin: 0 20px 40px 20px;
       }
+      <style>
+  /* ... your existing styles ... */
+
+  .sidebar-logo {
+    display: block;
+    width: 150px;
+    margin: 0 auto 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #39b54a88;
+  }
+</style>
+
     }
   </style>
 </head>
@@ -280,12 +292,14 @@
   </nav>
 
   <!-- Sidebar content -->
-  <div id="mySidebar" class="sidebar">
-    <span class="closebtn" onclick="closeNav()">×</span>
-    <a href="index.html">Home</a>
-    <a href="about.html">Who We Are</a>
-    <a href="chatbot.html">What Is a Chatbot?</a>
-  </div>
+<div id="mySidebar" class="sidebar">
+  <span class="closebtn" onclick="closeNav()">×</span>
+  <img src="logo.png" alt="Safae Bot Studio Logo" class="sidebar-logo" />
+  <a href="index.html">Home</a>
+  <a href="about.html">Who We Are</a>
+  <a href="chatbot.html">What Is a Chatbot?</a>
+</div>
+
 
   <header class="hero">
     <h1>Meet Botette</h1>
