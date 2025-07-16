@@ -51,14 +51,13 @@
       cursor: pointer;
     }
 
-    /* Sidebar Logo style */
-    .sidebar-logo {
-      display: block;
-      width: 150px;
-      margin: 0 auto 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #39b54a88;
-    }
+/* Navbar Logo style */
+.nav-logo {
+  height: 40px;
+  margin-left: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #39b54a88;
+}
 
     /* Navbar (Top) */
     nav {
@@ -283,10 +282,12 @@
 </head>
 <body>
 
-  <nav>
-    <span class="menu-icon" onclick="openNav()">☰</span>
-    <span class="logo">Safae Bot Studio</span>
-  </nav>
+<nav>
+  <span class="menu-icon" onclick="openNav()">☰</span>
+  <img src="logo.png" alt="Safae Bot Studio Logo" class="nav-logo" />
+  <span class="logo">Safae Bot Studio</span>
+</nav>
+
 
   <!-- Sidebar content -->
   <div id="mySidebar" class="sidebar">
