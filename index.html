@@ -51,6 +51,15 @@
       cursor: pointer;
     }
 
+    /* Sidebar Logo style */
+    .sidebar-logo {
+      display: block;
+      width: 150px;
+      margin: 0 auto 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #39b54a88;
+    }
+
     /* Navbar (Top) */
     nav {
       position: sticky;
@@ -269,18 +278,6 @@
       section#contact {
         margin: 0 20px 40px 20px;
       }
-      <style>
-  /* ... your existing styles ... */
-
-  .sidebar-logo {
-    display: block;
-    width: 150px;
-    margin: 0 auto 20px auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #39b54a88;
-  }
-</style>
-
     }
   </style>
 </head>
@@ -292,14 +289,13 @@
   </nav>
 
   <!-- Sidebar content -->
-<div id="mySidebar" class="sidebar">
-  <span class="closebtn" onclick="closeNav()">×</span>
-  <img src="logo.png" alt="Safae Bot Studio Logo" class="sidebar-logo" />
-  <a href="index.html">Home</a>
-  <a href="about.html">Who We Are</a>
-  <a href="chatbot.html">What Is a Chatbot?</a>
-</div>
-
+  <div id="mySidebar" class="sidebar">
+    <span class="closebtn" onclick="closeNav()">×</span>
+    <img src="logo.png" alt="Safae Bot Studio Logo" class="sidebar-logo" />
+    <a href="index.html">Home</a>
+    <a href="about.html">Who We Are</a>
+    <a href="chatbot.html">What Is a Chatbot?</a>
+  </div>
 
   <header class="hero">
     <h1>Meet Botette</h1>
@@ -315,7 +311,7 @@
     <ul>
       <li>🤖 Build Customized AI Chatbots For Customer Operations</li>
       <li>📩 Lead Capture Bots That Engage And Convert Visitors</li>
-      <li>🌐 Simple Website Development For Businesses Without A Site</li>
+      <li>🌐 Website Development For Businesses Without A Site</li>
       <li>📊 Email Automation And Integrations With CRM</li>
     </ul>
   </section>
@@ -350,15 +346,12 @@
   </script>
 
   <!-- ✅ Botpress Chatbot Script -->
-
-
-    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
-    
-    
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
 
 </body>
 </html>
+
 
 
 
