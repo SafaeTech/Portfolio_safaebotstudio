@@ -1,3 +1,187 @@
-.
-.
-,
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hakkımızda - Safae Bot Studio</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1001;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 10px 25px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: #fff;
+      display: block;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .sidebar a:hover {
+      color: #39b54a;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      margin-left: 50px;
+      color: white;
+      cursor: pointer;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: #000;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-icon {
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .nav-logo {
+      height: 80px;
+      margin-left: 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #39b54a88;
+    }
+
+    .language-switcher {
+      margin-left: auto;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    .language-switcher a {
+      color: #39b54a;
+      text-decoration: none;
+      padding: 0 8px;
+      transition: color 0.3s ease;
+    }
+
+    .language-switcher a:hover,
+    .language-switcher a:focus {
+      color: #2d8c39;
+      outline: none;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #111;
+      padding: 2rem 3rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(57,181,74,0.2);
+    }
+
+    h1, h2 {
+      margin-top: 0;
+      color: #39b54a;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1.5rem;
+      color: #ccc;
+      font-size: 1.05rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+
+    .italic {
+      font-style: italic;
+      color: #aaa;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="menu-icon" onclick="openNav()">☰</span>
+  <img src="logo.png" alt="Safae Bot Studio Logo" class="nav-logo" />
+  <div class="language-switcher">
+    <a href="about.html" lang="en" aria-label="Switch to English">EN</a> |
+    <a href="fr-about.html" lang="fr" aria-label="Passer en français">FR</a>
+  </div>
+</nav>
+
+<div id="mySidebar" class="sidebar">
+  <span class="closebtn" onclick="closeNav()">&times;</span>
+  <a href="index.html">Anasayfa</a>
+  <a href="about.html">Hakkımızda</a>
+  <a href="chatbot.html">Chatbot Nedir?</a>
+  <a href="contact.html">İletişim</a>
+</div>
+
+<main>
+  <h1>Biz Kimiz</h1>
+
+  <p>
+    <strong>Safae's Bot Studio</strong> olarak, akıllı ve insana odaklı otomasyona inanıyoruz.
+    <br><br>
+    <strong>Safae</strong> tarafından kurulan stúdyomuz, çok dilli bir <strong>chatbot geliştirici</strong> ve proje uzmanı liderliğinde, küçük işletmelerin chatbot gücünü daha akıllı, daha hızlı ve sürdürülebilir bir şekilde kullanmalarına yardımcı olur.
+  </p>
+
+  <ul>
+    <li>✅ Özelleştirilmiş chatbot geliştirme (Türkçe, Fransızca, Arapça ve İngilizce)</li>
+    <li>✅ Web sitesi + bot entegrasyonu</li>
+    <li>✅ Kullanıcı deneyimi optimizasyonu</li>
+    <li>✅ Müşteri işlemleri için akıllı otomasyon</li>
+  </ul>
+
+  <p>
+    Yeni başlıyorsanız ya da dijital varlığınızı geliştirmek istiyorsanız,<br>
+    sizinle birlikte güzel ve verimli şekilde inşaa etmeye hazırız.
+  </p>
+
+  <p class="italic">
+    🌍 Dünya çapında hizmet veriyoruz.
+  </p>
+</main>
+
+<script>
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+  }
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+  }
+</script>
+
+</body>
+</html>
