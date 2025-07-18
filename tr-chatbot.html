@@ -1,2 +1,214 @@
-..
-.
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chatbot Nedir? - Safaebot Studio</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1001;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 10px 25px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: #fff;
+      display: block;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .sidebar a:hover {
+      color: #39b54a;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      margin-left: 50px;
+      color: white;
+      cursor: pointer;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: #000;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-icon {
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .nav-logo {
+      height: 80px;
+      margin-left: 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #39b54a88;
+    }
+
+    .language-switcher {
+      margin-left: auto;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    .language-switcher a {
+      color: #39b54a;
+      text-decoration: none;
+      padding: 0 8px;
+      transition: color 0.3s ease;
+    }
+
+    .language-switcher a:hover,
+    .language-switcher a:focus {
+      color: #2d8c39;
+      outline: none;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #111;
+      padding: 2rem 3rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(57,181,74,0.2);
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      color: #39b54a;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1.5rem;
+      color: #ccc;
+      font-size: 1.05rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+
+    .floating-botette {
+      position: relative;
+      max-width: 350px;
+      margin: 2rem auto 0 auto;
+      z-index: 2;
+      display: block;
+    }
+
+    .floating-botette img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(57,181,74,0.6);
+      animation: float 4s ease-in-out infinite;
+      display: block;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="menu-icon" onclick="openNav()">☰</span>
+  <img src="logo.png" alt="Safae Bot Studio Logo" class="nav-logo" />
+  <div class="language-switcher">
+    <a href="chatbot.html" lang="en" aria-label="İngilizceye geç">EN</a> |
+    <a href="fr-chatbot.html" lang="fr" aria-label="Fransızcaya geç">FR</a>
+  </div>
+</nav>
+
+<div id="mySidebar" class="sidebar">
+  <span class="closebtn" onclick="closeNav()">×</span>
+  <a href="index.html">Ana Sayfa</a>
+  <a href="about.html">Hakkımızda</a>
+  <a href="chatbot.html">Chatbot Nedir?</a>
+  <a href="contact.html">İletişim</a>
+</div>
+
+<main>
+  <h1>Chatbot Nedir?</h1>
+
+  <p>
+    <strong>Chatbot</strong>, kullanıcılarla mesajlaşma platformları veya web siteleri üzerinden iletişim kuran sanal bir asistandır — soruları yanıtlar, alışverişlere rehberlik eder, randevu alır ve daha fazlasını yapar.
+  </p>
+  <p>
+    Yapay Zeka ve Doğal Dil İşleme (NLP) sayesinde, günümüz botları:
+  </p>
+  <ul>
+    <li>💬 Doğal insan dilini anlayabilir</li>
+    <li>⏱️ 7/24 anında yanıt verebilir</li>
+    <li>🔀 Tekrarlayan görevleri otomatikleştirir</li>
+    <li>📈 Müşteri memnuniyetini ve etkileşimi artırır</li>
+  </ul>
+
+  <h2>2025'te Neden Chatbotlar Önemli?</h2>
+  <ul>
+    <li>✅ Müşterilerin %80'i anında yanıt bekliyor</li>
+    <li>✅ Küçük işletmeler akıllıca rekabet etmelidir</li>
+    <li>✅ Chatbotlar maliyetleri düşürür, dönüşüm oranlarını artırır</li>
+    <li>✅ Çok dilli destek küresel fırsatlar sunar</li>
+    <li>✅ Entegre botlar SEO'yu ve site performansını geliştirir</li>
+  </ul>
+
+  <p>
+    <strong>Safae's bot studio</strong> olarak, insan gibi hissettiren ama sihir gibi çalışan akıllı ve dostça botlar geliştiriyoruz.
+  </p>
+  <p>
+    <strong>İşinizi geleceğe taşımaya hazır mısınız?</strong>
+  </p>
+
+  <div class="floating-botette">
+    <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
+  </div>
+</main>
+
+<script>
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+  }
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+  }
+</script>
+
+</body>
+</html>
