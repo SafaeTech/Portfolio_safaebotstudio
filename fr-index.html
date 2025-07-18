@@ -4,7 +4,289 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Studio Bot Safae</title>
-  <!-- (Style unchanged) -->
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #fff;
+      position: relative;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1001;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 10px 25px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: #fff;
+      display: block;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .sidebar a:hover {
+      color: #39b54a;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      margin-left: 50px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav-logo {
+      height: 80px;
+      margin-left: 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #39b54a88;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: #000;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .menu-icon {
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    nav .logo {
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: #39b54a;
+      user-select: none;
+    }
+
+    .language-switcher {
+      margin-left: auto;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    nav a.nav-link {
+      display: none;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px #30a46c88; }
+      50% { box-shadow: 0 0 20px #30a46c; }
+      100% { box-shadow: 0 0 10px #30a46c88; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    .hero {
+      background: url('https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/main/assets/botette-hero.png') center/cover no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
+      position: relative;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin: 0 0 10px 0;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin: 10px 0 20px 0;
+      max-width: 600px;
+    }
+
+    .cta-box {
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: #000;
+      background: #30a46c;
+      border-radius: 8px;
+      text-decoration: none;
+      align-self: center;
+      user-select: none;
+      pointer-events: none;
+      margin-bottom: 30px;
+      font-weight: 700;
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    .floating-botette {
+      position: relative;
+      max-width: 350px;
+      margin: 0 auto;
+      z-index: 2;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .floating-botette img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(57,181,74,0.6);
+    }
+
+    section#do {
+      padding: 20px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 60px auto;
+      font-size: 1.3rem;
+    }
+
+    section#do h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      color: white;
+    }
+
+    section#do ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      font-weight: 600;
+    }
+
+    section#do ul li {
+      background: #144d1a;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #39b54aaa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    section#contact {
+      padding: 60px 20px;
+      max-width: 600px;
+      margin: 0 auto 60px auto;
+      background: #111;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #39b54a88;
+    }
+
+    section#contact h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #39b54a, #2d8c39);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-size: 1.2rem;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 600;
+      color: #ddd;
+    }
+
+    input[type="email"],
+    textarea {
+      margin-top: 8px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: 2px solid #39b54a;
+      background-color: #1a3a15;
+      color: #fff;
+    }
+
+    button[type="submit"] {
+      padding: 14px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      background: #39b54a;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #2d8c39;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 40px 20px;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .floating-botette {
+        max-width: 80%;
+        margin: 40px auto 0 auto;
+      }
+      section#do ul {
+        grid-template-columns: 1fr;
+      }
+      section#contact {
+        margin: 0 20px 40px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -13,16 +295,14 @@
   <img src="logo.png" alt="Logo de Studio Bot Safae" class="nav-logo" />
 </nav>
 
-<!-- Barre latérale -->
 <div id="mySidebar" class="sidebar">
   <span class="closebtn" onclick="closeNav()">×</span>
-  <a href="index-fr.html">Accueil</a>
+  <a href="fr-index.html">Accueil</a>
   <a href="about-fr.html">Qui sommes-nous</a>
   <a href="chatbot-fr.html">Qu'est-ce qu'un chatbot</a>
   <a href="contact-fr.html">Contact</a>
 </div>
 
-<!-- Section principale -->
 <header class="hero">
   <h1>Voici Botette</h1>
   <p>Votre assistante IA pour la capture de leads et les opérations client</p>
@@ -34,7 +314,6 @@
 
 <section id="do">
   <h2>Ce que je peux faire pour vous</h2>
-
   <ul>
     <li>🤖 Créer des chatbots IA personnalisés pour les opérations client</li>
     <li>📩 Capturer des leads et convertir vos visiteurs efficacement</li>
@@ -47,7 +326,6 @@
   &copy; 2025 Studio Bot Safae. Tous droits réservés.
 </footer>
 
-<!-- Script de la barre latérale -->
 <script>
   function openNav() {
     document.getElementById("mySidebar").style.width = "250px";
@@ -63,4 +341,5 @@
 
 </body>
 </html>
+
 
