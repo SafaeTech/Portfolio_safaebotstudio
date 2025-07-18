@@ -1,70 +1,293 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Safae Bot Studio</title>
   <style>
-    /* [STYLES – remains unchanged] */
-    /* ... */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #fff;
+      position: relative;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1001;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 10px 25px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: #fff;
+      display: block;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .sidebar a:hover {
+      color: #39b54a;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      margin-left: 50px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav-logo {
+      height: 80px;
+      margin-left: 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #39b54a88;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: #000;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .menu-icon {
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    nav .logo {
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: #39b54a;
+      user-select: none;
+    }
+
+    .language-switcher {
+      margin-left: auto;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .language-switcher a {
+      color: #39b54a;
+      text-decoration: none;
+      padding: 0 8px;
+      transition: color 0.3s ease;
+    }
+
+    .language-switcher a:hover,
+    .language-switcher a:focus {
+      color: #2d8c39;
+      outline: none;
+    }
+
+    nav a.nav-link {
+      display: none;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px #30a46c88; }
+      50% { box-shadow: 0 0 20px #30a46c; }
+      100% { box-shadow: 0 0 10px #30a46c88; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    .hero {
+      background: url('https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/main/assets/botette-hero.png') center/cover no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
+      position: relative;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin: 0 0 10px 0;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin: 10px 0 20px 0;
+      max-width: 600px;
+    }
+
+    .cta-box {
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: #000;
+      background: #30a46c;
+      border-radius: 8px;
+      text-decoration: none;
+      align-self: center;
+      user-select: none;
+      pointer-events: none;
+      margin-bottom: 30px;
+      font-weight: 700;
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    .floating-botette {
+      position: relative;
+      max-width: 350px;
+      margin: 0 auto;
+      z-index: 2;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .floating-botette img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(57,181,74,0.6);
+    }
+
+    section#do {
+      padding: 20px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 60px auto;
+      font-size: 1.3rem;
+    }
+
+    section#do h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      color: white;
+    }
+
+    section#do ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      font-weight: 600;
+    }
+
+    section#do ul li {
+      background: #144d1a;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #39b54aaa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 40px 20px;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .floating-botette {
+        max-width: 80%;
+        margin: 40px auto 0 auto;
+      }
+      section#do ul {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
+  <nav>
+    <span class="menu-icon" onclick="openNav()">☰</span>
+    <img src="logo.png" alt="Safae Bot Studio Logo" class="nav-logo" />
+    <div class="language-switcher">
+      <a href="index.html">EN</a> |
+      <a href="fr-index.html">FR</a> |
+      <a href="tr-index.html">TR</a>
+    </div>
+  </nav>
 
-<nav>
-  <span class="menu-icon" onclick="openNav()">☰</span>
-  <img src="logo.png" alt="Safae Bot Studio Logo" class="nav-logo" />
-  <div class="language-switcher">
-    <a href="index.html" lang="en" aria-label="İngilizceye geç">EN</a> | 
-    <a href="fr-index.html" lang="fr" aria-label="Fransızcaya geç">FR</a>
+  <div id="mySidebar" class="sidebar">
+    <span class="closebtn" onclick="closeNav()">×</span>
+    <a href="tr-index.html">Anasayfa</a>
+    <a href="tr-about.html">Hakkımızda</a>
+    <a href="tr-chatbot.html">Chatbot Nedir</a>
+    <a href="tr-contact.html">İletişim</a>
   </div>
-</nav>
 
-<!-- Kenar çubuğu içeriği -->
-<div id="mySidebar" class="sidebar">
-  <span class="closebtn" onclick="closeNav()">×</span>
-  <a href="index.html">Ana Sayfa</a>
-  <a href="about.html">Biz Kimiz</a>
-  <a href="chatbot.html">Chatbot Nedir?</a>
-  <a href="contact.html">İletişim</a>
-</div>
+  <header class="hero">
+    <h1>Botette ile Tanışın</h1>
+    <p>Potansiyel Müşteri Yakalama ve Müşteri Operasyonları için Yapay Zeka Asistanınız</p>
+    <div class="cta-box">Aşağıdan Merhaba Deyin — Dinliyorum!</div>
+    <div class="floating-botette">
+      <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
+    </div>
+  </header>
 
-<header class="hero">
-  <h1>Botette ile Tanışın</h1>
-  <p>Potansiyel Müşteri Kazanımı ve Müşteri Operasyonları için Yapay Zeka Asistanınız</p>
-  <div class="cta-box">Aşağıdan Merhaba Deyin — Sizi Dinliyorum!</div>
-  <div class="floating-botette">
-    <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
-  </div>
-</header>
+  <section id="do">
+    <h2>Sizin İçin Neler Yapabilirim</h2>
+    <ul>
+      <li>🤖 Müşteri Operasyonları için Özelleştirilmiş Yapay Zeka Chatbotları Oluşturun</li>
+      <li>📩 Ziyaretçileri Etkileyen ve Dönüştüren Potansiyel Müşteri Botları</li>
+      <li>🌐 Web Sitesi Olmayan İşletmeler İçin Web Geliştirme</li>
+      <li>📊 E-posta Otomasyonu ve CRM Entegrasyonları</li>
+    </ul>
+  </section>
 
-<section id="do">
-  <h2>Sizin İçin Neler Yapabilirim</h2>
-  <ul>
-    <li>🤖 Müşteri Operasyonları İçin Özel Yapay Zeka Chatbotları Oluşturma</li>
-    <li>📩 Ziyaretçileri Etkileyip Dönüştüren Potansiyel Müşteri Toplama Botları</li>
-    <li>🌐 Web Sitesi Olmayan İşletmeler İçin Site Geliştirme</li>
-    <li>📊 E-posta Otomasyonu ve CRM Entegrasyonları</li>
-  </ul>
-</section>
+  <footer>
+    &copy; 2025 Safae Bot Studio. Tüm hakları saklıdır.
+  </footer>
 
-<footer>
-  &copy; 2025 Safae Bot Studio. Tüm hakları saklıdır.
-</footer>
+  <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+  </script>
 
-<!-- Kenar çubuğu scripti -->
-<script>
-  function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-  }
-  function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-  }
-</script>
-
-<!-- ✅ Botpress Chatbot Scripti -->
-<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
-
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
 </body>
 </html>
