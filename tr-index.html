@@ -1,1 +1,70 @@
-.
+<!DOCTYPE html> 
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Safae Bot Studio</title>
+  <style>
+    /* [STYLES – remains unchanged] */
+    /* ... */
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="menu-icon" onclick="openNav()">☰</span>
+  <img src="logo.png" alt="Safae Bot Studio Logo" class="nav-logo" />
+  <div class="language-switcher">
+    <a href="index.html" lang="en" aria-label="İngilizceye geç">EN</a> | 
+    <a href="fr-index.html" lang="fr" aria-label="Fransızcaya geç">FR</a>
+  </div>
+</nav>
+
+<!-- Kenar çubuğu içeriği -->
+<div id="mySidebar" class="sidebar">
+  <span class="closebtn" onclick="closeNav()">×</span>
+  <a href="index.html">Ana Sayfa</a>
+  <a href="about.html">Biz Kimiz</a>
+  <a href="chatbot.html">Chatbot Nedir?</a>
+  <a href="contact.html">İletişim</a>
+</div>
+
+<header class="hero">
+  <h1>Botette ile Tanışın</h1>
+  <p>Potansiyel Müşteri Kazanımı ve Müşteri Operasyonları için Yapay Zeka Asistanınız</p>
+  <div class="cta-box">Aşağıdan Merhaba Deyin — Sizi Dinliyorum!</div>
+  <div class="floating-botette">
+    <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
+  </div>
+</header>
+
+<section id="do">
+  <h2>Sizin İçin Neler Yapabilirim</h2>
+  <ul>
+    <li>🤖 Müşteri Operasyonları İçin Özel Yapay Zeka Chatbotları Oluşturma</li>
+    <li>📩 Ziyaretçileri Etkileyip Dönüştüren Potansiyel Müşteri Toplama Botları</li>
+    <li>🌐 Web Sitesi Olmayan İşletmeler İçin Site Geliştirme</li>
+    <li>📊 E-posta Otomasyonu ve CRM Entegrasyonları</li>
+  </ul>
+</section>
+
+<footer>
+  &copy; 2025 Safae Bot Studio. Tüm hakları saklıdır.
+</footer>
+
+<!-- Kenar çubuğu scripti -->
+<script>
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+  }
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+  }
+</script>
+
+<!-- ✅ Botpress Chatbot Scripti -->
+<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
+
+</body>
+</html>
