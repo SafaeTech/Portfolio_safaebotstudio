@@ -1,1 +1,166 @@
-..
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Qui Nous Sommes - Safae Bot Studio</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1001;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 10px 25px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: #fff;
+      display: block;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .sidebar a:hover {
+      color: #39b54a;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      margin-left: 50px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #000;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-icon {
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .nav-logo {
+      height: 80px;
+      margin-left: 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #39b54a88;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #111;
+      padding: 2rem 3rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(57,181,74,0.2);
+    }
+
+    h1, h2 {
+      margin-top: 0;
+      color: #39b54a;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1.5rem;
+      color: #ccc;
+      font-size: 1.05rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+
+    .italic {
+      font-style: italic;
+      color: #aaa;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="menu-icon" onclick="openNav()">☰</span>
+  <img src="logo.png" alt="Logo Safae Bot Studio" class="nav-logo" />
+</nav>
+
+<!-- Sidebar content -->
+<div id="mySidebar" class="sidebar">
+  <span class="closebtn" onclick="closeNav()">×</span>
+  <a href="fr-index.html">Accueil</a>
+  <a href="fr-about.html">Qui Nous Sommes</a>
+  <a href="fr-chatbot.html">Qu’est-ce qu’un Chatbot</a>
+  <a href="fr-contact.html">Contact</a>
+</div>
+
+<main>
+  <h1>Qui Nous Sommes</h1>
+
+  <p>
+    Chez <strong>Safae Bot Studio</strong>, nous croyons en une automatisation intelligente centrée sur l'humain.
+    <br><br>
+    Fondé par <strong>Safae</strong>, une développeuse de <strong>chatbots multilingue</strong> et spécialiste en gestion de projets, notre studio aide les petites entreprises à exploiter la puissance des chatbots pour croître plus intelligemment, plus rapidement et de manière plus durable.
+  </p>
+
+  <ul>
+    <li>✅ Développement de chatbots personnalisés (anglais, arabe, français et turc)</li>
+    <li>✅ Intégration site web + chatbot</li>
+    <li>✅ Optimisation de l’expérience utilisateur</li>
+    <li>✅ Automatisation intelligente pour les opérations clients</li>
+  </ul>
+
+  <p>
+    Que vous débutiez ou souhaitiez renforcer votre présence digitale,<br>
+    nous sommes là pour construire avec vous — avec beauté et efficacité.
+  </p>
+
+  <p class="italic">
+    🌍 Disponible partout dans le monde.
+  </p>
+</main>
+
+<script>
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+  }
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+  }
+</script>
+
+</body>
+</html>
