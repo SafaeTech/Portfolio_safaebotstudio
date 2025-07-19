@@ -1,1 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>من نحن - Safae Bot Studio</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1001;
+      top: 0;
+      right: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 10px 25px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: #fff;
+      display: block;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .sidebar a:hover {
+      color: #39b54a;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 2rem;
+      margin-right: 50px;
+      color: white;
+      cursor: pointer;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: #000;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-icon {
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .nav-logo {
+      height: 80px;
+      margin-right: 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #39b54a88;
+    }
+
+    .language-switcher {
+      margin-right: auto;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+      text-align: left;
+    }
+
+    .language-switcher a {
+      color: #39b54a;
+      text-decoration: none;
+      padding: 0 8px;
+      transition: color 0.3s ease;
+    }
+
+    .language-switcher a:hover,
+    .language-switcher a:focus {
+      color: #2d8c39;
+      outline: none;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #111;
+      padding: 2rem 3rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(57,181,74,0.2);
+    }
+
+    h1, h2 {
+      margin-top: 0;
+      color: #39b54a;
+    }
+
+    ul {
+      list-style: none;
+      padding-right: 1.5rem;
+      color: #ccc;
+      font-size: 1.05rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+
+    .italic {
+      font-style: italic;
+      color: #aaa;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="menu-icon" onclick="openNav()">☰</span>
+  <img src="logo.png" alt="شعار Safae Bot Studio" class="nav-logo" />
+  <div class="language-switcher">
+    <a href="about.html">EN</a> |
+    <a href="fr-about.html">FR</a> |
+    <a href="tr-about.html">TR</a>
+  </div>
+</nav>
+
+<div id="mySidebar" class="sidebar">
+  <span class="closebtn" onclick="closeNav()">×</span>
+  <a href="ar-index.html">الصفحة الرئيسية</a>
+  <a href="about.html">من نحن</a>
+  <a href="chatbot.html">ما هو الشات بوت؟</a>
+  <a href="contact.html">اتصل بنا</a>
+</div>
+
+<main>
+  <h1>من نحن</h1>
+  <p>
+     في <strong>Safae Bot Studio</strong>، نؤمن بأن  الذكاء الاصطناعي يبدأ من فهم الإنسان واحتياجاته.<br><br>
+    تأسست الأستوديو على يد <strong>صفاء</strong>، مطورة شات بوت متقنة للغات ومتخصصة في إدارة المشاريع. نحن نساعد الشركات على استخدام الشات بوت للنمو بشكل أكثر ذكاءً وسرعة واستدامة.
+  </p>
+
+  <ul>
+    <li>✅ تطوير شات بوت مخصص (بالإنجليزية، العربية، الفرنسية، والتركية)</li>
+    <li>✅ دمج الموقع الإلكتروني مع الشات بوت</li>
+    <li>✅ تحسين تجربة المستخدم</li>
+    <li>✅ التسيير الآلي لعمليات دعم العملاء والبريد الإلكتروني</li>
+
+  </ul>
+
+  <p>
+    سواء كنت في البداية أو تبحث عن تعزيز حضورك الرقمي،<br>
+   نحن هنا لنبتكر معًا — بإتقان وكفاءة.
+  </p>
+
+  <p class="italic">
+    🌍 متاحون عالميًا.
+  </p>
+</main>
+
+<script>
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+  }
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+  }
+</script>
+
+</body>
+</html>
 
