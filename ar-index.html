@@ -59,54 +59,51 @@
     }
 
     nav {
-      position: sticky;
-      top: 0;
-      background: #000;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
-      z-index: 1000;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 1rem;
-    }
+  position: sticky;
+  top: 0;
+  background: #000;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
 
-    .menu-icon {
-      font-size: 1.8rem;
-      color: #fff;
-      cursor: pointer;
-      user-select: none;
-    }
+.menu-icon {
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+}
 
-    nav .logo {
-      font-weight: bold;
-      font-size: 1.3rem;
-      color: #39b54a;
-      user-select: none;
-    }
+.nav-logo {
+  height: 80px;
+  margin-right: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #39b54a88;
+}
 
-    .language-switcher {
-      margin-right: auto;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      font-weight: 600;
-      font-size: 1rem;
-      user-select: none;
-    }
+.language-switcher {
+  margin-right: auto;
+  font-weight: 600;
+  font-size: 1rem;
+  user-select: none;
+  text-align: left;
+}
 
-    .language-switcher a {
-      color: #39b54a;
-      text-decoration: none;
-      padding: 0 8px;
-      transition: color 0.3s ease;
-    }
+.language-switcher a {
+  color: #39b54a;
+  text-decoration: none;
+  padding: 0 8px;
+  transition: color 0.3s ease;
+}
 
-    .language-switcher a:hover,
-    .language-switcher a:focus {
-      color: #2d8c39;
-      outline: none;
-    }
+.language-switcher a:hover,
+.language-switcher a:focus {
+  color: #2d8c39;
+  outline: none;
+}
+
 
     nav a.nav-link {
       display: none;
@@ -309,13 +306,13 @@
 
 <nav>
   <span class="menu-icon" onclick="openNav()">☰</span>
-  <img src="logo.png" alt="شعار استوديو صفاء بوت" class="nav-logo" />
+  <img src="logo.png" alt="شعار Safae Bot Studio" class="nav-logo" />
   <div class="language-switcher">
-  <a href="index.html">الإنجليزية</a> |
-  <a href="fr-index.html">الفرنسية</a> |
-  <a href="tr-index.html">التركية</a> |
-  <a href="ar-index.html">العربية</a>
-</div>
+    <a href="index.html">الإنجليزية</a> |
+    <a href="fr-index.html">الفرنسية</a> |
+    <a href="tr-index.html">التركية</a> |
+    <a href="ar-index.html">العربية</a>
+  </div>
 </nav>
 
 <div id="mySidebar" class="sidebar">
