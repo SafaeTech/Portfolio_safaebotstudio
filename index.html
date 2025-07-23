@@ -391,7 +391,7 @@ section#do ul li:hover {
       type: 'proactive-trigger',
       channel: 'web',
       payload: {
-        intent: flowName
+        flowName: flowName   // ✅ matches what your Start node is checking
       }
     });
     window.botpressWebChat.open();
