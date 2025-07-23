@@ -386,12 +386,12 @@ section#do ul li:hover {
 
 <!-- ✅ Your Custom Trigger Function -->
 <script>
-  function triggerBot(flowName) {
+  function triggerBot(intentName) {
     window.botpressWebChat.sendEvent({
       type: 'proactive-trigger',
       channel: 'web',
       payload: {
-        flowName: flowName   // ✅ matches what your Start node is checking
+        intent: intentName  // this is the KEY used in the entry condition
       }
     });
     window.botpressWebChat.open();
