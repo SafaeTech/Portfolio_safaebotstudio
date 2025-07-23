@@ -209,17 +209,25 @@ section#do h2 {
       font-weight: 600;
     }
 
-    section#do ul li {
-      background: #144d1a;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #39b54aaa;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      animation: float 6s ease-in-out infinite;
-    }
+section#do ul li {
+  background: #144d1a;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #39b54aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  animation: float 6s ease-in-out infinite;
+  cursor: pointer; /* Makes it look clickable */
+  transition: all 0.3s ease; /* Smooth hover animation */
+}
+
+section#do ul li:hover {
+  background-color: #1a5f24;
+  transform: scale(1.03);
+  box-shadow: 0 0 20px #39b54add;
+}
 
     section#contact {
       padding: 60px 20px;
@@ -348,17 +356,14 @@ section#do h2 {
     </div>
   </header>
 
-  <section id="do">
-    <h2>What I Can Do For You</h2>
-
-    
-    <ul>
-      <li>🤖 Build Customized AI Chatbots For Customer Operations</li>
-      <li>📩 Lead Capture Bots That Engage And Convert Visitors</li>
-      <li>🌐 Website Development For Businesses Without A Site</li>
-      <li>📊 Email Automation And Integrations With CRM</li>
-    </ul>
-  </section>
+<section id="do">
+  <h2>What I Can Do For You</h2>
+  <ul>
+    <li onclick="triggerBot('Customer Operations Bot')">🤖 Build Customized AI Chatbots For Customer Operations</li>
+    <li onclick="triggerBot('Lead Capture Bot')">📩 Lead Capture Bots That Engage And Convert Visitors</li>
+    <li onclick="triggerBot('Website Development')">🌐 Website Development For Businesses Without A Site</li>
+  </ul>
+</section>
 
   <footer>
     &copy; 2025 Safae Bot Studio. All rights reserved.
@@ -372,13 +377,25 @@ section#do h2 {
     function closeNav() {
       document.getElementById("mySidebar").style.width = "0";
     }
-  </script>
+</script>
 
-  <!-- ✅ Botpress Chatbot Script -->
-
-  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+<!-- ✅ Botpress Chatbot Script -->
+<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
 <script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
-    
+
+<!-- ✅ Your Custom Trigger Function -->
+<script>
+  function triggerBot(flowName) {
+    window.botpressWebChat.sendEvent({
+      type: 'proactive-trigger',
+      channel: 'web',
+      payload: {
+        intent: flowName
+      }
+    });
+    window.botpressWebChat.open();
+  }
+</script>
 
 </body>
 </html>
