@@ -386,18 +386,14 @@ section#do ul li:hover {
 
 <!-- ✅ Your Custom Trigger Function -->
 <script>
-  function triggerBot(flowName) {
-    window.botpressWebChat.sendEvent({
-      type: 'proactive-trigger',
-      channel: 'web',
+<script>
+  function triggerBot(flowId) {
+    window.botpressWebChat.sendPayload({
+      type: 'trigger',
       payload: {
-        text: 'start',
-        flowToStart: flowName
+        flowToStart: flowId
       }
     });
-
-    // Optional: Open bot if it's not open
-    window.botpressWebChat.sendEvent({ type: 'show' });
   }
 </script>
 
