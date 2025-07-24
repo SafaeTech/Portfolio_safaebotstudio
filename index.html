@@ -386,12 +386,12 @@ section#do ul li:hover {
 
 <!-- ✅ Your Custom Trigger Function -->
 <script>
-  function triggerBot(intentName) {
+  function triggerBot(flowName) {
     window.botpressWebChat.sendEvent({
       type: 'proactive-trigger',
-      channel: 'web',
+      channel: 'web",
       payload: {
-        intent: intentName  // this is the KEY used in the entry condition
+        flow: flowName // 👈 This will match the variable name used in Botpress
       }
     });
     window.botpressWebChat.open();
