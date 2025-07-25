@@ -380,21 +380,32 @@ section#do ul li:hover {
     }
 </script>
 
-<!-- ✅ Botpress Chatbot Script -->
-<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
+<!-- ✅ Botpress WebChat Injection Script -->
+<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+<script>
+  window.botpressWebChat.init({
+    botId: "safaebotstudio-wqvmgkr",
+    hostUrl: "https://cdn.botpress.cloud/webchat/v3.2",
+    messagingUrl: "https://messaging.botpress.cloud",
+    clientId: "safaebotstudio-wqvmgkr",
+    botName: "Botette 🤖",
+    showPoweredBy: false
+  });
 
-<!-- ✅ Your Custom Trigger Function -->
-<script>
-<script>
-  function triggerBot(flowId) {
-    window.botpressWebChat.sendPayload({
-      type: 'trigger',
-      payload: {
-        flowToStart: flowId
-      }
-    });
-  }
+  // Wait for chatbot to fully load
+  window.botpressWebChat.onEvent(function () {
+    console.log("✅ Botpress chat loaded");
+
+    // Re-define the click trigger here
+    window.triggerBot = function (flowId) {
+      window.botpressWebChat.sendPayload({
+        type: 'trigger',
+        payload: {
+          flowToStart: flowId
+        }
+      });
+    };
+  }, ['LIFECYCLE.LOADED']);
 </script>
 
 </body>
