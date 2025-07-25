@@ -389,16 +389,36 @@ section#do ul li:hover {
   window.addEventListener('message', function (event) {
     if (event.data && event.data.type === 'LIFECYCLE.LOADED') {
       window.triggerBot = function (flowId) {
-        window.botpressWebChat.sendPayload({
-          type: 'trigger',
-          payload: {
-            flowToStart: flowId
-          }
-        });
+        if (window.botpressWebChat) {
+          window.botpressWebChat.sendPayload({
+            type: 'trigger',
+            payload: {
+              flowToStart: flowId
+            }
+          });
+        } else {
+          console.error("Botpress WebChat is not loaded yet.");
+        }
       };
     }
   });
+
+  // Safety fallback: add click listeners after DOM is ready
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('li[onclick^="triggerBot"]').forEach(li => {
+      li.addEventListener('click', function (e) {
+        const flow = this.getAttribute('onclick').match(/'(.*?)'/)[1];
+        if (typeof window.triggerBot === 'function') {
+          window.triggerBot(flow);
+        } else {
+          console.error("Bot is not ready yet.");
+        }
+        e.preventDefault();
+      });
+    });
+  });
 </script>
+
 
 
 </body>
