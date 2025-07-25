@@ -371,8 +371,8 @@ section#do ul li:hover {
   </footer>
 
  <!-- ✅ Botpress Chatbot Script -->
-<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
+<script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js"></script>
 
 <!-- ✅ Sidebar open/close logic -->
 <script>
@@ -386,29 +386,37 @@ section#do ul li:hover {
 
 <!-- ✅ Safe triggerBot definition -->
 <script>
-  window.addEventListener('message', function (event) {
-    if (event.data && event.data.type === 'LIFECYCLE.LOADED') {
-      window.triggerBot = function (flowId) {
-        if (window.botpressWebChat) {
-          window.botpressWebChat.sendPayload({
-            type: 'trigger',
-            payload: { flowToStart: flowId }
-          });
-          window.botpressWebChat.open();
-        } else {
-          console.error("Botpress WebChat is not loaded yet.");
-        }
-      };
+  document.addEventListener("DOMContentLoaded", function () {
+    window.addEventListener('message', function (event) {
+      console.log("📨 Message from Botpress received:", event.data);
 
-      document.querySelectorAll('li[data-flow]').forEach(li => {
-        li.style.cursor = 'pointer';  // show pointer cursor on hover
-        li.addEventListener('click', function () {
-          const flow = this.getAttribute('data-flow');
-          console.log('Clicked flow:', flow);
-          window.triggerBot(flow);
+      if (event.data && event.data.type === 'LIFECYCLE.LOADED') {
+        console.log("✅ Botpress chat widget fully loaded");
+
+        // Define the triggerBot function
+        window.triggerBot = function (flowId) {
+          if (window.botpressWebChat) {
+            window.botpressWebChat.sendPayload({
+              type: 'trigger',
+              payload: { flowToStart: flowId }
+            });
+            window.botpressWebChat.open();
+          } else {
+            console.error("❌ Botpress WebChat is not loaded yet.");
+          }
+        };
+
+        // Attach click events to all list items with data-flow attribute
+        document.querySelectorAll('li[data-flow]').forEach(li => {
+          li.style.cursor = 'pointer';
+          li.addEventListener('click', function () {
+            const flow = this.getAttribute('data-flow');
+            console.log('🟢 Clicked flow:', flow);
+            window.triggerBot(flow);
+          });
         });
-      });
-    }
+      }
+    });
   });
 </script>
 
