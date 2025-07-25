@@ -385,16 +385,19 @@ section#do ul li:hover {
 </script>
 
 <!-- ✅ Safe triggerBot definition -->
-<script>
+<script> 
   document.addEventListener("DOMContentLoaded", function () {
+    console.log("✅ DOM is ready");
+
     window.addEventListener('message', function (event) {
-      console.log("📨 Message from Botpress received:", event.data);
+      console.log("📨 Botpress event received:", event.data);
 
       if (event.data && event.data.type === 'LIFECYCLE.LOADED') {
-        console.log("✅ Botpress chat widget fully loaded");
+        console.log("✅ Botpress WebChat loaded!");
 
-        // Define the triggerBot function
         window.triggerBot = function (flowId) {
+          console.log("🟢 TriggerBot called with:", flowId);
+
           if (window.botpressWebChat) {
             window.botpressWebChat.sendPayload({
               type: 'trigger',
@@ -406,12 +409,11 @@ section#do ul li:hover {
           }
         };
 
-        // Attach click events to all list items with data-flow attribute
         document.querySelectorAll('li[data-flow]').forEach(li => {
           li.style.cursor = 'pointer';
           li.addEventListener('click', function () {
             const flow = this.getAttribute('data-flow');
-            console.log('🟢 Clicked flow:', flow);
+            console.log("🖱️ Clicked on:", flow);
             window.triggerBot(flow);
           });
         });
@@ -419,6 +421,7 @@ section#do ul li:hover {
     });
   });
 </script>
+
 
 
 
