@@ -396,19 +396,23 @@ section#do ul li:hover {
       if (event.data && event.data.type === 'LIFECYCLE.LOADED') {
         console.log("✅ Botpress WebChat loaded!");
 
-        window.triggerBot = function (flowId) {
-          console.log("🟢 TriggerBot called with:", flowId);
+window.triggerBot = function (flowId) {
+  console.log("🟢 TriggerBot called with:", flowId);
 
-          if (window.botpressWebChat) {
-            window.botpressWebChat.sendPayload({
-              type: 'trigger',
-              payload: { flowToStart: flowId }
-            });
-            window.botpressWebChat.open();
-          } else {
-            console.error("❌ Botpress WebChat is not loaded yet.");
-          }
-        };
+  if (window.botpressWebChat) {
+    window.botpressWebChat.sendEvent({ type: 'reset' }); // ⬅️ Force reset first
+
+    window.botpressWebChat.sendPayload({
+      type: 'trigger',
+      payload: { flowToStart: flowId }
+    });
+
+    window.botpressWebChat.open();
+  } else {
+    console.error("❌ Botpress WebChat is not loaded yet.");
+  }
+};
+
 
         document.querySelectorAll('li[data-flow]').forEach(li => {
           li.style.cursor = 'pointer';
