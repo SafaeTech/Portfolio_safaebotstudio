@@ -385,9 +385,12 @@ section#do ul li:hover {
 </script>
 
 <!-- ✅ Safe triggerBot definition -->
-<script>
+  <script>
   window.addEventListener('message', function (event) {
     if (event.data && event.data.type === 'LIFECYCLE.LOADED') {
+      console.log("✅ Botpress is ready");
+
+      // Define the triggerBot function
       window.triggerBot = function (flowId) {
         if (window.botpressWebChat) {
           window.botpressWebChat.sendPayload({
@@ -397,27 +400,22 @@ section#do ul li:hover {
             }
           });
         } else {
-          console.error("Botpress WebChat is not loaded yet.");
+          console.error("❌ Botpress WebChat is not available.");
         }
       };
+
+      // ✅ Attach the click handlers once bot is ready
+      document.querySelectorAll('li[onclick^="triggerBot"]').forEach(li => {
+        const flow = li.getAttribute('onclick').match(/'(.*?)'/)[1];
+        li.removeAttribute('onclick'); // remove the inline handler
+        li.addEventListener('click', function () {
+          window.triggerBot(flow);
+        });
+      });
     }
   });
-
-  // Safety fallback: add click listeners after DOM is ready
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll('li[onclick^="triggerBot"]').forEach(li => {
-      li.addEventListener('click', function (e) {
-        const flow = this.getAttribute('onclick').match(/'(.*?)'/)[1];
-        if (typeof window.triggerBot === 'function') {
-          window.triggerBot(flow);
-        } else {
-          console.error("Bot is not ready yet.");
-        }
-        e.preventDefault();
-      });
-    });
-  });
 </script>
+
 
 
 
