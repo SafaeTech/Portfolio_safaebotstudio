@@ -386,23 +386,25 @@ section#do ul li:hover {
 
 <!-- ✅ Safe triggerBot definition -->
 <script>
+  // Wait for Botpress webchat to load fully
   window.addEventListener('message', function (event) {
     if (event.data && event.data.type === 'LIFECYCLE.LOADED') {
-      console.log("✅ Botpress is ready");
-
+      
+      // Define triggerBot function
       window.triggerBot = function (flowId) {
         if (window.botpressWebChat) {
           window.botpressWebChat.sendPayload({
             type: 'trigger',
-            payload: {
-              flowToStart: flowId
-            }
+            payload: { flowToStart: flowId }
           });
+          // Open the chat window in case it's closed
+          window.botpressWebChat.open();
         } else {
-          console.error("❌ Botpress WebChat is not available.");
+          console.error("Botpress WebChat is not loaded yet.");
         }
       };
-
+      
+      // Attach click listeners to the <li> elements with data-flow attribute
       document.querySelectorAll('li[data-flow]').forEach(li => {
         li.addEventListener('click', function () {
           const flow = this.getAttribute('data-flow');
@@ -412,6 +414,7 @@ section#do ul li:hover {
     }
   });
 </script>
+
 
 
 
