@@ -387,30 +387,20 @@ section#do ul li:hover {
 
 <!-- ✅ Safe triggerBot definition -->
 <script>
-  function defineTriggerBot() {
-    window.triggerBot = function (flowId) {
-      console.log("🟢 triggerBot called with:", flowId);
-      if (window.botpressWebChat) {
+  function defineTriggerBotWhenReady() {
+    if (window.botpressWebChat) {
+      console.log("✅ Botpress WebChat is fully ready!");
+
+      window.triggerBot = function (flowId) {
+        console.log("🟢 triggerBot called with:", flowId);
         window.botpressWebChat.sendPayload({
           type: 'trigger',
           payload: { flowToStart: flowId }
         });
         window.botpressWebChat.open();
-      } else {
-        console.error("❌ Botpress WebChat not ready yet.");
-      }
-    };
-  }
+      };
 
-  // 📩 Botpress loads and sends message
-  window.addEventListener("message", function (event) {
-    console.log("📨 Botpress event received:", event.data);
-
-    if (event.data && event.data.type === 'LIFECYCLE.LOADED') {
-      console.log("✅ Botpress WebChat loaded!");
-      defineTriggerBot(); // ✅ define it here
-
-      // ✅ Click listeners for flows
+      // Attach click listeners
       document.querySelectorAll('li[data-flow]').forEach(li => {
         li.style.cursor = 'pointer';
         li.addEventListener('click', function () {
@@ -419,16 +409,17 @@ section#do ul li:hover {
           window.triggerBot(flow);
         });
       });
-    }
-  });
 
-  // ⏱️ Fallback definition after 3 seconds if Botpress didn't send event yet
-  setTimeout(() => {
-    if (typeof window.triggerBot === 'undefined') {
-      console.log("⏱️ Fallback: defining triggerBot manually...");
-      defineTriggerBot();
+    } else {
+      console.log("🕒 Waiting for Botpress WebChat to be ready...");
+      setTimeout(defineTriggerBotWhenReady, 500); // Try again in 500ms
     }
-  }, 3000);
+  }
+
+  // Run it once the page has loaded
+  window.addEventListener("load", () => {
+    setTimeout(defineTriggerBotWhenReady, 500); // slight delay after page load
+  });
 </script>
 
 
