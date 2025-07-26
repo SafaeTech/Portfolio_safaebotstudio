@@ -386,46 +386,40 @@ section#do ul li:hover {
 </script>
 
 <!-- ✅ Safe triggerBot definition -->
-<script> 
-  document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ DOM is ready");
+<script>
+  window.addEventListener("message", function (event) {
+    console.log("📨 Botpress event received:", event.data);
 
-    window.addEventListener('message', function (event) {
-      console.log("📨 Botpress event received:", event.data);
+    if (event.data && event.data.type === 'LIFECYCLE.LOADED') {
+      console.log("✅ Botpress WebChat loaded!");
 
-      if (event.data && event.data.type === 'LIFECYCLE.LOADED') {
-        console.log("✅ Botpress WebChat loaded!");
-
-window.triggerBot = function (flowId) {
-  console.log("🟢 TriggerBot called with:", flowId);
-
-  if (window.botpressWebChat) {
-    window.botpressWebChat.sendEvent({ type: 'reset' }); // ⬅️ Force reset first
-
-    window.botpressWebChat.sendPayload({
-      type: 'trigger',
-      payload: { flowToStart: flowId }
-    });
-
-    window.botpressWebChat.open();
-  } else {
-    console.error("❌ Botpress WebChat is not loaded yet.");
-  }
-};
-
-
-        document.querySelectorAll('li[data-flow]').forEach(li => {
-          li.style.cursor = 'pointer';
-          li.addEventListener('click', function () {
-            const flow = this.getAttribute('data-flow');
-            console.log("🖱️ Clicked on:", flow);
-            window.triggerBot(flow);
+      // ✅ Define triggerBot only AFTER WebChat is loaded
+      window.triggerBot = function (flowId) {
+        console.log("🟢 triggerBot called with:", flowId);
+        if (window.botpressWebChat) {
+          window.botpressWebChat.sendPayload({
+            type: 'trigger',
+            payload: { flowToStart: flowId }
           });
+          window.botpressWebChat.open();
+        } else {
+          console.error("❌ Botpress WebChat not ready yet.");
+        }
+      };
+
+      // ✅ Attach click listeners AFTER WebChat is loaded
+      document.querySelectorAll('li[data-flow]').forEach(li => {
+        li.style.cursor = 'pointer';
+        li.addEventListener('click', function () {
+          const flow = this.getAttribute('data-flow');
+          console.log("🖱️ Clicked on:", flow);
+          window.triggerBot(flow);
         });
-      }
-    });
+      });
+    }
   });
 </script>
+
 
 
 
