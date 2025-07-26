@@ -372,21 +372,23 @@ section#do ul li:hover {
 
 
 <!-- ✅ Botpress Chatbot Script (Working Version) -->
-<!-- ✅ Botpress Chatbot V3 Config (Botette Embed) -->
 <script>
-  window.botpressWebChat = {
-    botId: "e3556156-a676-4df9-b787-ba5080b59670",
-    clientId: "ba682f44-bcc3-4a69-bba3-94a51555ac87",
-    hostUrl: "https://cdn.botpress.cloud/webchat/v3",
-    messagingUrl: "https://messaging.botpress.cloud",
-    botName: "Botette",
-    themeName: "prism-dark",
-    themeMode: "dark",
-    layoutWidth: "400px",
-    showPoweredBy: false
-  };
+  document.addEventListener("DOMContentLoaded", function () {
+    window.botpressWebChat = {
+      botId: "e3556156-a676-4df9-b787-ba5080b59670",
+      clientId: "ba682f44-bcc3-4a69-bba3-94a51555ac87",
+      hostUrl: "https://cdn.botpress.cloud/webchat/v3",
+      messagingUrl: "https://messaging.botpress.cloud",
+      botName: "Botette",
+      themeName: "prism-dark",
+      themeMode: "dark",
+      layoutWidth: "400px",
+      showPoweredBy: false
+    };
+  });
 </script>
 <script src="https://cdn.botpress.cloud/webchat/v3/inject.js" defer></script>
+
 
 
 
