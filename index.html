@@ -409,14 +409,19 @@ section#do ul li:hover {
     if (window.botpressWebChat) {
       console.log("✅ Botpress WebChat is fully ready!");
 
-      window.triggerBot = function (flowId) {
-        console.log("🟢 triggerBot called with:", flowId);
-        window.botpressWebChat.sendPayload({
-          type: 'trigger',
-          payload: { flowToStart: flowId }
-        });
-        window.botpressWebChat.open();
-      };
+window.triggerBot = function (flowId) {
+  console.log("🟢 triggerBot called with:", flowId);
+  window.botpressWebChat.sendEvent({
+    type: 'custom',
+    channel: 'web',
+    payload: {
+      type: 'trigger',
+      flowToStart: flowId
+    }
+  });
+  window.botpressWebChat.open();
+};
+
 
       // Attach click listeners
       document.querySelectorAll('li[data-flow]').forEach(li => {
