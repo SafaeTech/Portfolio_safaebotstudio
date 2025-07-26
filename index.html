@@ -387,27 +387,30 @@ section#do ul li:hover {
 
 <!-- ✅ Safe triggerBot definition -->
 <script>
+  function defineTriggerBot() {
+    window.triggerBot = function (flowId) {
+      console.log("🟢 triggerBot called with:", flowId);
+      if (window.botpressWebChat) {
+        window.botpressWebChat.sendPayload({
+          type: 'trigger',
+          payload: { flowToStart: flowId }
+        });
+        window.botpressWebChat.open();
+      } else {
+        console.error("❌ Botpress WebChat not ready yet.");
+      }
+    };
+  }
+
+  // 📩 Botpress loads and sends message
   window.addEventListener("message", function (event) {
     console.log("📨 Botpress event received:", event.data);
 
     if (event.data && event.data.type === 'LIFECYCLE.LOADED') {
       console.log("✅ Botpress WebChat loaded!");
+      defineTriggerBot(); // ✅ define it here
 
-      // ✅ Define triggerBot only AFTER WebChat is loaded
-      window.triggerBot = function (flowId) {
-        console.log("🟢 triggerBot called with:", flowId);
-        if (window.botpressWebChat) {
-          window.botpressWebChat.sendPayload({
-            type: 'trigger',
-            payload: { flowToStart: flowId }
-          });
-          window.botpressWebChat.open();
-        } else {
-          console.error("❌ Botpress WebChat not ready yet.");
-        }
-      };
-
-      // ✅ Attach click listeners AFTER WebChat is loaded
+      // ✅ Click listeners for flows
       document.querySelectorAll('li[data-flow]').forEach(li => {
         li.style.cursor = 'pointer';
         li.addEventListener('click', function () {
@@ -418,7 +421,16 @@ section#do ul li:hover {
       });
     }
   });
+
+  // ⏱️ Fallback definition after 3 seconds if Botpress didn't send event yet
+  setTimeout(() => {
+    if (typeof window.triggerBot === 'undefined') {
+      console.log("⏱️ Fallback: defining triggerBot manually...");
+      defineTriggerBot();
+    }
+  }, 3000);
 </script>
+
 
 
 
