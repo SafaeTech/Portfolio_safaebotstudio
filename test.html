@@ -28,15 +28,16 @@
 </head>
 <body>
   <h1>Trigger Flows</h1>
-<div class="box" onclick="triggerBot('customer_operations')">🤖 Customer Operations</div>
 <div class="box" onclick="triggerBot('lead_capture')">📩 Lead Capture</div>
+<div class="box" onclick="triggerBot('customer_operations')">🤖 Customer Operations</div>
 <div class="box" onclick="triggerBot('website_development')">🌐 Website Development</div>
+
 
 <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
 <script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
 
 <script>
-  // Wait until botpress is ready
+  // Wait until Botpress is ready
   window.addEventListener('bp-webchat-ready', () => {
     console.log('✅ Botpress webchat ready');
   });
@@ -46,15 +47,19 @@
       alert("Bot is still loading, please wait a moment.");
       return;
     }
+
     console.log("📤 Triggering flow:", flowId);
+
     window.botpressWebChat.sendEvent({
       type: 'custom',
       channel: 'web',
       payload: {
         type: 'trigger',
-        flowToStart: flowId
+        flowToStart: flowId  // This should match your flow IDs like "lead_capture"
       }
     });
+
+    // Optional: open the chat if it's not already open
     window.botpressWebChat.open();
   }
 </script>
