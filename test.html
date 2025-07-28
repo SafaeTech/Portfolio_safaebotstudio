@@ -3,38 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Botpress Minimal Test</title>
+  <title>Botpress Flow Trigger Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #222;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #39b54a;
+    }
+    .box {
+      background: #144d1a;
+      padding: 20px 40px;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+    }
+    .box:hover {
+      background-color: #1a5f24;
+    }
+  </style>
 </head>
 <body>
-  <h1>Botpress Minimal Test</h1>
 
-  <script>
-    window.botpressWebChat = {
-      botId: "e3556156-a676-4df9-b787-ba5080b59670",
-      clientId: "ba682f44-bcc3-4a69-bba3-94a51555ac87",
-      hostUrl: "https://cdn.botpress.cloud/webchat/v3",
-      messagingUrl: "https://messaging.botpress.cloud",
-      botName: "Botette",
-      themeName: "prism-dark",
-      themeMode: "dark",
-      layoutWidth: "400px",
-      showPoweredBy: false
-    };
-  </script>
+<h1>Trigger Botpress Flows</h1>
 
-  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
-  <script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js"></script>
+<div class="box" onclick="triggerFlow('customer_operations')">🤖 Customer Operations</div>
+<div class="box" onclick="triggerFlow('lead_capture')">📩 Lead Capture</div>
+<div class="box" onclick="triggerFlow('website_development')">🌐 Website Development</div>
 
-  <script>
-    window.addEventListener('bp-webchat-ready', () => {
-      console.log('✅ Botpress webchat is ready:', window.botpressWebChat);
-      if (window.botpressWebChat) {
-        window.botpressWebChat.open();
-      }
+<!-- Your embed scripts with defer -->
+<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
+
+<script>
+  // Poll until botpressWebChat is ready (since scripts are deferred)
+  function waitForBotpressWebChat(callback, attempts = 0) {
+    if (window.botpressWebChat && typeof window.botpressWebChat.sendEvent === 'function') {
+      callback();
+    } else if (attempts < 30) { // Try max 30 times (15 seconds)
+      setTimeout(() => waitForBotpressWebChat(callback, attempts + 1), 500);
+    } else {
+      alert('Botpress WebChat not ready yet, please try again in a moment.');
+    }
+  }
+
+  function triggerFlow(flowId) {
+    waitForBotpressWebChat(() => {
+      console.log('Triggering flow:', flowId);
+      window.botpressWebChat.sendEvent({
+        type: 'custom',
+        channel: 'web',
+        payload: {
+          type: 'trigger',
+          flowToStart: flowId
+        }
+      });
+      window.botpressWebChat.open();
     });
-  </script>
+  }
+</script>
+
 </body>
 </html>
+
 
 
 
