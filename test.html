@@ -29,36 +29,21 @@
   <div class="box" data-flow="lead_capture">📩 Lead Capture</div>
   <div class="box" data-flow="website_development">🌐 Website Development</div>
 
-  <!-- ✅ Botpress Embed -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
-  <script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js"></script>
-
-  <!-- ✅ Attach Trigger Logic After Bot is Ready -->
- <script>
-  window.addEventListener("bp-webchat-ready", () => {
-    console.log("✅ Botpress Webchat is ready");
-    console.log("🧠 botpressWebChat object:", window.botpressWebChat); // <--- NEW
-
-    const boxes = document.querySelectorAll('.box');
-    boxes.forEach(box => {
-      box.addEventListener('click', () => {
-        const flowId = box.dataset.flow;
-        console.log("📤 Triggering flow:", flowId);
-
-        window.botpressWebChat.sendEvent({
-          type: 'custom',
-          channel: 'web',
-          payload: {
-            type: 'trigger',
-            flowToStart: flowId
-          }
-        });
-
-        window.botpressWebChat.open();
-      });
-    });
+<!-- Botpress scripts -->
+<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+<script>
+  window.botpressWebChat.init({
+    clientId: "ba682f44-bcc3-4a69-bba3-94a51555ac87",
+    botName: "Botette",
+    hostUrl: "https://cdn.botpress.cloud/webchat/v3.2",
+    messagingUrl: "https://messaging.botpress.cloud",
+    containerWidth: "100%25",
+    layoutWidth: "400px",
+    showPoweredBy: false,
+    enableConversationDeletion: true
   });
 </script>
+
 
 </body>
 </html>
