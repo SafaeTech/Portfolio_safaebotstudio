@@ -3,50 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Botpress Trigger Test</title>
+  <title>Safae Bot Trigger Test</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #222;
-      color: #fff;
-      text-align: center;
+      background: #222;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 40px;
     }
+    h1 {
+      margin-bottom: 20px;
+      color: #39b54a;
+    }
     .box {
-      background: #1a5f24;
-      padding: 20px;
+      background: #144d1a;
+      padding: 20px 40px;
       margin: 10px;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 1.2em;
+      user-select: none;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+    }
+    .box:hover {
+      background-color: #1a5f24;
     }
   </style>
 </head>
 <body>
-  <h1>Trigger Bot Flows</h1>
 
-  <div class="box" data-flow="customer_operations">🤖 Customer Operations</div>
-  <div class="box" data-flow="lead_capture">📩 Lead Capture</div>
-  <div class="box" data-flow="website_development">🌐 Website Development</div>
+<h1>Click to Start a Bot Flow</h1>
 
-<!-- Botpress scripts -->
+<div class="box" onclick="triggerBot('customer_operations')">🤖 Customer Operations</div>
+<div class="box" onclick="triggerBot('lead_capture')">📩 Lead Capture</div>
+<div class="box" onclick="triggerBot('website_development')">🌐 Website Development</div>
+
+<!-- ✅ Botpress Webchat Embed Code -->
 <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-<script>
-  window.botpressWebChat.init({
-    clientId: "ba682f44-bcc3-4a69-bba3-94a51555ac87",
-    botName: "Botette",
-    hostUrl: "https://cdn.botpress.cloud/webchat/v3.2",
-    messagingUrl: "https://messaging.botpress.cloud",
-    containerWidth: "100%25",
-    layoutWidth: "400px",
-    showPoweredBy: false,
-    enableConversationDeletion: true
-  });
-</script>
+<script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
 
+<!-- ✅ Flow Trigger Script -->
+<script>
+  function triggerBot(flowId) {
+    const interval = setInterval(() => {
+      if (window.botpressWebChat && typeof window.botpressWebChat.sendEvent === 'function') {
+        console.log("✅ Triggering flow:", flowId);
+
+        window.botpressWebChat.sendEvent({
+          type: 'custom',
+          channel: 'web',
+          payload: {
+            type: 'trigger',
+            flowToStart: flowId
+          }
+        });
+
+        window.botpressWebChat.open();
+        clearInterval(interval);
+      } else {
+        console.log("⏳ Waiting for Botpress to be ready...");
+      }
+    }, 500);
+  }
+</script>
 
 </body>
 </html>
+
 
 
 
