@@ -25,36 +25,40 @@
 <body>
   <h1>Trigger Bot Flows</h1>
 
-  <div class="box" onclick="triggerBot('customer_operations')">🤖 Customer Operations</div>
-  <div class="box" onclick="triggerBot('lead_capture')">📩 Lead Capture</div>
-  <div class="box" onclick="triggerBot('website_development')">🌐 Website Development</div>
+  <div class="box" data-flow="customer_operations">🤖 Customer Operations</div>
+  <div class="box" data-flow="lead_capture">📩 Lead Capture</div>
+  <div class="box" data-flow="website_development">🌐 Website Development</div>
 
   <!-- ✅ Botpress Embed -->
   <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
   <script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js"></script>
 
-  <!-- ✅ Custom Trigger Logic -->
+  <!-- ✅ Attach Trigger Logic After Bot is Ready -->
   <script>
     window.addEventListener("bp-webchat-ready", () => {
       console.log("✅ Botpress Webchat is ready");
 
-      // Now safe to assign trigger function
-      window.triggerBot = function(flowId) {
-        console.log("📤 Triggering flow:", flowId);
-        window.botpressWebChat.sendEvent({
-          type: 'custom',
-          channel: 'web',
-          payload: {
-            type: 'trigger',
-            flowToStart: flowId
-          }
+      const boxes = document.querySelectorAll('.box');
+      boxes.forEach(box => {
+        box.addEventListener('click', () => {
+          const flowId = box.dataset.flow;
+          console.log("📤 Triggering flow:", flowId);
+          window.botpressWebChat.sendEvent({
+            type: 'custom',
+            channel: 'web',
+            payload: {
+              type: 'trigger',
+              flowToStart: flowId
+            }
+          });
+          window.botpressWebChat.open();
         });
-        window.botpressWebChat.open();
-      };
+      });
     });
   </script>
 </body>
 </html>
+
 
 
 
