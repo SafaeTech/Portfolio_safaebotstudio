@@ -42,15 +42,40 @@
 <div class="box" onclick="triggerBot('website_development')">🌐 Website Development</div>
 
 <!-- Botpress scripts -->
-<script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js"></script>
+<script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
 
 <script>
   let botReady = false;
 
+  // Listen for event from Botpress script
   window.addEventListener('bp-webchat-ready', () => {
     botReady = true;
-    console.log('✅ Botpress Webchat is ready');
+    console.log('✅ Botpress Webchat is ready (event)');
+  });
+
+  // Polling fallback if event doesn't fire
+  let pollCount = 0;
+  const maxPolls = 20;
+
+  function pollBotReady() {
+    if (window.botpressWebChat && typeof window.botpressWebChat.sendEvent === 'function') {
+      botReady = true;
+      console.log('✅ Botpress Webchat is ready (polling)');
+    } else {
+      pollCount++;
+      if (pollCount < maxPolls) {
+        console.log(`⏳ Bot not ready yet, polling attempt ${pollCount}`);
+        setTimeout(pollBotReady, 500);
+      } else {
+        console.error('❌ Botpress Webchat not ready after polling.');
+      }
+    }
+  }
+
+  // Start polling after short delay to allow scripts to load
+  window.addEventListener('load', () => {
+    setTimeout(pollBotReady, 1000);
   });
 
   function triggerBot(flowId) {
@@ -72,7 +97,7 @@
   }
 </script>
 
-
 </body>
 </html>
+
 
