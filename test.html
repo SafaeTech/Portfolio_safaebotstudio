@@ -34,28 +34,32 @@
   <script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js"></script>
 
   <!-- ✅ Attach Trigger Logic After Bot is Ready -->
-  <script>
-    window.addEventListener("bp-webchat-ready", () => {
-      console.log("✅ Botpress Webchat is ready");
+ <script>
+  window.addEventListener("bp-webchat-ready", () => {
+    console.log("✅ Botpress Webchat is ready");
+    console.log("🧠 botpressWebChat object:", window.botpressWebChat); // <--- NEW
 
-      const boxes = document.querySelectorAll('.box');
-      boxes.forEach(box => {
-        box.addEventListener('click', () => {
-          const flowId = box.dataset.flow;
-          console.log("📤 Triggering flow:", flowId);
-          window.botpressWebChat.sendEvent({
-            type: 'custom',
-            channel: 'web',
-            payload: {
-              type: 'trigger',
-              flowToStart: flowId
-            }
-          });
-          window.botpressWebChat.open();
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach(box => {
+      box.addEventListener('click', () => {
+        const flowId = box.dataset.flow;
+        console.log("📤 Triggering flow:", flowId);
+
+        window.botpressWebChat.sendEvent({
+          type: 'custom',
+          channel: 'web',
+          payload: {
+            type: 'trigger',
+            flowToStart: flowId
+          }
         });
+
+        window.botpressWebChat.open();
       });
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
 
