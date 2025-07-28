@@ -28,44 +28,37 @@
 </head>
 <body>
   <h1>Trigger Flows</h1>
-  <div class="box" onclick="triggerBot('customer_operations')">🤖 Customer Operations</div>
-  <div class="box" onclick="triggerBot('lead_capture')">📩 Lead Capture</div>
-  <div class="box" onclick="triggerBot('website_development')">🌐 Website Development</div>
+<div class="box" onclick="triggerBot('customer_operations')">🤖 Customer Operations</div>
+<div class="box" onclick="triggerBot('lead_capture')">📩 Lead Capture</div>
+<div class="box" onclick="triggerBot('website_development')">🌐 Website Development</div>
 
-  <!-- ✅ Botpress embed -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-  <script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
+<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
 
-  <!-- ✅ Flow Trigger Logic -->
-  <script>
-    let botReady = false;
+<script>
+  // Wait until botpress is ready
+  window.addEventListener('bp-webchat-ready', () => {
+    console.log('✅ Botpress webchat ready');
+  });
 
-    // Wait for the bot to initialize
-    window.addEventListener('bp-webchat-ready', () => {
-      console.log("✅ Botpress Webchat is ready");
-      botReady = true;
-    });
-
-    function triggerBot(flowId) {
-      if (!botReady || typeof window.botpressWebChat?.sendEvent !== "function") {
-        console.warn("❌ Bot is not ready yet. Please try again later.");
-        alert("Bot is still loading, please wait a moment.");
-        return;
-      }
-
-      console.log("📤 Triggering flow:", flowId);
-      window.botpressWebChat.sendEvent({
-        type: "custom",
-        channel: "web",
-        payload: {
-          type: "trigger",
-          flowToStart: flowId
-        }
-      });
-
-      window.botpressWebChat.open();
+  function triggerBot(flowId) {
+    if (!window.botpressWebChat) {
+      alert("Bot is still loading, please wait a moment.");
+      return;
     }
-  </script>
+    console.log("📤 Triggering flow:", flowId);
+    window.botpressWebChat.sendEvent({
+      type: 'custom',
+      channel: 'web',
+      payload: {
+        type: 'trigger',
+        flowToStart: flowId
+      }
+    });
+    window.botpressWebChat.open();
+  }
+</script>
+
 </body>
 </html>
 
