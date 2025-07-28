@@ -2,95 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Botpress Flow Trigger Test</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #111;
-      color: white;
+      font-family: Arial, sans-serif;
+      background: #222;
+      color: #eee;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      padding: 40px 20px;
+      padding: 40px;
     }
-
     h1 {
+      margin-bottom: 20px;
       color: #39b54a;
-      margin-bottom: 30px;
     }
-
-    .box-container {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      max-width: 900px;
-      width: 100%;
-    }
-
-    .trigger-box {
-      background: #1a5f24;
-      border: 2px solid #39b54a;
-      border-radius: 12px;
-      padding: 30px;
-      text-align: center;
-      font-size: 1.2rem;
-      font-weight: bold;
+    .box {
+      background: #144d1a;
+      padding: 20px 40px;
+      margin: 10px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px #39b54aaa;
+      user-select: none;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
     }
-
-    .trigger-box:hover {
-      background: #2d8c39;
-      transform: scale(1.05);
+    .box:hover {
+      background-color: #1a5f24;
     }
   </style>
 </head>
 <body>
 
-  <h1>Click a Box to Trigger a Chatbot Flow</h1>
-  <div class="box-container">
-    <div class="trigger-box" onclick="triggerBot('lead_capture')">📩 Lead Capture Bot</div>
-    <div class="trigger-box" onclick="triggerBot('customer_operations')">🤖 Customer Operations Bot</div>
-    <div class="trigger-box" onclick="triggerBot('website_development')">🌐 Website Development Bot</div>
-  </div>
+<h1>Trigger Botpress Flows</h1>
 
-  <!-- ✅ Botpress chatbot scripts -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"></script>
-  <script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js"></script>
+<div class="box" onclick="triggerBot('customer_operations')">🤖 Customer Operations</div>
+<div class="box" onclick="triggerBot('lead_capture')">📩 Lead Capture</div>
+<div class="box" onclick="triggerBot('website_development')">🌐 Website Development</div>
+
+<!-- Botpress scripts -->
+<script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js"></script>
 
 <script>
-  // ✅ Wait for Botpress webchat to finish loading
-  window.addEventListener('message', function (event) {
-    if (event.data.name === 'webchatReady') {
-      window.isBotReady = true;
-      console.log('✅ Botpress webchat is ready');
+  let maxRetries = 20;
+  let retryCount = 0;
+
+  function waitForBotAndTrigger(flowId) {
+    if (window.botpressWebChat && typeof window.botpressWebChat.sendEvent === 'function') {
+      console.log("✅ Bot is ready, triggering flow:", flowId);
+      window.botpressWebChat.sendEvent({
+        type: 'custom',
+        channel: 'web',
+        payload: {
+          type: 'trigger',
+          flowToStart: flowId
+        }
+      });
+      window.botpressWebChat.open();
+    } else if (retryCount < maxRetries) {
+      console.log("⏳ Bot not ready, retrying in 500ms...");
+      retryCount++;
+      setTimeout(() => waitForBotAndTrigger(flowId), 500);
+    } else {
+      console.error("❌ Bot still not ready after several attempts.");
+      alert("Bot is not ready yet, please try again in a moment.");
     }
-  });
+  }
 
   function triggerBot(flowId) {
-    if (!window.isBotReady) {
-      console.warn("⏳ Bot is not ready yet, please wait...");
-      return;
-    }
-
-    console.log("📤 Triggering flow:", flowId);
-    window.botpressWebChat.sendEvent({
-      type: 'custom',
-      channel: 'web',
-      payload: {
-        type: 'trigger',
-        flowToStart: flowId
-      }
-    });
-
-    window.botpressWebChat.open();
+    retryCount = 0;
+    waitForBotAndTrigger(flowId);
   }
 </script>
-
 
 </body>
 </html>
