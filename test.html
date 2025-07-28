@@ -46,36 +46,32 @@
 <script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js"></script>
 
 <script>
-  let maxRetries = 20;
-  let retryCount = 0;
+  let botReady = false;
 
-  function waitForBotAndTrigger(flowId) {
-    if (window.botpressWebChat && typeof window.botpressWebChat.sendEvent === 'function') {
-      console.log("✅ Bot is ready, triggering flow:", flowId);
-      window.botpressWebChat.sendEvent({
-        type: 'custom',
-        channel: 'web',
-        payload: {
-          type: 'trigger',
-          flowToStart: flowId
-        }
-      });
-      window.botpressWebChat.open();
-    } else if (retryCount < maxRetries) {
-      console.log("⏳ Bot not ready, retrying in 500ms...");
-      retryCount++;
-      setTimeout(() => waitForBotAndTrigger(flowId), 500);
-    } else {
-      console.error("❌ Bot still not ready after several attempts.");
-      alert("Bot is not ready yet, please try again in a moment.");
-    }
-  }
+  window.addEventListener('bp-webchat-ready', () => {
+    botReady = true;
+    console.log('✅ Botpress Webchat is ready');
+  });
 
   function triggerBot(flowId) {
-    retryCount = 0;
-    waitForBotAndTrigger(flowId);
+    if (!botReady) {
+      alert("Bot is still loading, please wait a moment.");
+      return;
+    }
+
+    console.log("📤 Triggering flow:", flowId);
+    window.botpressWebChat.sendEvent({
+      type: 'custom',
+      channel: 'web',
+      payload: {
+        type: 'trigger',
+        flowToStart: flowId
+      }
+    });
+    window.botpressWebChat.open();
   }
 </script>
+
 
 </body>
 </html>
