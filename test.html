@@ -41,25 +41,27 @@
 <div class="box" onclick="triggerFlow('lead_capture')">📩 Lead Capture</div>
 <div class="box" onclick="triggerFlow('website_development')">🌐 Website Development</div>
 
-<!-- Your embed scripts with defer -->
+<!-- Botpress embed scripts (keep defer) -->
 <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
 <script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
 
 <script>
-  // Poll until botpressWebChat is ready (since scripts are deferred)
+  // Wait until botpressWebChat is ready
   function waitForBotpressWebChat(callback, attempts = 0) {
     if (window.botpressWebChat && typeof window.botpressWebChat.sendEvent === 'function') {
       callback();
-    } else if (attempts < 30) { // Try max 30 times (15 seconds)
+    } else if (attempts < 30) {
+      console.log(`⏳ Bot not ready yet, polling attempt ${attempts + 1}`);
       setTimeout(() => waitForBotpressWebChat(callback, attempts + 1), 500);
     } else {
-      alert('Botpress WebChat not ready yet, please try again in a moment.');
+      console.error('❌ Botpress Webchat not ready after polling.');
+      alert('Bot is not ready yet. Please reload or try again in a moment.');
     }
   }
 
   function triggerFlow(flowId) {
     waitForBotpressWebChat(() => {
-      console.log('Triggering flow:', flowId);
+      console.log('✅ Triggering flow:', flowId);
       window.botpressWebChat.sendEvent({
         type: 'custom',
         channel: 'web',
@@ -75,7 +77,6 @@
 
 </body>
 </html>
-
 
 
 
