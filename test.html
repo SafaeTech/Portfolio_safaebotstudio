@@ -17,31 +17,30 @@
 
   <script>
     window.botpress.on('webchat:ready', async (conversationId) => {
-      console.log('Webchat is ready: ', conversationId);
+      console.log('✅ Webchat is ready:', conversationId);
     });
 
     document.getElementById('triggerBotCustomer_operations').addEventListener('click', async () => {
       const customPayload = {
         trigger: "customer_operations"
       };
-          await window.botpress.sendEvent(customPayload);
+      await window.botpress.sendEvent(customPayload);
     });
-    
 
     document.getElementById('triggerBotLead_capture').addEventListener('click', async () => {
       const customPayload = {
         trigger: "lead_capture"
       };
-          await window.botpress.sendEvent(customPayload);
+      await window.botpress.sendEvent(customPayload);
     });
-
 
     document.getElementById('triggerBotWebsite_development').addEventListener('click', async () => {
       const customPayload = {
         trigger: "website_development"
       };
-          await window.botpress.sendEvent(customPayload);
+      await window.botpress.sendEvent(customPayload);
     });
+  </script>
 </body>
 </html>
 
