@@ -12,36 +12,48 @@
   <button id="triggerBotWebsite_development">🌐 Button 3</button>
 
   <!-- Botpress Webchat Script -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/07/29/16/20250729165913-7ZQF1DIO.js" defer></script>
 
- 
-    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2025/07/29/16/20250729165913-7ZQF1DIO.js" defer></script>
-    
-  
   <script>
-    window.botpress.on('webchat:ready', async (conversationId) => {
-      console.log('✅ Webchat is ready:', conversationId);
+    window.botpressWebChat.onEvent(
+      function () {
+        console.log("✅ Webchat is ready");
+      },
+      ['LIFECYCLE.LOADED']
+    );
+
+    document.getElementById('triggerBotCustomer_operations').addEventListener('click', () => {
+      window.botpressWebChat.sendEvent({
+        type: 'custom',
+        channel: 'web',
+        payload: {
+          type: 'customTrigger',
+          value: 'customer_operations'
+        }
+      });
     });
 
-    document.getElementById('triggerBotCustomer_operations').addEventListener('click', async () => {
-      const customPayload = {
-        trigger: "customer_operations"
-      };
-      await window.botpress.sendEvent(customPayload);
+    document.getElementById('triggerBotLead_capture').addEventListener('click', () => {
+      window.botpressWebChat.sendEvent({
+        type: 'custom',
+        channel: 'web',
+        payload: {
+          type: 'customTrigger',
+          value: 'lead_capture'
+        }
+      });
     });
 
-    document.getElementById('triggerBotLead_capture').addEventListener('click', async () => {
-      const customPayload = {
-        trigger: "lead_capture"
-      };
-      await window.botpress.sendEvent(customPayload);
-    });
-
-    document.getElementById('triggerBotWebsite_development').addEventListener('click', async () => {
-      const customPayload = {
-        trigger: "website_development"
-      };
-      await window.botpress.sendEvent(customPayload);
+    document.getElementById('triggerBotWebsite_development').addEventListener('click', () => {
+      window.botpressWebChat.sendEvent({
+        type: 'custom',
+        channel: 'web',
+        payload: {
+          type: 'customTrigger',
+          value: 'website_development'
+        }
+      });
     });
   </script>
 </body>
