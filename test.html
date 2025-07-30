@@ -16,39 +16,29 @@
   <script src="https://files.bpcontent.cloud/2025/07/29/16/20250729165913-7ZQF1DIO.js" defer></script>
 
   <script>
-    window.addEventListener('load', function () {
-      const waitForBotpress = setInterval(() => {
-        if (window.botpressWebChat) {
-          clearInterval(waitForBotpress);
+    window.botpress.on('webchat:ready', async (conversationId) => {
+        console.log('webchat is ready: ',conversationId);
+      });
 
-          console.log("✅ Botpress WebChat is ready");
-
-          // Handle Button Clicks
-          const triggerFlow = (flowName) => {
-            const event = {
-              type: 'custom',
-              channel: 'web',
-              payload: {
-                type: 'customTrigger',
-                value: flowName
-              }
-            };
-
-            console.log("📤 Sending event to Botpress:", event);
-
-            window.botpressWebChat.sendEvent(event);
-          };
-
-          document.getElementById('triggerBotCustomer_operations')
-            .addEventListener('click', () => triggerFlow('customer_operations'));
-
-          document.getElementById('triggerBotLead_capture')
-            .addEventListener('click', () => triggerFlow('lead_capture'));
-
-          document.getElementById('triggerBotWebsite_development')
-            .addEventListener('click', () => triggerFlow('website_development'));
-        }
-      }, 100);
+          document.getElementById('triggerBotCustomer_operations').addEventListener('click', async () => {
+            const customPayload = {
+              trigger: "customer_operations"
+             });
+              await window.botpress.sendEvent(customePayload);
+            });
+               document.getElementById('triggerBotLead_capture').addEventListener('click', async () => {
+            const customPayload = {
+              trigger: "lead_capture"
+             });
+              await window.botpress.sendEvent(customePayload);
+            });
+              document.getElementById('triggerBotWebsite_development ').addEventListener('click', async () => {
+            const customPayload = {
+              trigger: "website_development"
+             });
+              await window.botpress.sendEvent(customePayload);
+            });
+    
     });
   </script>
 </body>
