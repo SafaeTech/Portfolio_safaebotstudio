@@ -16,41 +16,42 @@
   <script src="https://files.bpcontent.cloud/2025/07/29/16/20250729165913-7ZQF1DIO.js" defer></script>
 
   <script>
-    window.botpress.on('webchat:ready', async (conversationId) => {
-      console.log('✅ webchat is ready: ', conversationId);
+    window.addEventListener('load', () => {
+      const waitForWebchat = setInterval(() => {
+        if (window.botpressWebChat) {
+          clearInterval(waitForWebchat);
+          console.log("✅ Botpress WebChat is ready");
 
-      document.getElementById('triggerBotCustomer_operations').addEventListener('click', async () => {
-        const customPayload = {
-          type: 'custom',
-          channel: 'web',
-          payload: {
-            trigger: "customer_operations"
-          }
-        };
-        await window.botpress.sendEvent(customPayload);
-      });
+          // Optional: Handle incoming events
+          window.botpressWebChat.onEvent((event) => {
+            console.log("📥 Botpress event received:", event);
+          });
 
-      document.getElementById('triggerBotLead_capture').addEventListener('click', async () => {
-        const customPayload = {
-          type: 'custom',
-          channel: 'web',
-          payload: {
-            trigger: "lead_capture"
-          }
-        };
-        await window.botpress.sendEvent(customPayload);
-      });
+          // Button logic
+          const triggerFlow = (triggerName) => {
+            window.botpressWebChat.sendEvent({
+              type: 'custom',
+              channel: 'web',
+              payload: {
+                trigger: triggerName
+              }
+            });
+            console.log(`📤 Sent trigger: ${triggerName}`);
+          };
 
-      document.getElementById('triggerBotWebsite_development').addEventListener('click', async () => {
-        const customPayload = {
-          type: 'custom',
-          channel: 'web',
-          payload: {
-            trigger: "website_development"
-          }
-        };
-        await window.botpress.sendEvent(customPayload);
-      });
+          document.getElementById('triggerBotCustomer_operations').addEventListener('click', () => {
+            triggerFlow('customer_operations');
+          });
+
+          document.getElementById('triggerBotLead_capture').addEventListener('click', () => {
+            triggerFlow('lead_capture');
+          });
+
+          document.getElementById('triggerBotWebsite_development').addEventListener('click', () => {
+            triggerFlow('website_development');
+          });
+        }
+      }, 100);
     });
   </script>
 </body>
