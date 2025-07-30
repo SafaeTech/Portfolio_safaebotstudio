@@ -25,14 +25,18 @@
 
           // Handle Button Clicks
           const triggerFlow = (flowName) => {
-            window.botpressWebChat.sendEvent({
+            const event = {
               type: 'custom',
               channel: 'web',
               payload: {
                 type: 'customTrigger',
                 value: flowName
               }
-            });
+            };
+
+            console.log("📤 Sending event to Botpress:", event);
+
+            window.botpressWebChat.sendEvent(event);
           };
 
           document.getElementById('triggerBotCustomer_operations')
@@ -49,5 +53,6 @@
   </script>
 </body>
 </html>
+
 
 
