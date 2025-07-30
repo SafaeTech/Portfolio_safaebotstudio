@@ -6,7 +6,8 @@
 </head>
 <body>
   <h1>Test Trigger</h1>
-  <button onclick="sendTrigger()">Send Trigger</button>
+<button onclick="sendTrigger('customer_operations')">Trigger</button>
+
 
   <!-- 🔄 USE your exact current embed from Botpress Webchat settings -->
 
@@ -15,27 +16,27 @@
     
 
   <script>
-    let sendTrigger = () => {
-      console.warn("⏳ Botpress not ready yet...");
-    };
-
+  function sendTrigger(triggerName) {
     const waitForBotpress = setInterval(() => {
-      if (window.botpressWebChat) {
+      if (window.botpressWebChat && window.botpressWebChat.sendEvent) {
         clearInterval(waitForBotpress);
-        console.log("✅ Botpress is ready");
+        console.log("✅ Botpress is ready, sending:", triggerName);
 
-        sendTrigger = () => {
-          window.botpressWebChat.sendEvent({
-            type: 'custom',
-            channel: 'web',
-            payload: {
-              trigger: 'customer_operations'
-            }
-          });
-          console.log("📤 Trigger sent: customer_operations");
-        };
+        window.botpressWebChat.sendEvent({
+          type: 'custom',
+          channel: 'web',
+          payload: { trigger: triggerName }
+        });
+      } else {
+        console.log("⏳ Botpress not ready yet...");
       }
-    }, 100);
-  </script>
+    }, 300);
+  }
+
+  window.addEventListener("load", () => {
+    console.log("🌍 Page fully loaded. Waiting for botpress to initialize...");
+  });
+</script>
+
 </body>
 </html>
