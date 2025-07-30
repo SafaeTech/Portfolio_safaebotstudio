@@ -2,22 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Simple Trigger Test</title>
+  <title>Test Trigger</title>
 </head>
 <body>
   <h1>Test Trigger</h1>
   <button onclick="sendTrigger()">Send Trigger</button>
 
-  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
-  <script src="https://files.bpcontent.cloud/2025/07/29/16/20250729165913-7ZQF1DIO.js"></script>
+  <!-- 🔄 USE your exact current embed from Botpress Webchat settings -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/07/30/15/20250730150200-ABCDEFGH.js" defer></script>
 
   <script>
+    let sendTrigger = () => {
+      console.warn("⏳ Botpress not ready yet...");
+    };
+
     const waitForBotpress = setInterval(() => {
       if (window.botpressWebChat) {
         clearInterval(waitForBotpress);
         console.log("✅ Botpress is ready");
 
-        window.sendTrigger = () => {
+        sendTrigger = () => {
           window.botpressWebChat.sendEvent({
             type: 'custom',
             channel: 'web',
@@ -25,7 +30,7 @@
               trigger: 'customer_operations'
             }
           });
-          console.log("✅ Trigger sent");
+          console.log("📤 Trigger sent: customer_operations");
         };
       }
     }, 100);
