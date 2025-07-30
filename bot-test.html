@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Test Trigger</title>
+  <meta charset="UTF-8" />
+  <title>Botpress Trigger Test</title>
 </head>
 <body>
-  <h1>Test Trigger</h1>
-<button onclick="sendTrigger('customer_operations')">Trigger</button>
-
-
-  <!-- 🔄 USE your exact current embed from Botpress Webchat settings -->
-
-    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2025/07/29/16/20250729165913-7ZQF1DIO.js" defer></script>
-    
+  <h1>Test Trigger to Botpress</h1>
+  <button onclick="sendTrigger('customer_operations')">Send Trigger</button>
 
   <script>
-  function sendTrigger(triggerName) {
-    const waitForBotpress = setInterval(() => {
-      if (window.botpressWebChat && window.botpressWebChat.sendEvent) {
-        clearInterval(waitForBotpress);
-        console.log("✅ Botpress is ready, sending:", triggerName);
+    function sendTrigger(triggerName) {
+      const waitForBotpress = setInterval(() => {
+        if (window.botpressWebChat && window.botpressWebChat.sendEvent) {
+          clearInterval(waitForBotpress);
+          console.log("✅ Botpress is ready. Sending trigger:", triggerName);
+          window.botpressWebChat.sendEvent({
+            type: 'custom',
+            channel: 'web',
+            payload: { trigger: triggerName }
+          });
+        } else {
+          console.log("⏳ Botpress not ready yet...");
+        }
+      }, 500);
+    }
 
-        window.botpressWebChat.sendEvent({
-          type: 'custom',
-          channel: 'web',
-          payload: { trigger: triggerName }
-        });
-      } else {
-        console.log("⏳ Botpress not ready yet...");
-      }
-    }, 300);
-  }
+    window.addEventListener("load", () => {
+      console.log("🌍 Page fully loaded.");
+    });
+  </script>
 
-  window.addEventListener("load", () => {
-    console.log("🌍 Page fully loaded. Waiting for botpress to initialize...");
-  });
-</script>
-
+  <!-- Place these LAST so Botpress is fully available -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/07/29/16/20250729165913-7ZQF1DIO.js"></script>
 </body>
 </html>
+
