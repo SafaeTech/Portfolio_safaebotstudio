@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Safae Bot Studio – Trigger Flows</title>
+  <meta charset="UTF-8">
+  <title>Botpress Webchat with Trigger</title>
 </head>
 <body>
-  <h1>✨ Safae Bot Studio – Custom Trigger Example</h1>
+  <h1>Botpress Custom Trigger Example</h1>
+  <button id="triggerBotAction1">Button 1</button>
+  <button id="triggerBotAction2">Button 2</button>
 
-  <button id="triggerCustomerOperations">🚀 Trigger Customer Operations</button>
-  <button id="triggerLeadCapture">🎯 Trigger Lead Capture</button>
+  <!-- Botpress Webchat Script -->
+  <script src="https://cdn.botpress.cloud/webchat/v2.5/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/05/09/19/20250509191039-MSJET43J.js"></script>
 
-  <!-- Botpress Webchat Scripts -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-  <script src="https://files.bpcontent.cloud/2025/07/29/16/20250729165913-7ZQF1DIO.js" defer></script>
+  <!-- Custom Trigger Script -->
+  <script>
+    window.botpress.on('webchat:ready', async (conversationId) => {
+      console.log('Webchat is ready: ', conversationId);
+    });
 
-    // Wait until the webchat is ready
-    window.botpressWebChat.onEvent('webchat:ready', async () => {
-      console.log("✅ Webchat is ready");
+    document.getElementById('triggerBotAction1').addEventListener('click', async () => {
+      const customPayload = {
+        trigger: "action1"
+      };
+      await window.botpress.sendEvent(customPayload);
+    });
 
-      document.getElementById('triggerCustomerOperations').addEventListener('click', async () => {
-        const payload = { type: 'customEvent', channel: 'web', payload: { trigger: 'customer_operations' } };
-        console.log("📤 Sending event: customer_operations");
-        await window.botpressWebChat.sendEvent(payload);
-      });
-
-      document.getElementById('triggerLeadCapture').addEventListener('click', async () => {
-        const payload = { type: 'customEvent', channel: 'web', payload: { trigger: 'lead_capture' } };
-        console.log("📤 Sending event: lead_capture");
-        await window.botpressWebChat.sendEvent(payload);
-      });
+    document.getElementById('triggerBotAction2').addEventListener('click', async () => {
+      const customPayload = {
+        trigger: "action2"
+      };
+      await window.botpress.sendEvent(customPayload);
     });
   </script>
 </body>
