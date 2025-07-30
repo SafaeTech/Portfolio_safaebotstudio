@@ -22,34 +22,33 @@
           clearInterval(waitForWebchat);
           console.log("✅ Botpress WebChat is ready");
 
-          // Optional: Handle incoming events
+          // Optional: Log any incoming events from Botpress
           window.botpressWebChat.onEvent((event) => {
-            console.log("📥 Botpress event received:", event);
+            console.log("📥 Received event from Botpress:", event);
           });
 
-          // Button logic
+          // Function to send a trigger
           const triggerFlow = (triggerName) => {
-            window.botpressWebChat.sendEvent({
+            const event = {
               type: 'custom',
               channel: 'web',
               payload: {
                 trigger: triggerName
               }
-            });
-            console.log(`📤 Sent trigger: ${triggerName}`);
+            };
+            window.botpressWebChat.sendEvent(event);
+            console.log("📤 Sent trigger event:", event);
           };
 
-          document.getElementById('triggerBotCustomer_operations').addEventListener('click', () => {
-            triggerFlow('customer_operations');
-          });
+          // Button click listeners
+          document.getElementById('triggerBotCustomer_operations')
+            .addEventListener('click', () => triggerFlow('customer_operations'));
 
-          document.getElementById('triggerBotLead_capture').addEventListener('click', () => {
-            triggerFlow('lead_capture');
-          });
+          document.getElementById('triggerBotLead_capture')
+            .addEventListener('click', () => triggerFlow('lead_capture'));
 
-          document.getElementById('triggerBotWebsite_development').addEventListener('click', () => {
-            triggerFlow('website_development');
-          });
+          document.getElementById('triggerBotWebsite_development')
+            .addEventListener('click', () => triggerFlow('website_development'));
         }
       }, 100);
     });
