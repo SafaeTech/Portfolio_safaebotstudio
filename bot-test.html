@@ -28,6 +28,7 @@
       document.getElementById('triggerBotAction1').addEventListener('click', async () => {
         const customPayload = { trigger: "action1" };
         await window.botpress.sendEvent(customPayload);
+        window.botpress.open()
       });
 
       document.getElementById('triggerBotAction2').addEventListener('click', async () => {
