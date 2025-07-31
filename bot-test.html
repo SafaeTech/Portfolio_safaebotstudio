@@ -6,7 +6,7 @@
 </head>
 <body>
   <h1>Botpress Custom Trigger Example</h1>
-  <button id="triggerBotCustomeroperation">Customeroperation</button>
+  <button id="triggerBotAction1">Button 1</button>
   <button id="triggerBotAction2">Button 2</button>
 
   <!-- Updated Botpress Scripts -->
@@ -14,31 +14,28 @@
   <script src="https://files.bpcontent.cloud/2025/07/29/16/20250729165913-7ZQF1DIO.js" defer></script>
 
   <!-- Custom Trigger Script -->
-<script>
-  window.addEventListener('load', () => {
-    if (!window.botpress) {
-      console.error("Botpress not loaded!");
-      return;
-    }
+  <script>
+    window.addEventListener('load', () => {
+      if (!window.botpress) {
+        console.error("Botpress not loaded!");
+        return;
+      }
 
-    window.botpress.on('webchat:ready', async (conversationId) => {
-      console.log('Webchat is ready: ', conversationId);
+      window.botpress.on('webchat:ready', async (conversationId) => {
+        console.log('Webchat is ready: ', conversationId);
+      });
+
+      document.getElementById('triggerBotAction1').addEventListener('click', async () => {
+        const customPayload = { trigger: "action1" };
+        await window.botpress.sendEvent(customPayload);
+      });
+
+      document.getElementById('triggerBotAction2').addEventListener('click', async () => {
+        const customPayload = { trigger: "action2" };
+        await window.botpress.sendEvent(customPayload);
+      });
     });
-
-    document.getElementById('triggerBotCustomeroperation').addEventListener('click', async () => {
-      const customPayload = { trigger: "customeroperation" };
-      await window.botpress.sendEvent(customPayload);
-      window.botpress.open(); // 👈 Open the chatbot!
-    });
-
-    document.getElementById('triggerBotAction2').addEventListener('click', async () => {
-      const customPayload = { trigger: "action2" };
-      await window.botpress.sendEvent(customPayload);
-      window.botpress.open(); // 👈 Open the chatbot!
-    });
-  });
-</script>
-
+  </script>
 </body>
 </html>
 
