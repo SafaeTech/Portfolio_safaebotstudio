@@ -6,7 +6,7 @@
 </head>
 <body>
   <h1>Botpress Custom Trigger Example</h1>
-  <button id="triggerBotAction1">Button 1</button>
+  <button id="triggerBotCustomer_operation">Customer Operation Bot</button>
   <button id="triggerBotAction2">Button 2</button>
 
   <!-- Updated Botpress Scripts -->
@@ -25,8 +25,8 @@
       console.log('Webchat is ready: ', conversationId);
     });
 
-    document.getElementById('triggerBotAction1').addEventListener('click', async () => {
-      const customPayload = { trigger: "action1" };
+    document.getElementById('triggerBotCustomer_operation').addEventListener('click', async () => {
+      const customPayload = { trigger: "customer_operation" };
       await window.botpress.sendEvent(customPayload);
       window.botpress.open(); // 👈 Open the chatbot!
     });
