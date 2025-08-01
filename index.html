@@ -338,6 +338,11 @@ section#do h2 {
     document.getElementById('triggerBotAction3')?.addEventListener('click', async () => {
       await window.botpress.sendEvent({ trigger: "action3" });
       window.botpress.open();
+
+      document.getElementById('triggerBotAction4')?.addEventListener('click', async () => {
+      await window.botpress.sendEvent({ trigger: "action4" });
+      window.botpress.open();
+        
     });
   });
 </script>
@@ -371,7 +376,7 @@ section#do h2 {
   <header class="hero">
     <h1>Meet Botette</h1>
     <p>Your AI Assistant for Lead Capture and Customer Operations</p>
-    <div class="cta-box">Say Hi Below — I’m All Ears!</div>
+    <button id="triggerBotAction4" class="cta-box" style="pointer-events: auto; cursor: pointer;">Let’s Chat with Botette</button>
     <div class="floating-botette">
       <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
     </div>
