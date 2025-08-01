@@ -35,12 +35,15 @@
       document.getElementById('triggerBotAction2').addEventListener('click', async () => {
         const customPayload = { trigger: "action2" };
         await window.botpress.sendEvent(customPayload);
+        window.botpress.open()
       });
 
             document.getElementById('triggerBotAction3').addEventListener('click', async () => {
-        const customPayload = { trigger: "action3" };
-        await window.botpress.sendEvent(customPayload);
-   
+              const customPayload = { trigger: "action3" };
+              await window.botpress.sendEvent(customPayload);
+              window.botpress.open()
+              
+       });
       });
     });
     
