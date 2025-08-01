@@ -313,6 +313,36 @@ section#do h2 {
     }
   </style>
 </head>
+
+  <script>
+  window.addEventListener('load', () => {
+    if (!window.botpress) {
+      console.error("Botpress not loaded!");
+      return;
+    }
+
+    window.botpress.on('webchat:ready', async (conversationId) => {
+      console.log('Webchat is ready: ', conversationId);
+    });
+
+    document.getElementById('triggerBotAction1')?.addEventListener('click', async () => {
+      await window.botpress.sendEvent({ trigger: "action1" });
+      window.botpress.open();
+    });
+
+    document.getElementById('triggerBotAction2')?.addEventListener('click', async () => {
+      await window.botpress.sendEvent({ trigger: "action2" });
+      window.botpress.open();
+    });
+
+    document.getElementById('triggerBotAction3')?.addEventListener('click', async () => {
+      await window.botpress.sendEvent({ trigger: "action3" });
+      window.botpress.open();
+    });
+  });
+</script>
+
+  
 <body>
 
 <nav>
@@ -347,17 +377,15 @@ section#do h2 {
     </div>
   </header>
 
-  <section id="do">
-    <h2>What I Can Do For You</h2>
+<section id="do">
+  <h2>What I Can Do For You</h2>
+  <div style="margin-top: 40px; text-align: center; display: flex; flex-direction: column; gap: 20px; align-items: center;">
+    <button id="triggerBotAction1" class="cta-box" style="pointer-events: auto;">🤖 Customer Operations Bot</button>
+    <button id="triggerBotAction2" class="cta-box" style="pointer-events: auto;">📩 Lead Capture Bot</button>
+    <button id="triggerBotAction3" class="cta-box" style="pointer-events: auto;">🌐 Website Development</button>
+  </div>
+</section>
 
-    
-    <ul>
-      <li>🤖 Build Customized AI Chatbots For Customer Operations</li>
-      <li>📩 Lead Capture Bots That Engage And Convert Visitors</li>
-      <li>🌐 Website Development For Businesses Without A Site</li>
-      <li>📊 Email Automation And Integrations With CRM</li>
-    </ul>
-  </section>
 
   <footer>
     &copy; 2025 Safae Bot Studio. All rights reserved.
