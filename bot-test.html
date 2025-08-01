@@ -7,7 +7,8 @@
 <body>
   <h1>Botpress Custom Trigger Example</h1>
   <button id="triggerBotAction1">Customer Operations Bot</button>
-  <button id="triggerBotAction2">Button 2</button>
+  <button id="triggerBotAction2">Lead Capture Bot</button>
+  <button id="triggerBotAction3">Website Development</button>
 
   <!-- Updated Botpress Scripts -->
   <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
@@ -33,6 +34,11 @@
 
       document.getElementById('triggerBotAction2').addEventListener('click', async () => {
         const customPayload = { trigger: "action2" };
+        await window.botpress.sendEvent(customPayload);
+      });
+
+            document.getElementById('triggerBotAction3').addEventListener('click', async () => {
+        const customPayload = { trigger: "action3" };
         await window.botpress.sendEvent(customPayload);
       });
     });
