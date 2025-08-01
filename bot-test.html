@@ -270,24 +270,22 @@
       console.log('Webchat is ready:', conversationId);
     });
 
-    document.getElementById('triggerBotAction1')?.addEventListener('click', async () => {
-      await window.botpress.sendEvent({ trigger: "action1" });
+    const triggerBot = (triggerName) => {
+      window.botpress.sendEvent({
+        type: "trigger",
+        payload: { trigger: triggerName },
+        reset: true  // ✅ clears previous conversation
+      });
       window.botpress.open();
-    });
-    document.getElementById('triggerBotAction2')?.addEventListener('click', async () => {
-      await window.botpress.sendEvent({ trigger: "action2" });
-      window.botpress.open();
-    });
-    document.getElementById('triggerBotAction3')?.addEventListener('click', async () => {
-      await window.botpress.sendEvent({ trigger: "action3" });
-      window.botpress.open();
-    });
-    document.getElementById('triggerBotAction4')?.addEventListener('click', async () => {
-      await window.botpress.sendEvent({ trigger: "action4" });
-      window.botpress.open();
-    });
+    };
+
+    document.getElementById('triggerBotAction1')?.addEventListener('click', () => triggerBot("action1"));
+    document.getElementById('triggerBotAction2')?.addEventListener('click', () => triggerBot("action2"));
+    document.getElementById('triggerBotAction3')?.addEventListener('click', () => triggerBot("action3"));
+    document.getElementById('triggerBotAction4')?.addEventListener('click', () => triggerBot("action4"));
   });
 </script>
+
 
 <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
 <script src="https://files.bpcontent.cloud/2025/07/29/16/20250729165913-7ZQF1DIO.js" defer></script>
