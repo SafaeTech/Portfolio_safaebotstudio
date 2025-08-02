@@ -5,187 +5,269 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Safae Bot Studio</title>
   <style>
+    /* (Le style reste inchangé pour garder la cohérence visuelle) */
     body {
       margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom, #ffffff, #e6f2ff);
-      color: #333;
-    }
-
-    nav {
-      background-color: #fff;
-      padding: 0.8em 1.2em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #fff;
       position: relative;
     }
-
-    .nav-logo {
-      height: 40px;
-    }
-
-    .language-switcher {
-      font-size: 0.9em;
-    }
-
-    .language-switcher a {
-      text-decoration: none;
-      color: #007bff;
-      margin-left: 8px;
-    }
-
-    .menu-icon {
-      font-size: 1.4em;
-      cursor: pointer;
-    }
-
     .sidebar {
       height: 100%;
       width: 0;
       position: fixed;
-      z-index: 10;
+      z-index: 1001;
       top: 0;
       left: 0;
-      background-color: #f9f9f9;
+      background-color: #111;
       overflow-x: hidden;
       transition: 0.3s;
       padding-top: 60px;
     }
-
     .sidebar a {
-      padding: 10px 20px;
+      padding: 10px 25px;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 1.2rem;
+      color: #fff;
       display: block;
-      color: #333;
       transition: 0.3s;
+      font-weight: 600;
     }
-
     .sidebar a:hover {
-      background-color: #ddd;
+      color: #39b54a;
     }
-
     .closebtn {
       position: absolute;
       top: 10px;
       right: 20px;
-      font-size: 24px;
+      font-size: 2rem;
+      color: white;
       cursor: pointer;
     }
-
+    .nav-logo {
+      height: 80px;
+      margin-left: 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #39b54a88;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: #000;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1rem;
+    }
+    .menu-icon {
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+    }
+    nav .logo {
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: #39b54a;
+      user-select: none;
+    }
+    .language-switcher {
+      margin-left: auto;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .language-switcher a {
+      color: #39b54a;
+      text-decoration: none;
+      padding: 0 8px;
+      transition: color 0.3s ease;
+    }
+    .language-switcher a:hover {
+      color: #2d8c39;
+    }
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px #30a46c88; }
+      50% { box-shadow: 0 0 20px #30a46c; }
+      100% { box-shadow: 0 0 10px #30a46c88; }
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
     .hero {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                  url('https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/main/assets/botette-hero.png') center/cover no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
       text-align: center;
-      padding: 4em 1em 2em;
       position: relative;
     }
-
     .hero h1 {
-      font-size: 2.5em;
-      margin-bottom: 0.4em;
+      font-size: 3.5rem;
+      margin: 0 0 10px 0;
+      background: linear-gradient(90deg, #39b54a, #2bff95);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowText 3s ease-in-out infinite;
     }
-
     .hero p {
-      font-size: 1.2em;
-      margin-bottom: 1.2em;
+      font-size: 1.3rem;
+      margin: 10px 0 20px 0;
       max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      color: #ddd;
     }
-
     .cta-box {
-      background-color: #007bff;
-      color: white;
-      padding: 0.9em 1.4em;
+      padding: 14px 28px;
+      font-size: 1rem;
+      background: linear-gradient(to right, #39b54a, #2bff95);
+      color: #000;
       border: none;
-      border-radius: 8px;
-      font-size: 1em;
+      border-radius: 50px;
+      font-weight: 700;
       cursor: pointer;
+      animation: pulse 2.5s infinite;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 10px;
     }
-
-    .hero-stats {
-      margin-top: 2em;
-      display: flex;
-      justify-content: center;
-      gap: 2em;
-      font-weight: bold;
-      flex-wrap: wrap;
+    .cta-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(57, 181, 74, 0.5);
     }
-
+    @keyframes glowText {
+      0% { filter: drop-shadow(0 0 5px #39b54a); }
+      50% { filter: drop-shadow(0 0 15px #39b54a); }
+      100% { filter: drop-shadow(0 0 5px #39b54a); }
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(57, 181, 74, 0.5); }
+      70% { box-shadow: 0 0 0 15px rgba(57, 181, 74, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(57, 181, 74, 0); }
+    }
+    .floating-botette {
+      max-width: 350px;
+      margin: 40px auto 0 auto;
+      animation: float 4s ease-in-out infinite;
+    }
     .floating-botette img {
-      width: 150px;
-      position: absolute;
-      right: 10%;
-      top: 40px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(57,181,74,0.6);
     }
-
     .scroll-down {
-      margin-top: 3em;
-      font-size: 2em;
+      font-size: 2rem;
+      color: #39b54a;
+      margin-top: 60px;
       cursor: pointer;
-      color: #007bff;
       animation: bounce 2s infinite;
+      transition: transform 0.3s ease;
+      user-select: none;
     }
-
+    .scroll-down:hover {
+      transform: scale(1.2);
+    }
     @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0); 
-      }
-      50% {
-        transform: translateY(-10px); 
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
     }
-
-    section#do {
-      padding: 4em 1em 2em;
-      background-color: #f2f9ff;
-    }
-
-    #do h2 {
-      text-align: center;
-      font-size: 2em;
-      margin-bottom: 1.5em;
-    }
-
-    .service-grid {
+    .hero-stats {
+      margin-top: 25px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 1.5em;
+      gap: 25px;
       justify-content: center;
+      color: #39b54a;
+      font-weight: 700;
+      font-size: 1.1rem;
+      user-select: none;
     }
-
-    .service-box {
-      background-color: white;
-      padding: 1.5em;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      max-width: 300px;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .service-box:hover {
-      transform: translateY(-5px);
-    }
-
-    .service-icon {
-      font-size: 1.6em;
-      margin-right: 0.4em;
-    }
-
-    footer {
+    section#do h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 40px;
+      color: #39b54a;
       text-align: center;
-      padding: 1.5em 1em;
-      background-color: #ffffff;
-      color: #888;
-      font-size: 0.9em;
-      border-top: 1px solid #eee;
+      letter-spacing: 1px;
     }
-
-    @media (max-width: 768px) {
-      .floating-botette img {
-        display: none;
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .service-box {
+      background: linear-gradient(145deg, #173f1e, #0f3015);
+      border: 1px solid #2b7341;
+      padding: 15px 16px;
+      border-radius: 16px;
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(57, 181, 74, 0.25);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 140px;
+      font-size: 0.9rem;
+    }
+    .service-box:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 18px 35px rgba(57, 181, 74, 0.45);
+      border-color: #39b54a;
+    }
+    .service-icon {
+      font-size: 2rem;
+      animation: floatIcon 4s ease-in-out infinite;
+      margin-right: 10px;
+      user-select: none;
+    }
+    .service-box h3 {
+      font-size: 1.4rem;
+      color: #39b54a;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+    }
+    .service-box p {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #ddd;
+      line-height: 1.5;
+      margin: 0;
+    }
+    @keyframes floatIcon {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 600px) {
+      .hero {
+        padding: 40px 20px;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .floating-botette {
+        max-width: 80%;
+      }
+      .service-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -205,20 +287,20 @@
 
 <div id="mySidebar" class="sidebar">
   <span class="closebtn" onclick="closeNav()">×</span>
-  <a href="fr-index.html">Accueil</a>
+  <a href="index.html">Accueil</a>
   <a href="about.html">Qui sommes-nous</a>
-  <a href="chatbot.html">Qu’est-ce qu’un chatbot</a>
+  <a href="chatbot.html">Qu'est-ce qu'un chatbot</a>
   <a href="contact.html">Contact</a>
 </div>
 
 <header class="hero">
   <h1>Laissez Botette travailler pendant que vous dormez</h1>
-  <p>Votre assistante IA 24h/24 et 7j/7 — capture de prospects, gestion des demandes clients, et transformation des conversations en conversions.</p>
+  <p>Votre assistante IA disponible 24/7 — pour capter des leads, gérer les demandes clients, et convertir les conversations en résultats.</p>
   <button id="triggerBotAction4" class="cta-box">Discutons avec Botette</button>
 
   <div class="hero-stats">
-    <span>⚡ Automatisation 24h/24</span>
-    <span>📈 +38% de prospects</span>
+    <span>⚡ Automatisation 24/7</span>
+    <span>📈 +38% de leads</span>
     <span>🛠️ Intégration CRM facile</span>
   </div>
 
@@ -226,31 +308,23 @@
     <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
   </div>
 
-  <div class="scroll-down" onclick="scrollToServices()">
-    ↓
-  </div>
+  <div class="scroll-down" onclick="scrollToServices()">↓</div>
 </header>
 
 <section id="do">
   <h2>Ce que je peux faire pour vous</h2>
   <div class="service-grid">
     <div class="service-box" id="triggerBotAction1">
-      <h3><span class="service-icon">🤖</span> Bot pour Opérations Clients</h3>
-      <p>
-        Un assistant virtuel intelligent qui gère les mises à jour de commandes, les réclamations, les inscriptions, et bien plus — avec intégration fluide de CRM, Excel et e-mails.
-      </p>
+      <h3><span class="service-icon">🤖</span> Bot de support client</h3>
+      <p>Un assistant virtuel intelligent qui gère les commandes, réclamations, inscriptions et plus encore — avec intégration CRM, Excel et email.</p>
     </div>
     <div class="service-box" id="triggerBotAction2">
-      <h3><span class="service-icon">📩</span> Bot de Capture de Leads</h3>
-      <p>
-        Capture des e-mails, envoi de confirmations, et automatisation du suivi — grâce à des webhooks intelligents et des workflows email personnalisés.
-      </p>
+      <h3><span class="service-icon">📩</span> Bot de capture de leads</h3>
+      <p>Collectez des emails, envoyez des confirmations, et automatisez les relances — grâce à des webhooks intelligents et des workflows personnalisés.</p>
     </div>
     <div class="service-box" id="triggerBotAction3">
-      <h3><span class="service-icon">🌐</span> Développement de Sites Web</h3>
-      <p>
-        Des sites élégants et réactifs conçus pour convertir — entièrement intégrés à vos bots et outils métier pour des performances maximales.
-      </p>
+      <h3><span class="service-icon">🌐</span> Développement de site web</h3>
+      <p>Des sites modernes, responsives et conçus pour convertir — entièrement intégrés à vos bots et outils business.</p>
     </div>
   </div>
 </section>
@@ -269,11 +343,9 @@
 
   window.addEventListener('load', () => {
     if (!window.botpress) return;
-
     window.botpress.on('webchat:ready', (conversationId) => {
-      console.log('Webchat est prêt :', conversationId);
+      console.log('Webchat prêt :', conversationId);
     });
-
     document.getElementById('triggerBotAction1')?.addEventListener('click', async () => {
       await window.botpress.sendEvent({ trigger: "action1" });
       window.botpress.open();
@@ -291,13 +363,6 @@
       window.botpress.open();
     });
   });
-
-  function scrollToServices() {
-    const section = document.getElementById("do");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  }
 </script>
 
 <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
