@@ -265,9 +265,36 @@
       .service-grid {
         grid-template-columns: 1fr;
       }
+      .scroll-down {
+  font-size: 2rem;
+  color: #39b54a;
+  margin-top: 30px;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  transition: transform 0.3s ease;
+}
+
+.scroll-down:hover {
+  transform: scale(1.2);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
     }
   </style>
 </head>
+  <script>
+  function scrollToServices() {
+    const section = document.querySelector('section#do');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>
+
 <body>
 
 <nav>
@@ -303,6 +330,10 @@
   <div class="floating-botette">
     <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
   </div>
+  <div class="scroll-down" onclick="scrollToServices()">
+  ↓
+</div>
+
 </header>
 
 
