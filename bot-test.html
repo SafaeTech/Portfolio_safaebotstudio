@@ -115,60 +115,26 @@
       100% { transform: translateY(0); }
     }
 
-    /* Hero and layout */
-
     .hero {
-      position: relative;
+      background: url('https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/main/assets/botette-hero.png') center/cover no-repeat;
       min-height: 100vh;
-      padding: 60px 20px;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      background-color: #000;
-      color: #fff;
-    }
-
-    .hero-content {
-      display: flex;
-      gap: 60px;
-      max-width: 1100px;
-      width: 100%;
-      align-items: flex-start;
-      color: white;
-    }
-
-    /* Tesla tower container with inline SVG */
-    .hero-illustration {
-      flex: 0 0 250px;
-      height: 600px;
-      display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 60px;
+      text-align: center;
     }
 
-    .hero-illustration svg {
-      width: 180px;
-      height: 400px;
-      stroke: #39b54a;
-      opacity: 0.3;
-    }
-
-    /* Text and button side */
-    .hero-text {
-      flex: 1;
-      max-width: 600px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-text h1 {
+    .hero h1 {
       font-size: 4rem;
-      margin-bottom: 0.2em;
+      margin: 0 0 10px 0;
     }
 
-    .hero-text p {
+    .hero p {
       font-size: 1.5rem;
-      margin-bottom: 1em;
+      margin: 10px 0 20px 0;
+      max-width: 600px;
     }
 
     .cta-box {
@@ -182,15 +148,13 @@
       animation: glow 3s ease-in-out infinite;
       cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
-      border: none;
     }
 
     .cta-box:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 20px rgba(57, 181, 74, 0.4);
+      box-shadow: 0 10px 20px rgba(57,181,74,0.4);
     }
 
-    /* Botette floating image */
     .floating-botette {
       max-width: 350px;
       margin: 40px auto 0 auto;
@@ -203,45 +167,43 @@
       box-shadow: 0 20px 60px rgba(57,181,74,0.6);
     }
 
-    /* "What I Can Do For You" inside hero */
-    .do-inline {
-      margin-top: 40px;
-      background: rgba(57, 181, 74, 0.15);
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 0 30px rgba(57, 181, 74, 0.3);
-      transition: box-shadow 0.5s ease;
+    section#do {
+      padding: 60px 20px;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
-    .do-inline:hover {
-      box-shadow: 0 0 60px rgba(57, 181, 74, 0.6);
+    section#do h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: white;
     }
 
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
     }
 
     .service-box {
       background: #144d1a;
-      padding: 20px 15px;
+      padding: 30px 20px;
       border-radius: 12px;
       font-size: 1.1rem;
       font-weight: 600;
       box-shadow: 0 0 15px #39b54aaa;
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
-      text-align: center;
     }
 
     .service-box:hover {
       transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(57, 181, 74, 0.4);
+      box-shadow: 0 12px 24px rgba(57,181,74,0.4);
     }
-
-    /* Other sections */
 
     footer {
       background-color: #111;
@@ -250,30 +212,16 @@
       font-size: 0.9rem;
     }
 
-    /* Responsive */
-
-    @media (max-width: 768px) {
-      .hero-content {
-        flex-direction: column;
-        gap: 30px;
-        align-items: center;
+    @media (max-width: 600px) {
+      .hero {
+        padding: 40px 20px;
       }
-      .hero-illustration {
-        height: 400px;
-      }
-      .hero-illustration svg {
-        width: 140px;
-        height: 320px;
-      }
-      .hero-text {
-        max-width: 100%;
-      }
-      .hero-text h1 {
+      .hero h1 {
         font-size: 2.8rem;
       }
-    }
-
-    @media (max-width: 600px) {
+      .floating-botette {
+        max-width: 80%;
+      }
       .service-grid {
         grid-template-columns: 1fr;
       }
@@ -302,44 +250,38 @@
 </div>
 
 <header class="hero">
-  <div class="hero-content">
-    <div class="hero-illustration">
-      <!-- Tesla tower SVG -->
-      <svg viewBox="0 0 64 128" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#39b54a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" >
-        <!-- Base -->
-        <rect x="10" y="110" width="44" height="8" fill="#2d8c39" opacity="0.4"/>
-        <!-- Tower shaft -->
-        <line x1="32" y1="10" x2="32" y2="110" />
-        <!-- Cross beams -->
-        <polyline points="15,110 32,70 49,110" />
-        <polyline points="20,80 32,50 44,80" />
-        <polyline points="24,40 32,20 40,40" />
-        <!-- Top antenna -->
-        <circle cx="32" cy="10" r="5" fill="none" stroke="#39b54a" stroke-width="2" />
-        <line x1="32" y1="5" x2="32" y2="0" />
-        <line x1="27" y1="7" x2="37" y2="7" />
-      </svg>
-    </div>
-    <div class="hero-text">
-      <h1>Meet Botette</h1>
-      <p>Your AI Assistant for Lead Capture and Customer Operations</p>
-      <button id="triggerBotAction4" class="cta-box">Let’s Chat with Botette</button>
-
-      <div class="floating-botette">
-        <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
-      </div>
-
-      <section id="do" class="do-inline">
-        <h2>What I Can Do For You</h2>
-        <div class="service-grid">
-          <div class="service-box" id="triggerBotAction1">🤖 Customer Operations Bot</div>
-          <div class="service-box" id="triggerBotAction2">📩 Lead Capture Bot</div>
-          <div class="service-box" id="triggerBotAction3">🌐 Website Development</div>
-        </div>
-      </section>
-    </div>
+  <h1>Meet Botette</h1>
+  <p>Your AI Assistant for Lead Capture and Customer Operations</p>
+  <button id="triggerBotAction4" class="cta-box">Let’s Chat with Botette</button>
+  <div class="floating-botette">
+    <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
   </div>
 </header>
+
+<section id="do">
+  <h2>What I Can Do For You</h2>
+  <div class="service-grid">
+    <div class="service-box" id="triggerBotAction1">
+      🤖 Customer Operations Bot
+      <p style="margin-top: 10px; font-weight: 400; font-size: 0.95rem; color: #ccc;">
+        Your smart assistant for customer care — handles order updates, complaints, registration, and more, with seamless CRM, Excel, and email integration.
+      </p>
+    </div>
+    <div class="service-box" id="triggerBotAction2">
+      📩 Lead Capture Bot
+      <p style="margin-top: 10px; font-weight: 400; font-size: 0.95rem; color: #ccc;">
+        Capture and convert — collect emails, send confirmations, and automate follow-ups using smart webhooks and email workflows.
+      </p>
+    </div>
+    <div class="service-box" id="triggerBotAction3">
+      🌐 Website Development
+      <p style="margin-top: 10px; font-weight: 400; font-size: 0.95rem; color: #ccc;">
+        Custom websites that convert — sleek, responsive, and built to integrate with your bots and business goals.
+      </p>
+    </div>
+  </div>
+</section>
+
 
 <footer>
   &copy; 2025 Safae Bot Studio. All rights reserved.
@@ -384,5 +326,4 @@
 
 </body>
 </html>
-
 
