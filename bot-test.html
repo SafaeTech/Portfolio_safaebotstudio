@@ -235,60 +235,54 @@
     }
 
     /* Compact and aligned service boxes */
-    .service-box {
-      background: linear-gradient(145deg, #173f1e, #0f3015);
-      border: 1px solid #2b7341;
-      padding: 20px 18px;
-      border-radius: 16px;
-      color: #fff;
-      box-shadow: 0 12px 25px rgba(57, 181, 74, 0.25);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      min-height: 180px;
-      font-size: 1rem;
-    }
+.service-box {
+  background: linear-gradient(145deg, #173f1e, #0f3015);
+  border: 1px solid #2b7341;
+  padding: 15px 16px;       /* reduced padding */
+  border-radius: 16px;
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(57, 181, 74, 0.25);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 140px;         /* smaller height */
+  font-size: 0.9rem;        /* slightly smaller font */
+}
 
-    .service-box:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(57, 181, 74, 0.45);
-      border-color: #39b54a;
-    }
+.service-box:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 35px rgba(57, 181, 74, 0.45);
+  border-color: #39b54a;
+}
 
-    /* Align emoji + title horizontally */
-    .service-icon {
-      font-size: 2.4rem;
-      animation: floatIcon 4s ease-in-out infinite;
-      margin-right: 10px;
-      user-select: none;
-    }
+.service-icon {
+  font-size: 2rem;           /* smaller emoji */
+  animation: floatIcon 4s ease-in-out infinite;
+  margin-right: 10px;
+  user-select: none;
+}
 
-    .service-box h3 {
-      display: flex;
-      align-items: center;
-      font-size: 1.3rem;
-      color: #39b54a;
-      font-weight: 700;
-      margin: 0;
-    }
+.service-box h3 {
+  display: flex;
+  align-items: center;
+  font-size: 1.15rem;        /* smaller heading */
+  color: #39b54a;
+  font-weight: 700;
+  margin: 0;
+}
 
-    .service-box h3 span {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+.service-box p {
+  font-size: 0.85rem;        /* smaller paragraph */
+  font-weight: 400;
+  color: #ddd;
+  line-height: 1.4;
+  margin-top: auto;
+}
 
-    .service-box p {
-      font-size: 0.95rem;
-      font-weight: 400;
-      color: #ddd;
-      line-height: 1.5;
-      margin-top: auto;
-    }
 
     @keyframes floatIcon {
       0%, 100% { transform: translateY(0); }
