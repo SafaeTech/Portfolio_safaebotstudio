@@ -123,7 +123,7 @@
       padding: 60px 20px;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       background-color: #000;
       color: #fff;
     }
@@ -133,20 +133,24 @@
       gap: 60px;
       max-width: 1100px;
       width: 100%;
-      align-items: center;
+      align-items: flex-start;
       color: white;
     }
 
-    /* Tesla tower container with SVG background */
+    /* Tesla tower container with inline SVG */
     .hero-illustration {
-      flex: 0 0 300px;
+      flex: 0 0 250px;
       height: 600px;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 128' fill='none' stroke='%2339b54a' stroke-width='2'><line x1='32' y1='0' x2='32' y2='128' /><polyline points='0,96 32,64 64,96' /><polyline points='16,48 32,32 48,48' /><polyline points='24,16 32,0 40,16' /></svg>");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      opacity: 0.15;
-      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-illustration svg {
+      width: 180px;
+      height: 400px;
+      stroke: #39b54a;
+      opacity: 0.3;
     }
 
     /* Text and button side */
@@ -184,6 +188,19 @@
     .cta-box:hover {
       transform: translateY(-4px);
       box-shadow: 0 10px 20px rgba(57, 181, 74, 0.4);
+    }
+
+    /* Botette floating image */
+    .floating-botette {
+      max-width: 350px;
+      margin: 40px auto 0 auto;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .floating-botette img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(57,181,74,0.6);
     }
 
     /* "What I Can Do For You" inside hero */
@@ -239,10 +256,14 @@
       .hero-content {
         flex-direction: column;
         gap: 30px;
+        align-items: center;
       }
       .hero-illustration {
         height: 400px;
-        width: 100%;
+      }
+      .hero-illustration svg {
+        width: 140px;
+        height: 320px;
       }
       .hero-text {
         max-width: 100%;
@@ -282,11 +303,31 @@
 
 <header class="hero">
   <div class="hero-content">
-    <div class="hero-illustration"></div>
+    <div class="hero-illustration">
+      <!-- Tesla tower SVG -->
+      <svg viewBox="0 0 64 128" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#39b54a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" >
+        <!-- Base -->
+        <rect x="10" y="110" width="44" height="8" fill="#2d8c39" opacity="0.4"/>
+        <!-- Tower shaft -->
+        <line x1="32" y1="10" x2="32" y2="110" />
+        <!-- Cross beams -->
+        <polyline points="15,110 32,70 49,110" />
+        <polyline points="20,80 32,50 44,80" />
+        <polyline points="24,40 32,20 40,40" />
+        <!-- Top antenna -->
+        <circle cx="32" cy="10" r="5" fill="none" stroke="#39b54a" stroke-width="2" />
+        <line x1="32" y1="5" x2="32" y2="0" />
+        <line x1="27" y1="7" x2="37" y2="7" />
+      </svg>
+    </div>
     <div class="hero-text">
       <h1>Meet Botette</h1>
       <p>Your AI Assistant for Lead Capture and Customer Operations</p>
       <button id="triggerBotAction4" class="cta-box">Let’s Chat with Botette</button>
+
+      <div class="floating-botette">
+        <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
+      </div>
 
       <section id="do" class="do-inline">
         <h2>What I Can Do For You</h2>
