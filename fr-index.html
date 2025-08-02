@@ -1,309 +1,191 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Studio Bot Safae</title>
+  <title>Safae Bot Studio</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #000;
-      color: #fff;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #ffffff, #e6f2ff);
+      color: #333;
+    }
+
+    nav {
+      background-color: #fff;
+      padding: 0.8em 1.2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       position: relative;
+    }
+
+    .nav-logo {
+      height: 40px;
+    }
+
+    .language-switcher {
+      font-size: 0.9em;
+    }
+
+    .language-switcher a {
+      text-decoration: none;
+      color: #007bff;
+      margin-left: 8px;
+    }
+
+    .menu-icon {
+      font-size: 1.4em;
+      cursor: pointer;
     }
 
     .sidebar {
       height: 100%;
       width: 0;
       position: fixed;
-      z-index: 1001;
+      z-index: 10;
       top: 0;
       left: 0;
-      background-color: #111;
+      background-color: #f9f9f9;
       overflow-x: hidden;
       transition: 0.3s;
       padding-top: 60px;
     }
 
     .sidebar a {
-      padding: 10px 25px;
+      padding: 10px 20px;
       text-decoration: none;
-      font-size: 1.2rem;
-      color: #fff;
+      font-size: 18px;
       display: block;
+      color: #333;
       transition: 0.3s;
-      font-weight: 600;
     }
 
     .sidebar a:hover {
-      color: #39b54a;
+      background-color: #ddd;
     }
 
     .closebtn {
       position: absolute;
       top: 10px;
       right: 20px;
-      font-size: 2rem;
-      margin-left: 50px;
-      color: white;
+      font-size: 24px;
       cursor: pointer;
-    }
-
-    .nav-logo {
-      height: 80px;
-      margin-left: 10px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px #39b54a88;
-    }
-    .language-switcher {
-  margin-left: auto;
-  font-weight: 600;
-  font-size: 1rem;
-  user-select: none;
-}
-
-.language-switcher a {
-  color: #39b54a;
-  text-decoration: none;
-  padding: 0 8px;
-  transition: color 0.3s ease;
-}
-
-.language-switcher a:hover,
-.language-switcher a:focus {
-  color: #2d8c39;
-  outline: none;
-}
-
-
-    nav {
-      position: sticky;
-      top: 0;
-      background: #000;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
-      z-index: 1000;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .menu-icon {
-      font-size: 1.8rem;
-      color: #fff;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    nav .logo {
-      font-weight: bold;
-      font-size: 1.3rem;
-      color: #39b54a;
-      user-select: none;
-    }
-
-    .language-switcher {
-      margin-left: auto;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    nav a.nav-link {
-      display: none;
-    }
-
-    @keyframes glow {
-      0% { box-shadow: 0 0 10px #30a46c88; }
-      50% { box-shadow: 0 0 20px #30a46c; }
-      100% { box-shadow: 0 0 10px #30a46c88; }
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0); }
     }
 
     .hero {
-      background: url('https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/main/assets/botette-hero.png') center/cover no-repeat;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 60px;
-      position: relative;
       text-align: center;
+      padding: 4em 1em 2em;
+      position: relative;
     }
 
     .hero h1 {
-      font-size: 4rem;
-      margin: 0 0 10px 0;
+      font-size: 2.5em;
+      margin-bottom: 0.4em;
     }
 
     .hero p {
-      font-size: 1.5rem;
-      margin: 10px 0 20px 0;
+      font-size: 1.2em;
+      margin-bottom: 1.2em;
       max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .cta-box {
-      padding: 12px 24px;
-      font-size: 1rem;
-      color: #000;
-      background: #30a46c;
-      border-radius: 8px;
-      text-decoration: none;
-      align-self: center;
-      user-select: none;
-      pointer-events: none;
-      margin-bottom: 30px;
-      font-weight: 700;
-      animation: glow 3s ease-in-out infinite;
-    }
-
-    .floating-botette {
-      position: relative;
-      max-width: 350px;
-      margin: 0 auto;
-      z-index: 2;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .floating-botette img {
-      width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(57,181,74,0.6);
-    }
-
-    section#do {
-      padding: 20px;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto 60px auto;
-      font-size: 1.3rem;
-    }
-
-    section#do h2 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      letter-spacing: 2px;
-      font-weight: 700;
+      background-color: #007bff;
       color: white;
-    }
-
-    section#do ul {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      font-weight: 600;
-    }
-
-    section#do ul li {
-      background: #144d1a;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #39b54aaa;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    section#contact {
-      padding: 60px 20px;
-      max-width: 600px;
-      margin: 0 auto 60px auto;
-      background: #111;
-      border-radius: 15px;
-      box-shadow: 0 0 30px #39b54a88;
-    }
-
-    section#contact h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      background: linear-gradient(90deg, #39b54a, #2d8c39);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      font-size: 1.2rem;
-    }
-
-    label {
-      display: flex;
-      flex-direction: column;
-      font-weight: 600;
-      color: #ddd;
-    }
-
-    input[type="email"],
-    textarea {
-      margin-top: 8px;
-      padding: 10px;
+      padding: 0.9em 1.4em;
+      border: none;
       border-radius: 8px;
-      border: none;
-      font-size: 1rem;
-    }
-
-    input[type="email"]:focus,
-    textarea:focus {
-      outline: 2px solid #39b54a;
-      background-color: #1a3a15;
-      color: #fff;
-    }
-
-    button[type="submit"] {
-      padding: 14px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: white;
-      background: #39b54a;
-      border: none;
-      border-radius: 10px;
+      font-size: 1em;
       cursor: pointer;
     }
 
-    button[type="submit"]:hover {
-      background-color: #2d8c39;
+    .hero-stats {
+      margin-top: 2em;
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      font-weight: bold;
+      flex-wrap: wrap;
+    }
+
+    .floating-botette img {
+      width: 150px;
+      position: absolute;
+      right: 10%;
+      top: 40px;
+    }
+
+    .scroll-down {
+      margin-top: 3em;
+      font-size: 2em;
+      cursor: pointer;
+      color: #007bff;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0); 
+      }
+      50% {
+        transform: translateY(-10px); 
+      }
+    }
+
+    section#do {
+      padding: 4em 1em 2em;
+      background-color: #f2f9ff;
+    }
+
+    #do h2 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 1.5em;
+    }
+
+    .service-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5em;
+      justify-content: center;
+    }
+
+    .service-box {
+      background-color: white;
+      padding: 1.5em;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      max-width: 300px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .service-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-icon {
+      font-size: 1.6em;
+      margin-right: 0.4em;
     }
 
     footer {
-      background-color: #111;
       text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
+      padding: 1.5em 1em;
+      background-color: #ffffff;
+      color: #888;
+      font-size: 0.9em;
+      border-top: 1px solid #eee;
     }
 
-    @media (max-width: 600px) {
-      .hero {
-        padding: 40px 20px;
-      }
-      .hero h1 {
-        font-size: 2.8rem;
-      }
-      .floating-botette {
-        max-width: 80%;
-        margin: 40px auto 0 auto;
-      }
-      section#do ul {
-        grid-template-columns: 1fr;
-      }
-      section#contact {
-        margin: 0 20px 40px 20px;
+    @media (max-width: 768px) {
+      .floating-botette img {
+        display: none;
       }
     }
   </style>
@@ -312,45 +194,69 @@
 
 <nav>
   <span class="menu-icon" onclick="openNav()">☰</span>
-  <img src="logo.png" alt="Logo de Studio Bot Safae" class="nav-logo" />
-    <div class="language-switcher">
-      <a href="index.html">EN</a> |
-      <a href="fr-index.html">FR</a> |
-      <a href="tr-index.html">TR</a> |
-      <a href="ar-index.html">AR</a>
-      
+  <img src="logo.png" alt="Logo Safae Bot Studio" class="nav-logo" />
+  <div class="language-switcher">
+    <a href="index.html">EN</a> |
+    <a href="fr-index.html">FR</a> |
+    <a href="tr-index.html">TR</a> |
+    <a href="ar-index.html">AR</a>
   </div>
 </nav>
 
 <div id="mySidebar" class="sidebar">
   <span class="closebtn" onclick="closeNav()">×</span>
   <a href="fr-index.html">Accueil</a>
-  <a href="fr-about.html">Qui sommes-nous</a>
-  <a href="fr-chatbot.html">Qu'est-ce qu'un chatbot</a>
-  <a href="fr-contact.html">Contact</a>
+  <a href="about.html">Qui sommes-nous</a>
+  <a href="chatbot.html">Qu’est-ce qu’un chatbot</a>
+  <a href="contact.html">Contact</a>
 </div>
 
 <header class="hero">
-  <h1>Voici Botette</h1>
-  <p>Votre assistante IA pour la génération de prospects et l’optimisation des opérations client</p>
-  <div class="cta-box">Dites Bonjour ci-dessous — Je suis toute ouïe !</div>
+  <h1>Laissez Botette travailler pendant que vous dormez</h1>
+  <p>Votre assistante IA 24h/24 et 7j/7 — capture de prospects, gestion des demandes clients, et transformation des conversations en conversions.</p>
+  <button id="triggerBotAction4" class="cta-box">Discutons avec Botette</button>
+
+  <div class="hero-stats">
+    <span>⚡ Automatisation 24h/24</span>
+    <span>📈 +38% de prospects</span>
+    <span>🛠️ Intégration CRM facile</span>
+  </div>
+
   <div class="floating-botette">
     <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
+  </div>
+
+  <div class="scroll-down" onclick="scrollToServices()">
+    ↓
   </div>
 </header>
 
 <section id="do">
   <h2>Ce que je peux faire pour vous</h2>
-  <ul>
-    <li>🤖 Créer des chatbots IA personnalisés pour les opérations client</li>
-    <li>📩 Générer des prospects qualifiés et transformer vos visiteurs en clients </li>
-    <li>🌐 Développer des sites web pour les entreprises sans présence en ligne</li>
-    <li>📊 Automatiser les emails et intégrer avec votre CRM</li>
-  </ul>
+  <div class="service-grid">
+    <div class="service-box" id="triggerBotAction1">
+      <h3><span class="service-icon">🤖</span> Bot pour Opérations Clients</h3>
+      <p>
+        Un assistant virtuel intelligent qui gère les mises à jour de commandes, les réclamations, les inscriptions, et bien plus — avec intégration fluide de CRM, Excel et e-mails.
+      </p>
+    </div>
+    <div class="service-box" id="triggerBotAction2">
+      <h3><span class="service-icon">📩</span> Bot de Capture de Leads</h3>
+      <p>
+        Capture des e-mails, envoi de confirmations, et automatisation du suivi — grâce à des webhooks intelligents et des workflows email personnalisés.
+      </p>
+    </div>
+    <div class="service-box" id="triggerBotAction3">
+      <h3><span class="service-icon">🌐</span> Développement de Sites Web</h3>
+      <p>
+        Des sites élégants et réactifs conçus pour convertir — entièrement intégrés à vos bots et outils métier pour des performances maximales.
+      </p>
+    </div>
+  </div>
 </section>
 
 <footer>
-  &copy; 2025 Studio Bot Safae. Tous droits réservés.
+  &copy; 2025 Safae Bot Studio. Tous droits réservés.
 </footer>
 
 <script>
@@ -360,13 +266,42 @@
   function closeNav() {
     document.getElementById("mySidebar").style.width = "0";
   }
+
+  window.addEventListener('load', () => {
+    if (!window.botpress) return;
+
+    window.botpress.on('webchat:ready', (conversationId) => {
+      console.log('Webchat est prêt :', conversationId);
+    });
+
+    document.getElementById('triggerBotAction1')?.addEventListener('click', async () => {
+      await window.botpress.sendEvent({ trigger: "action1" });
+      window.botpress.open();
+    });
+    document.getElementById('triggerBotAction2')?.addEventListener('click', async () => {
+      await window.botpress.sendEvent({ trigger: "action2" });
+      window.botpress.open();
+    });
+    document.getElementById('triggerBotAction3')?.addEventListener('click', async () => {
+      await window.botpress.sendEvent({ trigger: "action3" });
+      window.botpress.open();
+    });
+    document.getElementById('triggerBotAction4')?.addEventListener('click', async () => {
+      await window.botpress.sendEvent({ trigger: "action4" });
+      window.botpress.open();
+    });
+  });
+
+  function scrollToServices() {
+    const section = document.getElementById("do");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  }
 </script>
 
-<!-- ✅ Script du chatbot Botpress -->
 <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
+<script src="https://files.bpcontent.cloud/2025/07/29/16/20250729165913-7ZQF1DIO.js" defer></script>
 
 </body>
 </html>
-
-
