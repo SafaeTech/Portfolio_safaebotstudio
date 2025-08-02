@@ -182,28 +182,56 @@
       color: white;
     }
 
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
 
-    .service-box {
-      background: #144d1a;
-      padding: 30px 20px;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      box-shadow: 0 0 15px #39b54aaa;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
+.service-box {
+  background: linear-gradient(145deg, #173f1e, #0f3015);
+  border: 1px solid #2b7341;
+  padding: 30px 20px;
+  border-radius: 18px;
+  color: #fff;
+  box-shadow: 0 12px 25px rgba(57, 181, 74, 0.25);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
 
-    .service-box:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(57,181,74,0.4);
-    }
+.service-box:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(57, 181, 74, 0.45);
+  border-color: #39b54a;
+}
+
+.service-box h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  color: #39b54a;
+}
+
+.service-box p {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #ddd;
+  line-height: 1.5;
+}
+
+.service-icon {
+  font-size: 2.4rem;
+  animation: floatIcon 4s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
 
     footer {
       background-color: #111;
@@ -262,25 +290,29 @@
   <h2>What I Can Do For You</h2>
   <div class="service-grid">
     <div class="service-box" id="triggerBotAction1">
-      🤖 Customer Operations Bot
-      <p style="margin-top: 10px; font-weight: 400; font-size: 0.95rem; color: #ccc;">
-        Your smart assistant for customer care — handles order updates, complaints, registration, and more, with seamless CRM, Excel, and email integration.
+      <div class="service-icon">🤖</div>
+      <h3>Customer Operations Bot</h3>
+      <p>
+        A smart virtual assistant that handles order updates, complaints, registration, and more — powered by seamless CRM, Excel, and email integration.
       </p>
     </div>
     <div class="service-box" id="triggerBotAction2">
-      📩 Lead Capture Bot
-      <p style="margin-top: 10px; font-weight: 400; font-size: 0.95rem; color: #ccc;">
-        Capture and convert — collect emails, send confirmations, and automate follow-ups using smart webhooks and email workflows.
+      <div class="service-icon">📩</div>
+      <h3>Lead Capture Bot</h3>
+      <p>
+        Capture emails, send confirmations, and automate follow-ups — all via intelligent webhooks and personalized email workflows.
       </p>
     </div>
     <div class="service-box" id="triggerBotAction3">
-      🌐 Website Development
-      <p style="margin-top: 10px; font-weight: 400; font-size: 0.95rem; color: #ccc;">
-        Custom websites that convert — sleek, responsive, and built to integrate with your bots and business goals.
+      <div class="service-icon">🌐</div>
+      <h3>Website Development</h3>
+      <p>
+        Sleek, responsive websites designed to convert — fully integrated with your bots and business tools for maximum performance.
       </p>
     </div>
   </div>
 </section>
+
 
 
 <footer>
