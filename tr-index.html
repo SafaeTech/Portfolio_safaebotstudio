@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -45,7 +45,6 @@
       top: 10px;
       right: 20px;
       font-size: 2rem;
-      margin-left: 50px;
       color: white;
       cursor: pointer;
     }
@@ -86,12 +85,11 @@
 
     .language-switcher {
       margin-left: auto;
-      font-weight: 600;
-      font-size: 1rem;
-      user-select: none;
       display: flex;
       gap: 10px;
       align-items: center;
+      font-weight: 600;
+      font-size: 1rem;
     }
 
     .language-switcher a {
@@ -101,14 +99,8 @@
       transition: color 0.3s ease;
     }
 
-    .language-switcher a:hover,
-    .language-switcher a:focus {
+    .language-switcher a:hover {
       color: #2d8c39;
-      outline: none;
-    }
-
-    nav a.nav-link {
-      display: none;
     }
 
     @keyframes glow {
@@ -124,48 +116,68 @@
     }
 
     .hero {
-      background: url('https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/main/assets/botette-hero.png') center/cover no-repeat;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                  url('https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/main/assets/botette-hero.png') center/cover no-repeat;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 60px;
-      position: relative;
+      padding: 60px 20px;
       text-align: center;
+      position: relative;
     }
 
     .hero h1 {
-      font-size: 4rem;
+      font-size: 3.5rem;
       margin: 0 0 10px 0;
+      background: linear-gradient(90deg, #39b54a, #2bff95);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowText 3s ease-in-out infinite;
     }
 
     .hero p {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       margin: 10px 0 20px 0;
       max-width: 600px;
+      color: #ddd;
     }
 
     .cta-box {
-      padding: 12px 24px;
+      padding: 14px 28px;
       font-size: 1rem;
+      background: linear-gradient(to right, #39b54a, #2bff95);
       color: #000;
-      background: #30a46c;
-      border-radius: 8px;
-      text-decoration: none;
-      align-self: center;
-      user-select: none;
-      pointer-events: none;
-      margin-bottom: 30px;
+      border: none;
+      border-radius: 50px;
       font-weight: 700;
-      animation: glow 3s ease-in-out infinite;
+      cursor: pointer;
+      animation: pulse 2.5s infinite;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .cta-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(57, 181, 74, 0.5);
+    }
+
+    @keyframes glowText {
+      0% { filter: drop-shadow(0 0 5px #39b54a); }
+      50% { filter: drop-shadow(0 0 15px #39b54a); }
+      100% { filter: drop-shadow(0 0 5px #39b54a); }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(57, 181, 74, 0.5); }
+      70% { box-shadow: 0 0 0 15px rgba(57, 181, 74, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(57, 181, 74, 0); }
     }
 
     .floating-botette {
-      position: relative;
       max-width: 350px;
-      margin: 0 auto;
-      z-index: 2;
+      margin: 40px auto 0 auto;
       animation: float 4s ease-in-out infinite;
     }
 
@@ -175,41 +187,122 @@
       box-shadow: 0 20px 60px rgba(57,181,74,0.6);
     }
 
-    section#do {
-      padding: 20px;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto 60px auto;
-      font-size: 1.3rem;
+    .scroll-down {
+      font-size: 2rem;
+      color: #39b54a;
+      margin-top: 60px;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+      transition: transform 0.3s ease;
+      user-select: none;
     }
 
-    section#do h2 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      letter-spacing: 2px;
-      font-weight: 700;
-      color: white;
+    .scroll-down:hover {
+      transform: scale(1.2);
     }
 
-    section#do ul {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      font-weight: 600;
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
     }
 
-    section#do ul li {
-      background: #144d1a;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #39b54aaa;
+    .hero-stats {
+      margin-top: 25px;
       display: flex;
-      align-items: center;
+      gap: 25px;
       justify-content: center;
-      font-size: 1.2rem;
-      animation: float 6s ease-in-out infinite;
+      color: #39b54a;
+      font-weight: 700;
+      font-size: 1.1rem;
+      user-select: none;
+    }
+
+    /* Section title improved */
+section#do h2 {
+  font-size: 3rem;       /* bigger */
+  font-weight: 800;
+  margin-bottom: 60px;
+  color: #39b54a;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+#industry-leaders-title {
+  font-size: 2.2rem;     /* smaller */
+  font-weight: 800;
+  color: #39b54a;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 0 40px; /* Add horizontal space on sides */
+  margin-top: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+    /* Compact and aligned service boxes */
+.service-box {
+  background: linear-gradient(145deg, #173f1e, #0f3015);
+  border: 1px solid #2b7341;
+  padding: 12px 16px;
+  border-radius: 14px;
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(57, 181, 74, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 120px;
+  font-size: 0.88rem;
+}
+
+
+.service-box:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 35px rgba(57, 181, 74, 0.45);
+  border-color: #39b54a;
+}
+
+.service-icon {
+  font-size: 2rem;           /* smaller emoji */
+  animation: floatIcon 4s ease-in-out infinite;
+  margin-right: 10px;
+  user-select: none;
+}
+
+.service-box h3 {
+  font-size: 1.4rem;     /* bigger heading */
+  color: #39b54a;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.service-box p {
+  font-size: 1.1rem;     /* bigger paragraph text */
+  font-weight: 400;
+  color: #ddd;
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+
+    @keyframes floatIcon {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
     }
 
     footer {
@@ -228,67 +321,237 @@
       }
       .floating-botette {
         max-width: 80%;
-        margin: 40px auto 0 auto;
       }
-      section#do ul {
+      .service-grid {
         grid-template-columns: 1fr;
       }
+      hr {
+  border: none;
+  height: 0;
+  margin: 0;
+}
+
+section#do {
+  border-bottom: none;
+  box-shadow: none;
+}
+
     }
   </style>
 </head>
+  
 <body>
-  <nav>
-    <span class="menu-icon" onclick="openNav()">☰</span>
-    <img src="logo.png" alt="Safae Bot Studio Logo" class="nav-logo" />
-    <div class="language-switcher">
-      <a href="index.html">EN</a> |
-      <a href="fr-index.html">FR</a> |
-      <a href="tr-index.html">TR</a> |
-      <a href="ar-index.html">AR</a>
-    </div>
-  </nav>
 
-  <div id="mySidebar" class="sidebar">
-    <span class="closebtn" onclick="closeNav()">×</span>
-    <a href="tr-index.html">Anasayfa</a>
-    <a href="tr-about.html">Hakkımızda</a>
-    <a href="tr-chatbot.html">Chatbot Nedir</a>
-    <a href="tr-contact.html">İletişim</a>
+<nav>
+  <span class="menu-icon" onclick="openNav()">☰</span>
+  <img src="logo.png" alt="Safae Bot Studio Logo" class="nav-logo" />
+  <div class="language-switcher">
+    <a href="index.html">EN</a> |
+    <a href="fr-index.html">FR</a> |
+    <a href="tr-index.html">TR</a> |
+    <a href="ar-index.html">AR</a>
+  </div>
+</nav>
+
+<div id="mySidebar" class="sidebar">
+  <span class="closebtn" onclick="closeNav()">×</span>
+  <a href="index.html">Ana Sayfa</a>
+  <a href="about.html">Biz Kimiz</a>
+  <a href="chatbot.html">Chatbot Nedir</a>
+  <a href="contact.html">İletişim</a>
+</div>
+
+<header class="hero">
+  <h1>Botette Uyumaya Devam Ederken Çalışsın</h1>
+  <p>7/24 AI asistanınız — potansiyel müşterileri yakalar, müşteri taleplerini yönetir ve konuşmaları dönüşümlere çevirir.</p>
+  <button id="triggerBotAction4" class="cta-box">Botette ile Sohbete Başla</button>
+
+  <div class="hero-stats">
+    <span>⚡ 7/24 Otomasyon</span>
+    <span>📈 Potansiyel Müşteri Dönüşümünüzü Artırın</span>
+    <span>🛠️ Kolay CRM Entegrasyonu</span>
+  </div>
+</header>
+
+
+  <div class="floating-botette">
+    <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
   </div>
 
-  <header class="hero">
-    <h1>Botette ile Tanışın</h1>
-    <p>Potansiyel Müşteri Yakalama ve Müşteri Operasyonları için Yapay Zeka Asistanınız</p>
-    <div class="cta-box">Aşağıdan Merhaba Deyin — Dinliyorum!</div>
-    <div class="floating-botette">
-      <img src="https://raw.githubusercontent.com/SafaeTech/Portfolio_safaebotstudio/d8e1026fe354470540c5939368a43fe283d6c749/Botette.png" alt="Botette" />
+  <div class="scroll-down" onclick="scrollToServices()">
+    ↓
+  </div>
+</header>
+
+<section id="do">
+  <h2>Sizin İçin Neler Yapabilirim</h2>
+  <div class="service-grid">
+    <div class="service-box" id="triggerBotAction1">
+      <h3><span class="service-icon">🤖</span> Müşteri Operasyonları Botu</h3>
+      <p>
+        Sipariş güncellemeleri, şikayetler, kayıtlar ve daha fazlasını yöneten akıllı bir sanal asistan — kesintisiz CRM, Excel ve e-posta entegrasyonu ile desteklenmektedir.
+      </p>
     </div>
-  </header>
+    <div class="service-box" id="triggerBotAction2">
+      <h3><span class="service-icon">📩</span> Potansiyel Müşteri Yakalama Botu</h3>
+      <p>
+        E-postaları yakalayın, onay gönderin ve takipleri otomatikleştirin — hepsi akıllı webhook'lar ve kişiselleştirilmiş e-posta iş akışları ile.
+      </p>
+    </div>
+    <div class="service-box" id="triggerBotAction3">
+      <h3><span class="service-icon">🌐</span> Web Sitesi Geliştirme</h3>
+      <p>
+        Dönüşüm sağlamak için tasarlanmış şık ve duyarlı web siteleri — botlarınız ve iş araçlarınızla tam entegrasyonla maksimum performans.
+      </p>
+    </div>
+  </div>
+</section>
 
-  <section id="do">
-    <h2>Sizin İçin Neler Yapabilirim</h2>
-    <ul>
-      <li>🤖 Müşteri Operasyonları için Özelleştirilmiş Yapay Zeka Chatbotları Oluşturun</li>
-      <li>📩 Ziyaretçileri Etkileyen ve Dönüştüren Potansiyel Müşteri Botları</li>
-      <li>🌐 Web Sitesi Olmayan İşletmeler İçin Web Geliştirme</li>
-      <li>📊 E-posta Otomasyonu ve CRM Entegrasyonları</li>
-    </ul>
-  </section>
 
-  <footer>
-    &copy; 2025 Safae Bot Studio. Tüm hakları saklıdır.
-  </footer>
+<!-- 💬 Referanslar Bölümü -->
+<section style="background-color: #0a0a0a; color: #e0e0e0; padding: 40px 20px; text-align: center;">
+  <h2 id="industry-leaders-title">Sektör Liderlerinin Söyledikleri</h2>
 
-  <script>
-    function openNav() {
-      document.getElementById("mySidebar").style.width = "250px";
-    }
-    function closeNav() {
-      document.getElementById("mySidebar").style.width = "0";
-    }
-  </script>
+  <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
 
-  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-  <script src="https://files.bpcontent.cloud/2025/07/16/10/20250716101517-QQD7G6YD.js" defer></script>
+    <div style="background-color: #111; padding: 20px 30px; border-left: 4px solid #00ff7f; border-radius: 12px; box-shadow: 0 0 10px rgba(0,255,127,0.2);">
+      <p style="font-size: 18px; line-height: 1.6; font-style: italic;">
+        “Yapay zekanın geleceği insanları değiştirmek değil, insan yeteneklerini artırmaktır.”
+      </p>
+      <p style="font-size: 16px; margin-top: 10px; color: #aaa;">– Sundar Pichai, Google CEO’su</p>
+    </div>
+
+    <div style="background-color: #111; padding: 20px 30px; border-left: 4px solid #00ff7f; border-radius: 12px; box-shadow: 0 0 10px rgba(0,255,127,0.2);">
+      <p style="font-size: 18px; line-height: 1.6; font-style: italic;">
+        “Yapay zeka ve insanlar, gelişen iş gücünde hayati rollere sahiptir.”
+      </p>
+      <p style="font-size: 16px; margin-top: 10px; color: #aaa;">– Marc Benioff, Salesforce CEO’su <span style="font-size: 14px;">(parafraz)</span></p>
+    </div>
+
+    <div style="background-color: #111; padding: 20px 30px; border-left: 4px solid #00ff7f; border-radius: 12px; box-shadow: 0 0 10px rgba(0,255,127,0.2);">
+      <p style="font-size: 18px; line-height: 1.6; font-style: italic;">
+        “Yapay zeka, basit müşteri hizmetleri görevlerini üstlenerek verimliliği artırabilir ve insanların daha karmaşık zorluklara odaklanmasını sağlar.”
+      </p>
+      <p style="font-size: 16px; margin-top: 10px; color: #aaa;">– Glenn Fogel, Booking Holdings CEO’su <span style="font-size: 14px;">(parafraz)</span></p>
+    </div>
+
+  </div>
+</section>
+
+  
+<footer>
+  &copy; 2025 Safae Bot Studio. Tüm hakları saklıdır.
+</footer>
+
+
+<script>
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+  }
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+  }
+
+  window.addEventListener('load', () => {
+    if (!window.botpress) return;
+
+    window.botpress.on('webchat:ready', (conversationId) => {
+      console.log('Webchat is ready:', conversationId);
+    });
+
+    document.getElementById('triggerBotAction1')?.addEventListener('click', async () => {
+      await window.botpress.sendEvent({ trigger: "action1" });
+      window.botpress.open();
+    });
+    document.getElementById('triggerBotAction2')?.addEventListener('click', async () => {
+      await window.botpress.sendEvent({ trigger: "action2" });
+      window.botpress.open();
+    });
+    document.getElementById('triggerBotAction3')?.addEventListener('click', async () => {
+      await window.botpress.sendEvent({ trigger: "action3" });
+      window.botpress.open();
+    });
+    document.getElementById('triggerBotAction4')?.addEventListener('click', async () => {
+      await window.botpress.sendEvent({ trigger: "action4" });
+      window.botpress.open();
+    });
+  });
+</script>
+
+
+<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2025/07/29/16/20250729165913-7ZQF1DIO.js" defer></script>
+<!-- 🌟 Animated Top-Center Floating Special Offer Box -->
+<style>
+  #special-offer-popup {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    background: #111;
+    color: #fff;
+    border: 2px solid #00ff7f;
+    padding: 12px 18px;
+    border-radius: 16px;
+    font-size: 15px;
+    box-shadow: 0 0 10px rgba(0, 255, 127, 0.5);
+    z-index: 9999;
+    max-width: 90%;
+    text-align: center;
+
+    /* Initially hidden */
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  #special-offer-popup.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(20px);
+  }
+
+  #special-offer-popup > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #special-offer-popup span.close-btn {
+    margin-left: 15px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    user-select: none;
+  }
+</style>
+
+<div id="special-offer-popup">
+  <div>
+    <div style="flex: 1; text-align: center;">
+      🎁 <strong>Özel teklifler mevcut!</strong> <strong>Botette</strong> ile konuşun ve <em>Özel Teklifler & Fiyat Teklifleri</em> bölümüne e-posta adresinizi bırakın, ilk siz haberdar olun.
+    </div>
+    <span class="close-btn" onclick="closePopup()">❌</span>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('load', function () {
+    setTimeout(() => {
+      document.getElementById('special-offer-popup').classList.add('show');
+    }, 2000);
+  });
+
+  function closePopup() {
+    const popup = document.getElementById('special-offer-popup');
+    popup.classList.remove('show');
+    // Optionally, hide it completely after animation
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 500);
+  }
+</script>
+
+
+
+
 </body>
 </html>
