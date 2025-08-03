@@ -227,21 +227,26 @@
       letter-spacing: 1px;
     }
 
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 0 40px; /* Add horizontal space on sides */
+  margin-top: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
     /* Compact and aligned service boxes */
 .service-box {
   background: linear-gradient(145deg, #173f1e, #0f3015);
   border: 1px solid #2b7341;
-  padding: 15px 16px;       /* reduced padding */
-  border-radius: 16px;
+  padding: 12px 16px;
+  border-radius: 14px;
   color: #fff;
-  box-shadow: 0 10px 20px rgba(57, 181, 74, 0.25);
+  box-shadow: 0 6px 12px rgba(57, 181, 74, 0.2);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -249,9 +254,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 140px;         /* smaller height */
-  font-size: 0.9rem;        /* slightly smaller font */
+  min-height: 120px;
+  font-size: 0.88rem;
 }
+
 
 .service-box:hover {
   transform: translateY(-6px) scale(1.02);
