@@ -417,45 +417,76 @@
 
 <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
 <script src="https://files.bpcontent.cloud/2025/07/29/16/20250729165913-7ZQF1DIO.js" defer></script>
-<!-- 🌟 Top-Center Floating Special Offer Box -->
-<div id="special-offer-popup" style="
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #111;
-  color: #fff;
-  border: 2px solid #00ff7f;
-  padding: 12px 18px;
-  border-radius: 16px;
-  font-size: 15px;
-  box-shadow: 0 0 10px rgba(0,255,127,0.5);
-  z-index: 9999;
-  display: none;
-  max-width: 90%;
-  text-align: center;
-">
-  <div style="display: flex; justify-content: space-between; align-items: center;">
+<!-- 🌟 Animated Top-Center Floating Special Offer Box -->
+<style>
+  #special-offer-popup {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    background: #111;
+    color: #fff;
+    border: 2px solid #00ff7f;
+    padding: 12px 18px;
+    border-radius: 16px;
+    font-size: 15px;
+    box-shadow: 0 0 10px rgba(0, 255, 127, 0.5);
+    z-index: 9999;
+    max-width: 90%;
+    text-align: center;
+
+    /* Initially hidden */
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  #special-offer-popup.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(20px);
+  }
+
+  #special-offer-popup > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #special-offer-popup span.close-btn {
+    margin-left: 15px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    user-select: none;
+  }
+</style>
+
+<div id="special-offer-popup">
+  <div>
     <div style="flex: 1; text-align: center;">
       🎁 <strong>Special offers available!</strong> Talk to <strong>Botette</strong> and leave your email in <em>Special Offers & Quotes</em> section to be the first to know.
     </div>
-    <span onclick="document.getElementById('special-offer-popup').style.display='none'" style="
-      margin-left: 15px;
-      cursor: pointer;
-      color: #fff;
-      font-weight: bold;
-    ">❌</span>
+    <span class="close-btn" onclick="closePopup()">❌</span>
   </div>
 </div>
 
 <script>
-  // Show popup after 2 seconds
   window.addEventListener('load', function () {
     setTimeout(() => {
-      document.getElementById('special-offer-popup').style.display = 'block';
+      document.getElementById('special-offer-popup').classList.add('show');
     }, 2000);
   });
+
+  function closePopup() {
+    const popup = document.getElementById('special-offer-popup');
+    popup.classList.remove('show');
+    // Optionally, hide it completely after animation
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 500);
+  }
 </script>
+
+
 
 
 </body>
