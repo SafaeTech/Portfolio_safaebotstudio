@@ -219,13 +219,23 @@
 
     /* Section title improved */
     section#do h2 {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 40px;
-      color: #39b54a;
-      text-align: center;
-      letter-spacing: 1px;
-    }
+  font-size: 2.4rem;    /* smaller than before (was 3rem) */
+  font-weight: 800;
+  margin-bottom: 60px;  /* more space below */
+  color: #39b54a;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+  #industry-leaders-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #39b54a;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 .service-grid {
   display: grid;
@@ -396,7 +406,8 @@ section#do {
 
 <!-- 💬 Testimonials Section -->
 <section style="background-color: #0a0a0a; color: #e0e0e0; padding: 40px 20px; text-align: center;">
-  <h2 style="color: #00ff7f; font-size: 28px; margin-bottom: 30px;">What Industry Leaders Say</h2>
+ <h2 id="industry-leaders-title">What Industry Leaders Say</h2>
+
 
   <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
     
