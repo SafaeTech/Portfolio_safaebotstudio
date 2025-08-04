@@ -29,6 +29,22 @@
     nav a:hover {
       color: #2d8c39;
     }
+    nav img {
+      height: 40px;
+    }
+    .language-switcher {
+      display: flex;
+      gap: 15px;
+    }
+    .language-switcher a {
+      color: #39b54a;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .language-switcher a:hover {
+      color: #2d8c39;
+    }
     .container {
       max-width: 900px;
       margin: 50px auto;
@@ -56,9 +72,15 @@
 </head>
 <body>
   <nav>
-    <a href="index.html">Safae Bot Studio</a>
-    <div>
-
+    <a href="index.html">
+      <img src="logo.png" alt="Safae Bot Studio Logo" />
+    </a>
+    <div class="language-switcher">
+      <a href="#">EN</a>
+      <a href="#">FR</a>
+      <a href="#">TR</a>
+      <a href="#">AR</a>
+    </div>
   </nav>
 
   <div class="container">
@@ -78,13 +100,10 @@
       <li><strong>Pro</strong>: 6+ Pages, Booking or Shop Integration — Ideal for Agencies & Online Stores</li>
     </ul>
 
-      <p style="font-size: 18px; font-weight: 500; text-align: left; line-height: 1.4;">
+    <p style="font-size: 18px; font-weight: 500; text-align: left; line-height: 1.4;">
       Ready to get online and grow your business? Let’s build your website + smart chatbot in one go.
-      </p>
-
-
+    </p>
+  </div>
 </body>
 </html>
-
-
 
