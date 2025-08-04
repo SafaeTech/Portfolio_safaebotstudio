@@ -11,14 +11,14 @@
       color: #fff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    nav {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 20px 40px;
-      background-color: #111;
-      box-shadow: 0 0 10px #39b54a88;
-    }
+nav {
+  display: flex;
+  justify-content: space-between; /* aligns logo left, language right */
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #111;
+  box-shadow: 0 0 10px #39b54a88;
+}
     nav img {
       height: 40px;
     }
@@ -63,7 +63,7 @@
       box-shadow: 0 0 8px #39b54a44;
     }
 
-    .language-switcher {
+.language-switcher {
   display: flex;
   gap: 15px;
 }
@@ -87,13 +87,13 @@
       <img src="logo.png" alt="Safae Bot Studio Logo" />
     </a>
 
-      <div class="language-switcher">
-  <a href="#">EN</a>
-  <a href="#">FR</a>
-  <a href="#">TR</a>
-  <a href="#">AR</a>
-</div>
-  </nav>
+  <div class="language-switcher">
+    <a href="#">EN</a>
+    <a href="#">FR</a>
+    <a href="#">TR</a>
+    <a href="#">AR</a>
+  </div>
+</nav>
 
   <div class="container">
     <h1>Meet Your 24/7 Customer Operations Bot</h1>
