@@ -353,27 +353,6 @@ section#do {
   border-left: 4px solid #39b54a;
 }
 
-.bot-tip-bubble::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 25px;
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid #222;
-}
-
-@keyframes fadeInUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
 }
 </style>
 </head>
@@ -584,13 +563,6 @@ section#do {
     }, 500);
   }
 </script>
-
-<div class="bot-tip-bubble">
-  <p>
-    💡 Pour démarrer en français, écrivez une salutation claire comme <strong>“Bonjour ma chère”</strong>.  
-    Botette détectera automatiquement la langue et répondra en conséquence.
-  </p>
-</div>
 
 
 
