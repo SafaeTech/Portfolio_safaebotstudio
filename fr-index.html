@@ -336,14 +336,14 @@ section#do {
   box-shadow: none;
 }
 .bot-tip-bubble {
-  position: fixed; /* Makes it float over the screen */
-  bottom: 100px; /* Pushes it up a bit from the bottom */
-  left: 20px; /* Sticks it to the left */
+  position: fixed;
+  bottom: 100px; /* height from the bottom */
+  left: 20px;    /* distance from the left */
   max-width: 280px;
   background: #222;
   color: #fff;
   padding: 15px 18px;
-  border-radius: 18px 18px 18px 0; /* Makes it look like a speech bubble */
+  border-radius: 18px 18px 18px 0; /* rounded edges, speech bubble style */
   font-size: 0.95rem;
   line-height: 1.6;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
@@ -352,6 +352,7 @@ section#do {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border-left: 4px solid #39b54a;
 }
+
 .bot-tip-bubble::after {
   content: "";
   position: absolute;
@@ -364,6 +365,15 @@ section#do {
   border-top: 10px solid #222;
 }
 
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 </style>
 </head>
