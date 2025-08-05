@@ -335,6 +335,32 @@ section#do {
   border-bottom: none;
   box-shadow: none;
 }
+.bot-tip-bubble {
+  max-width: 400px;
+  background-color: #111;
+  color: #fff;
+  border: 2px solid #39b54a;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 30px auto;
+  font-size: 1rem;
+  line-height: 1.6;
+  box-shadow: 0 0 10px #39b54a88;
+  position: relative;
+}
+
+.bot-tip-bubble::before {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 40px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #111;
+  border-bottom: 0;
+  margin-left: -10px;
+}
 
     }
   </style>
@@ -547,7 +573,13 @@ section#do {
   }
 </script>
 
-
+<div class="bot-tip-bubble">
+  <p>
+    💡 Pour parler avec Botette en français dès le début, faites-lui un petit compliment !  
+    Essayez par exemple : <strong>“Bonjour ma chère”</strong> 😄  
+    Elle adore qu’on lui parle avec tendresse !
+  </p>
+</div>
 
 
 </body>
