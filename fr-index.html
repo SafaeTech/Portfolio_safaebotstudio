@@ -336,34 +336,34 @@ section#do {
   box-shadow: none;
 }
 .bot-tip-bubble {
-  max-width: 400px;
-  background-color: #111;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  max-width: 280px;
+  background: #222;
   color: #fff;
-  border: 2px solid #39b54a;
-  border-radius: 20px;
-  padding: 20px;
-  margin: 30px auto;
-  font-size: 1rem;
+  padding: 15px 18px;
+  border-radius: 18px;
+  font-size: 0.95rem;
   line-height: 1.6;
-  box-shadow: 0 0 10px #39b54a88;
-  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  animation: fadeInUp 1s ease-out;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-left: 4px solid #39b54a;
 }
 
-.bot-tip-bubble::before {
-  content: "";
-  position: absolute;
-  bottom: -20px;
-  left: 40px;
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-top-color: #111;
-  border-bottom: 0;
-  margin-left: -10px;
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
-
-    }
-  </style>
+</style>
 </head>
   
 <body>
@@ -579,6 +579,13 @@ section#do {
     Botette détectera automatiquement la langue et répondra en conséquence.
   </p>
 </div>
+
+  <script>
+  setTimeout(() => {
+    const tip = document.querySelector('.bot-tip-bubble');
+    if (tip) tip.style.display = 'none';
+  }, 10000); // 10 seconds
+</script>
 
 
 
