@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy - Safae Bot Studio</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #111;
+      box-shadow: 0 0 10px #39b54a88;
+    }
+    nav a img {
+      height: 40px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #111;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #39b54a55;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #39b54a, #2d8c39);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h2 {
+      color: #39b54a;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    p, li {
+      line-height: 1.6;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      white-space: pre-line;
+    }
+    ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .language-switcher {
+      display: flex;
+      gap: 15px;
+    }
+    .language-switcher a {
+      color: #39b54a;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .language-switcher a:hover {
+      color: #2d8c39;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">
+      <img src="logo.png" alt="Safae Bot Studio Logo" />
+    </a>
+    <div class="language-switcher">
+      <a href="privacy_policy.html">EN</a>
+      <a href="ar-privacy_policy.html">AR</a>
+      <a href="fr-privacy_policy.html">FR</a>
+      <a href="tr-privacy_policy.html">TR</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>🌿 Privacy Policy (Safae Bot Studio)</h1>
+
+    <p>
+      Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you interact with our chatbot (Botette 🤖) or our services.
+    </p>
+
+    <h2>1. Information We Collect</h2>
+    <ul>
+      <li>Your name (if you provide it)</li>
+      <li>Your email address (for confirmations or updates)</li>
+      <li>Appointment details or other information you choose to share</li>
+    </ul>
+    <p>We do not collect sensitive personal data (like ID numbers, payment details, or health records).</p>
+
+    <h2>2. How We Use Your Information</h2>
+    <ul>
+      <li>Responding to your requests</li>
+      <li>Booking and confirming appointments</li>
+      <li>Sending email updates</li>
+      <li>Improving our chatbot and services</li>
+    </ul>
+
+    <h2>3. Where Your Data is Processed</h2>
+    <p>To provide our services, we securely process data using trusted third-party providers:</p>
+    <ul>
+      <li><strong>Botpress Cloud</strong> → stores chatbot conversations securely (encrypted in transit &amp; at rest).</li>
+      <li><strong>Make.com</strong> → automates tasks like updating records or sending emails (GDPR &amp; SOC 2 compliant).</li>
+      <li><strong>Google Sheets</strong> → securely stores appointment or request details (not shared publicly).</li>
+      <li><strong>Zoho Mail</strong> → sends confirmation and follow-up emails (GDPR compliant).</li>
+    </ul>
+
+    <h2>4. Data Sharing</h2>
+    <p>
+      We do not sell or share your personal information with third parties for marketing purposes.
+      Your data is only shared with the providers listed above to deliver our services.
+    </p>
+
+    <h2>5. Your Rights</h2>
+    <ul>
+      <li>Request a copy of your data</li>
+      <li>Ask us to delete your information at any time</li>
+      <li>Withdraw your consent to data processing</li>
+    </ul>
+    <p>To exercise your rights, contact us at: <a href="mailto:bots@safaebotstudio.com" style="color:#39b54a;">bots@safaebotstudio.com</a></p>
+  </div>
+</body>
+</html>
 
